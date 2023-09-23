@@ -1,12 +1,12 @@
 on:
   workflow_dispatch:
 jobs:
-  demo_app_authentication:
+  demo_get:
     runs-on: ubuntu-latest
     steps:
-      - name: goooo
+      - name: get get get
         env:
-          pat: ${{ secrets.PAT }}
+          PAT: ${{ secrets.PAT }}
         run: |
           curl --location 'https://api.github.com/repos/lincc-frameworks/tape/actions/runs' \
           --header 'accept: application/vnd.github+json' \
