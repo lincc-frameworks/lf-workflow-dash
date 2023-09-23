@@ -3,15 +3,14 @@ import sys
 
 if __name__ == "__main__":
     token = sys.argv[1]
-    url = "https://api.github.com/repos/OliviaLynn/gh-actions/dash/actions/runs"
-    
+    url = "https://api.github.com/repos/OliviaLynn/gh-action-dash/actions/runs"
+
     payload = {}
-    headers = {
-      'accept': 'application/vnd.github+json',
-      'Authorization': f'Bearer {token}'
-    }
-    
+    headers = {"accept": "application/vnd.github+json", "Authorization": f"Bearer {token}"}
+
     response = requests.request("GET", url, headers=headers, data=payload)
-    json_response = response.json()
-    for key, value in json_response.items():
-            print(key, ":", value)
+
+    print(response.json()["total_count"])
+
+    with open("README.md", "a") as myfile:
+        myfile.write(f'total action runs: {response.json()["total_count"]}\n')
