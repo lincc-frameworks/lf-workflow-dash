@@ -13,4 +13,4 @@ if __name__ == "__main__":
     
     response = requests.request("GET", url, headers=headers, data=payload)
     
-    print(response.text)
+    print(response.json()[total_count])
