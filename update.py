@@ -3,7 +3,7 @@ import sys
 
 if __name__ == "__main__":
     token = sys.argv[1]
-    url = "https://api.github.com/repos/lincc-frameworks/tape/actions/runs"
+    url = "https://api.github.com/repos/OliviaLynn/gh-actions/dash/actions/runs"
     
     payload = {}
     headers = {
@@ -12,5 +12,6 @@ if __name__ == "__main__":
     }
     
     response = requests.request("GET", url, headers=headers, data=payload)
-    
-    print(response.json()[total_count])
+    json_response = response.json()
+    for key, value in json_response.items():
+            print(key, ":", value)
