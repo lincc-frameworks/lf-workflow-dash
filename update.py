@@ -13,4 +13,4 @@ if __name__ == "__main__":
     print(response.json()["total_count"])
 
     with open("README.md", "a") as myfile:
-        myfile.write(f'total action runs: {response.json()["total_count"]}\n')
+        myfile.write(f'\ntotal action runs: {response.json()["total_count"]}\n')
