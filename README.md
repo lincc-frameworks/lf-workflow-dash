@@ -1,3 +1,3 @@
-# gh actions dash
+# gh action dash
 
 :)
