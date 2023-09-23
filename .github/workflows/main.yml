@@ -1,10 +1,12 @@
 on:
   workflow_dispatch:
+  push:
 jobs:
-  demo_get:
+  demo_get_tape_runs:
     runs-on: ubuntu-latest
     steps:
-      - name: get get get
+      - name: get tape runs
+        shell: bash
         env:
           PAT: ${{ secrets.PAT }}
         run: |
