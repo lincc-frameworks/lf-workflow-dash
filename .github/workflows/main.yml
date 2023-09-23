@@ -8,12 +8,9 @@ jobs:
 #      issues: read
     steps:
       - uses: actions/checkout@v3
-      - run: |
-          python update.py
-#      - env:
-#          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#        run: |
-#          curl --request GET \
-#          --url "https://api.github.com/repos/lincc-frameworks/tape/issues" \
-#          --header "Accept: application/vnd.github+json" \
-#          --header "Authorization: Bearer $GH_TOKEN"
+#      - run: |
+#          python update.py
+      - env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python update.py "$GH_TOKEN"
