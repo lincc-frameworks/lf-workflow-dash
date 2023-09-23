@@ -4,13 +4,15 @@ on:
 jobs:
   demo_get_tape_runs:
     runs-on: ubuntu-latest
-    permissions:
-      issues: read
+#    permissions:
+#      issues: read
     steps:
-      - env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          curl --request GET \
-          --url "https://api.github.com/repos/lincc-frameworks/tape/issues" \
-          --header "Accept: application/vnd.github+json" \
-          --header "Authorization: Bearer $GH_TOKEN"
+      - run: |
+          python update.py
+#      - env:
+#          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#        run: |
+#          curl --request GET \
+#          --url "https://api.github.com/repos/lincc-frameworks/tape/issues" \
+#          --header "Accept: application/vnd.github+json" \
+#          --header "Authorization: Bearer $GH_TOKEN"
