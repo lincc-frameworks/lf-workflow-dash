@@ -9,7 +9,6 @@ jobs:
     steps:
       - env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: get tape runs
         run: |
           curl --request GET \
           --url "https://api.github.com/repos/lincc-frameworks/tape/issues" \
