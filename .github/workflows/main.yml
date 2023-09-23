@@ -7,6 +7,4 @@ jobs:
     steps:
       - name: get tape runs
         run: |
-          curl --location 'https://api.github.com/repos/lincc-frameworks/tape/actions/runs' \
-          --header 'accept: application/vnd.github+json' \
-          --header 'Authorization: Bearer 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'
+          curl --location 'https://api.github.com/repos/lincc-frameworks/tape/actions/runs' --header 'accept: application/vnd.github+json' --header 'Authorization: Bearer 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'
