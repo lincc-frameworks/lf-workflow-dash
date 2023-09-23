@@ -8,7 +8,13 @@ jobs:
 #      issues: read
     steps:
       - uses: actions/checkout@v3
-#      - run: |
-#          python update.py
       - run: |
           python update.py ${{ secrets.GITHUB_TOKEN }}
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "OliviaLynn"
+          git config --global user.email "olynn@andrew.cmu.edu"
+    
+          git add -A
+          git commit -m "commit message"
+          git push
