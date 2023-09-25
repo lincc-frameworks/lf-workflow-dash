@@ -53,11 +53,10 @@ if __name__ == "__main__":
         )
         add_text("repo_name → workflow_name: workflow_conclusion (last_run_at)")
 
-        add_text("## GAD")
-        add_workflow("OliviaLynn", "gh-action-dash", "main.yml")
-        add_workflow("OliviaLynn", "gh-action-dash", "always-fails.yml")
+        add_text("## WD")
+        add_workflow("OliviaLynn", "workflow-dash", "always-fails.yml")
         add_workflow(
-            "OliviaLynn", "gh-action-dash", "70388660"
+            "OliviaLynn", "workflow-dash", "70388660"
         )  # id for pages-build-deployment -> in the future would like to display name in output instead
 
         add_text("## LSDB")
@@ -67,7 +66,16 @@ if __name__ == "__main__":
         add_workflow("astronomy-commons", "lsdb", "build-documentation.yml")
 
         add_text("## HIPSCAT")
+        add_workflow("astronomy-commons", "hipscat", "smoke-test.yml")
+        add_workflow("astronomy-commons", "hipscat", "testing-and-coverage.yml")
         add_workflow("astronomy-commons", "hipscat", "asv-nightly.yml")
+        add_workflow("astronomy-commons", "hipscat", "build-documentation.yml")
+        
+        add_text("## HIPSCAT-IMPORT")
+        add_workflow("astronomy-commons", "hipscat-import", "smoke-test.yml")
+        add_workflow("astronomy-commons", "hipscat-import", "testing-and-coverage.yml")
+        add_workflow("astronomy-commons", "hipscat-import", "asv-nightly.yml")
+        add_workflow("astronomy-commons", "hipscat-import", "build-documentation.yml")
 
         add_text("## TAPE")
         add_workflow("lincc-frameworks", "tape", "build-documentation.yml")
