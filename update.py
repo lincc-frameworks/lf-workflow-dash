@@ -1,7 +1,9 @@
 from datetime import datetime
-import pytz
 import requests
 import sys
+
+import pytz
+
 
 REPO_URLS = {
     "lsdb": "https://github.com/astronomy-commons/lsdb",
@@ -18,6 +20,12 @@ class WorkflowData:
         self.repo = repo
         self.workflow = workflow
         self.icon = "**⚠**"
+
+        self.url = ""
+        print(self.repo)
+        if self.repo in REPO_URLS:
+            self.url = f"{REPO_URLS[self.repo]}/actions/workflows/{self.workflow}"
+            print(self.url)
 
         # View API details:
         # https://docs.github.com/en/rest/actions/workflow-runs?apiVersion=2022-11-28#list-workflow-runs-for-a-workflow
@@ -37,18 +45,14 @@ class WorkflowData:
                 utc_timestamp = datetime.strptime(self.updated_at, "%Y-%m-%dT%H:%M:%SZ")
                 self.updated_at = utc_timestamp.astimezone(tz).strftime("%H:%M %b %d, %Y")
 
-        self.url = ""
-        if self.repo in REPO_URLS:
-            self.url = f"{REPO_URLS[self.repo]}/actions/workflows/{self.workflow}"
-
     def __str__(self):
         workflow_cell = self.workflow
         if self.url:
             workflow_cell = f"[{self.workflow}]({self.url})"
         if self.status_code == 200:
-            return f"| {self.icon} | {self.repo} | {self.workflow} | {self.conclusion} | {self.updated_at} |"
+            return f"| {self.icon} | {self.repo} | {workflow_cell} | {self.conclusion} | {self.updated_at} |"
         else:
-            return f"| {self.icon} | {self.repo} | {self.workflow} | bad api call | --- |"
+            return f"| {self.icon} | {self.repo} | {workflow_cell} | bad api call | --- |"
 
 
 if __name__ == "__main__":
@@ -71,8 +75,8 @@ if __name__ == "__main__":
         file_out.write("| ? | repo | workflow | conclusion | updated at |\n")
         file_out.write("| - | ---- | -------- | ---------- | ---------- |\n")
 
-        add_row("OliviaLynn", "workflow-dash", "always-fails.yml")
-        add_row("OliviaLynn", "workflow-dash", "70388660")
+        # add_row("OliviaLynn", "workflow-dash", "always-fails.yml")
+        # add_row("OliviaLynn", "workflow-dash", "70388660")
         # ^ workflow id for pages-build-deployment -> in the future would like to display name even when given id
 
         add_row("astronomy-commons", "lsdb", "smoke-test.yml")
