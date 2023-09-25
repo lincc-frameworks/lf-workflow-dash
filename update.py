@@ -28,7 +28,7 @@ class WorkflowData:
             icon = "⚠"
             if self.conclusion == "success":
                 icon = "✓"
-            return f"{icon} {self.repo} → {self.workflow}: {self.conclusion} ({self.updated_at})"
+            return f"{icon} {self.repo} → {self.workflow}: {self.conclusion} (_completed {self.updated_at}_)"
         else:
             return f"{icon} {self.repo} → {self.workflow}: bad api call"
 
@@ -48,10 +48,10 @@ if __name__ == "__main__":
             file_out.write("\n\n")
 
         add_text(f"Last Updated (UTC) {datetime.now().strftime('%b %d, %Y %H:%M')}")
-        add_text(
-            "API reference: [list-workflow-runs-for-a-workflow](https://docs.github.com/en/rest/actions/workflow-runs?apiVersion=2022-11-28#list-workflow-runs-for-a-workflow)"
-        )
-        add_text("repo_name → workflow_name: workflow_conclusion (last_run_at)")
+        #add_text(
+        #    "API reference: [list-workflow-runs-for-a-workflow](https://docs.github.com/en/rest/actions/workflow-runs?apiVersion=2022-11-28#list-workflow-runs-for-a-workflow)"
+        #)
+        #add_text("repo_name → workflow_name: workflow_conclusion (last_run_at)")
 
         add_text("## WD")
         add_workflow("OliviaLynn", "workflow-dash", "always-fails.yml")
