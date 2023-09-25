@@ -1,14 +1,16 @@
-# Workflows
+Last Updated (UTC) Sep 25, 2023 02:45
 
-Last Updated: Sep 25, 2023 02:27
+API reference: [list-workflow-runs-for-a-workflow](https://docs.github.com/en/rest/actions/workflow-runs?apiVersion=2022-11-28#list-workflow-runs-for-a-workflow)
+
+repo_name → workflow_name: workflow_conclusion (last_run_at)
 
 ## GAD
 
-⚠ gh-action-dash → main.yml: None (2023-09-25T02:27:25Z)
+⚠ gh-action-dash → main.yml: None (2023-09-25T02:45:49Z)
 
-⚠ gh-action-dash → always-fails.yml: None (2023-09-25T02:27:24Z)
+⚠ gh-action-dash → always-fails.yml: None (2023-09-25T02:45:50Z)
 
-⚠ gh-action-dash → 70388660: None (2023-09-25T02:27:25Z)
+⚠ gh-action-dash → 70388660: None (2023-09-25T02:45:50Z)
 
 ## LSDB
 
