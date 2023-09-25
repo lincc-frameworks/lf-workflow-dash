@@ -91,7 +91,6 @@ if __name__ == "__main__":
 
         add_row("astronomy-commons", "hipscat-import", "smoke-test.yml")
         add_row("astronomy-commons", "hipscat-import", "testing-and-coverage.yml")
-        add_row("astronomy-commons", "hipscat-import", "asv-nightly.yml")
         add_row("astronomy-commons", "hipscat-import", "build-documentation.yml")
 
         add_row("lincc-frameworks", "tape", "build-documentation.yml")
