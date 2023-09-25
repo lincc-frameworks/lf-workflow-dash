@@ -43,8 +43,9 @@ if __name__ == "__main__":
             file_out.write(line)
             file_out.write("\n\n")
 
-        add_line("# Workflows")
-        add_line(f"Last Updated: {datetime.now().strftime('%b %d, %Y %H:%M')}")
+        add_line(f"Last Updated (UTC) {datetime.now().strftime('%b %d, %Y %H:%M')}")
+
+        TODO : quick explanation/link to api call used
 
         add_line("## GAD")
         add_line(str(WorkflowData(token, "OliviaLynn", "gh-action-dash", "main.yml")))
