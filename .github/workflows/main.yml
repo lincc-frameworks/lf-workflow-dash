@@ -1,11 +1,11 @@
 on:
   workflow_dispatch:
   push:
+  schedule:
+    - cron: '*/15 * * * *'
 jobs:
   demo_get_tape_runs:
     runs-on: ubuntu-latest
-#    permissions:
-#      issues: read
     steps:
       - uses: actions/checkout@v3
       - run: |
