@@ -3,6 +3,13 @@ import pytz
 import requests
 import sys
 
+REPO_URLS = {
+    "lsdb": "https://github.com/astronomy-commons/lsdb",
+    "hipscat": "https://github.com/astronomy-commons/hipscat",
+    "hipscat-import": "https://github.com/astronomy-commons/hipscat-import",
+    "tape": "https://github.com/lincc-frameworks/tape",
+}
+
 
 class WorkflowData:
     def __init__(self, token, owner, repo, workflow, tz=""):
@@ -10,6 +17,7 @@ class WorkflowData:
         self.owner = owner
         self.repo = repo
         self.workflow = workflow
+        self.icon = "**⚠**"
 
         # View API details:
         # https://docs.github.com/en/rest/actions/workflow-runs?apiVersion=2022-11-28#list-workflow-runs-for-a-workflow
@@ -23,53 +31,42 @@ class WorkflowData:
             last_run = response.json()["workflow_runs"][0]
             self.conclusion = last_run["conclusion"]
             self.updated_at = last_run["updated_at"]
-
+            if self.conclusion == "success":
+                self.icon = "✓"
             if tz:
                 utc_timestamp = datetime.strptime(self.updated_at, "%Y-%m-%dT%H:%M:%SZ")
                 self.updated_at = utc_timestamp.astimezone(tz).strftime("%H:%M %b %d, %Y")
 
-    def __str__(self):
-        if self.status_code == 200:
-            icon = "⚠"
-            if self.conclusion == "success":
-                icon = "✓"
-            return f"{icon} {self.repo} → {self.workflow}: {self.conclusion} (_completed {self.updated_at}_)"
-        else:
-            icon = "⚠"
-            return f"{icon} {self.repo} → {self.workflow}: bad api call"
+        self.url = ""
+        if self.repo in REPO_URLS:
+            self.url = f"{REPO_URLS[self.repo]}/actions/workflows/{self.workflow}"
 
-    def as_row(self):
+    def __str__(self):
+        workflow_cell = self.workflow
+        if self.url:
+            workflow_cell = f"[{self.workflow}]({self.url})"
         if self.status_code == 200:
-            icon = "**⚠**"
-            if self.conclusion == "success":
-                icon = "✓"
-            return f"| {icon} | {self.repo} | {self.workflow} | {self.conclusion} | {self.updated_at} |"
+            return f"| {self.icon} | {self.repo} | {self.workflow} | {self.conclusion} | {self.updated_at} |"
         else:
-            icon = "**⚠**"
-            return f"| {icon} | {self.repo} | {self.workflow} | bad api call | --- |"
+            return f"| {self.icon} | {self.repo} | {self.workflow} | bad api call | --- |"
 
 
 if __name__ == "__main__":
     token = sys.argv[1]
-
     tz = pytz.timezone("America/New_York")
-
     file_name = "README.md"
+
     with open(file_name, "w") as file_out:
 
         def add_text(line):
             file_out.write(line)
             file_out.write("\n\n")
 
-        def add_workflow(owner, repo, workflow):
-            file_out.write(str(WorkflowData(token, owner, repo, workflow)))
-            file_out.write("\n\n")
-
         def add_row(owner, repo, workflow):
-            file_out.write(WorkflowData(token, owner, repo, workflow, tz=tz).as_row())
+            file_out.write(str(WorkflowData(token, owner, repo, workflow, tz=tz)))
             file_out.write("\n")
 
-        add_text(f"Last Updated: {datetime.now(tz).strftime('%H:%M %b %d, %Y')}")
+        add_text(f"Last Updated {datetime.now(tz).strftime('%H:%M %b %d, %y')}")
 
         file_out.write("| ? | repo | workflow | conclusion | updated at |\n")
         file_out.write("| - | ---- | -------- | ---------- | ---------- |\n")
