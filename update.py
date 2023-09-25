@@ -30,6 +30,7 @@ class WorkflowData:
                 icon = "✓"
             return f"{icon} {self.repo} → {self.workflow}: {self.conclusion} (_completed {self.updated_at}_)"
         else:
+            icon = "⚠"
             return f"{icon} {self.repo} → {self.workflow}: bad api call"
 
 
