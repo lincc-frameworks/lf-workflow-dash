@@ -39,33 +39,37 @@ if __name__ == "__main__":
     file_name = "README.md"
     with open(file_name, "w") as file_out:
 
-        def add_line(line):
+        def add_text(line):
             file_out.write(line)
             file_out.write("\n\n")
 
-        add_line(f"Last Updated (UTC) {datetime.now().strftime('%b %d, %Y %H:%M')}")
+        def add_workflow(owner, repo, workflow):
+            file_out.write(str(WorkflowData(token, owner, repo, workflow)))
+            file_out.write("\n\n")
 
-        TODO : quick explanation/link to api call used
-
-        add_line("## GAD")
-        add_line(str(WorkflowData(token, "OliviaLynn", "gh-action-dash", "main.yml")))
-        add_line(str(WorkflowData(token, "OliviaLynn", "gh-action-dash", "always-fails.yml")))
-        add_line(
-            str(
-                WorkflowData(token, "OliviaLynn", "gh-action-dash", "70388660")
-            )  # id for pages-build-deployment -> in the future would like to display name in output instead
+        add_text(f"Last Updated (UTC) {datetime.now().strftime('%b %d, %Y %H:%M')}")
+        add_text(
+            "API reference: [list-workflow-runs-for-a-workflow](https://docs.github.com/en/rest/actions/workflow-runs?apiVersion=2022-11-28#list-workflow-runs-for-a-workflow)"
         )
+        add_text("repo_name → workflow_name: workflow_conclusion (last_run_at)")
 
-        add_line("## LSDB")
-        add_line(str(WorkflowData(token, "astronomy-commons", "lsdb", "smoke-test.yml")))
-        add_line(str(WorkflowData(token, "astronomy-commons", "lsdb", "testing-and-coverage.yml")))
-        add_line(str(WorkflowData(token, "astronomy-commons", "lsdb", "asv-nightly.yml")))
-        add_line(str(WorkflowData(token, "astronomy-commons", "lsdb", "build-documentation.yml")))
+        add_text("## GAD")
+        add_workflow("OliviaLynn", "gh-action-dash", "main.yml")
+        add_workflow("OliviaLynn", "gh-action-dash", "always-fails.yml")
+        add_workflow(
+            "OliviaLynn", "gh-action-dash", "70388660"
+        )  # id for pages-build-deployment -> in the future would like to display name in output instead
 
-        add_line("## HIPSCAT")
-        add_line(str(WorkflowData(token, "astronomy-commons", "hipscat", "asv-nightly.yml")))
+        add_text("## LSDB")
+        add_workflow("astronomy-commons", "lsdb", "smoke-test.yml")
+        add_workflow("astronomy-commons", "lsdb", "testing-and-coverage.yml")
+        add_workflow("astronomy-commons", "lsdb", "asv-nightly.yml")
+        add_workflow("astronomy-commons", "lsdb", "build-documentation.yml")
 
-        add_line("## TAPE")
-        add_line(str(WorkflowData(token, "lincc-frameworks", "tape", "build-documentation.yml")))
-        add_line(str(WorkflowData(token, "lincc-frameworks", "tape", "smoke-test.yml")))
-        add_line(str(WorkflowData(token, "lincc-frameworks", "tape", "testing-and-coverage.yml")))
+        add_text("## HIPSCAT")
+        add_workflow("astronomy-commons", "hipscat", "asv-nightly.yml")
+
+        add_text("## TAPE")
+        add_workflow("lincc-frameworks", "tape", "build-documentation.yml")
+        add_workflow("lincc-frameworks", "tape", "smoke-test.yml")
+        add_workflow("lincc-frameworks", "tape", "testing-and-coverage.yml")
