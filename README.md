@@ -1,46 +1,21 @@
-Last Updated (UTC) Sep 25, 2023 13:09
+Last Updated: 09:30 Sep 25, 2023
 
-## WD
-
-⚠ workflow-dash → always-fails.yml: failure (_completed 2023-09-25T02:58:37Z_)
-
-✓ workflow-dash → 70388660: success (_completed 2023-09-25T12:57:42Z_)
-
-## LSDB
-
-✓ lsdb → smoke-test.yml: success (_completed 2023-09-25T06:48:41Z_)
-
-✓ lsdb → testing-and-coverage.yml: success (_completed 2023-09-14T18:43:37Z_)
-
-✓ lsdb → asv-nightly.yml: success (_completed 2023-09-25T06:46:51Z_)
-
-✓ lsdb → build-documentation.yml: success (_completed 2023-09-14T18:43:22Z_)
-
-## HIPSCAT
-
-✓ hipscat → smoke-test.yml: success (_completed 2023-09-25T06:48:49Z_)
-
-✓ hipscat → testing-and-coverage.yml: success (_completed 2023-09-22T22:57:50Z_)
-
-✓ hipscat → asv-nightly.yml: success (_completed 2023-09-25T06:49:13Z_)
-
-✓ hipscat → build-documentation.yml: success (_completed 2023-09-22T22:57:53Z_)
-
-## HIPSCAT-IMPORT
-
-✓ hipscat-import → smoke-test.yml: success (_completed 2023-09-25T06:50:28Z_)
-
-⚠ hipscat-import → testing-and-coverage.yml: failure (_completed 2023-09-14T19:34:46Z_)
-
-⚠ hipscat-import → asv-nightly.yml: bad api call
-
-✓ hipscat-import → build-documentation.yml: success (_completed 2023-09-14T19:34:43Z_)
-
-## TAPE
-
-✓ tape → build-documentation.yml: success (_completed 2023-09-20T16:35:58Z_)
-
-✓ tape → smoke-test.yml: success (_completed 2023-09-25T06:55:13Z_)
-
-✓ tape → testing-and-coverage.yml: success (_completed 2023-09-20T16:29:37Z_)
-
+| ? | repo | workflow | conclusion | updated at |
+| - | ---- | -------- | ---------- | ---------- |
+| **⚠** | workflow-dash | always-fails.yml | failure | 09:17 Sep 25, 2023 |
+| ✓ | workflow-dash | 70388660 | success | 09:26 Sep 25, 2023 |
+| ✓ | lsdb | smoke-test.yml | success | 02:48 Sep 25, 2023 |
+| ✓ | lsdb | testing-and-coverage.yml | success | 14:43 Sep 14, 2023 |
+| ✓ | lsdb | asv-nightly.yml | success | 02:46 Sep 25, 2023 |
+| ✓ | lsdb | build-documentation.yml | success | 14:43 Sep 14, 2023 |
+| ✓ | hipscat | smoke-test.yml | success | 02:48 Sep 25, 2023 |
+| ✓ | hipscat | testing-and-coverage.yml | success | 18:57 Sep 22, 2023 |
+| ✓ | hipscat | asv-nightly.yml | success | 02:49 Sep 25, 2023 |
+| ✓ | hipscat | build-documentation.yml | success | 18:57 Sep 22, 2023 |
+| ✓ | hipscat-import | smoke-test.yml | success | 02:50 Sep 25, 2023 |
+| **⚠** | hipscat-import | testing-and-coverage.yml | failure | 15:34 Sep 14, 2023 |
+| **⚠** | hipscat-import | asv-nightly.yml | bad api call | --- |
+| ✓ | hipscat-import | build-documentation.yml | success | 15:34 Sep 14, 2023 |
+| ✓ | tape | build-documentation.yml | success | 12:35 Sep 20, 2023 |
+| ✓ | tape | smoke-test.yml | success | 02:55 Sep 25, 2023 |
+| ✓ | tape | testing-and-coverage.yml | success | 12:29 Sep 20, 2023 |
