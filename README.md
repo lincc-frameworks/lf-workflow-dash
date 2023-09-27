@@ -1,4 +1,4 @@
-Last Updated 13:23 Sep 27, 23
+Last Updated 13:30 Sep 27, 23
 
 | ? | repo | workflow | conclusion | updated at |
 | - | ---- | -------- | ---------- | ---------- |
@@ -7,9 +7,9 @@ Last Updated 13:23 Sep 27, 23
 | ✓ | lsdb | [asv-nightly.yml](https://github.com/astronomy-commons/lsdb/actions/workflows/asv-nightly.yml) | success | 02:46 Sep 27, 2023 |
 | ✓ | lsdb | [build-documentation.yml](https://github.com/astronomy-commons/lsdb/actions/workflows/build-documentation.yml) | success | 14:43 Sep 14, 2023 |
 | ✓ | hipscat | [smoke-test.yml](https://github.com/astronomy-commons/hipscat/actions/workflows/smoke-test.yml) | success | 02:49 Sep 27, 2023 |
-| **⚠** | hipscat | [testing-and-coverage.yml](https://github.com/astronomy-commons/hipscat/actions/workflows/testing-and-coverage.yml) | None | 13:23 Sep 27, 2023 |
+| ✓ | hipscat | [testing-and-coverage.yml](https://github.com/astronomy-commons/hipscat/actions/workflows/testing-and-coverage.yml) | success | 13:30 Sep 27, 2023 |
 | ✓ | hipscat | [asv-nightly.yml](https://github.com/astronomy-commons/hipscat/actions/workflows/asv-nightly.yml) | success | 02:49 Sep 27, 2023 |
-| **⚠** | hipscat | [build-documentation.yml](https://github.com/astronomy-commons/hipscat/actions/workflows/build-documentation.yml) | None | 13:23 Sep 27, 2023 |
+| **⚠** | hipscat | [build-documentation.yml](https://github.com/astronomy-commons/hipscat/actions/workflows/build-documentation.yml) | None | 13:28 Sep 27, 2023 |
 | ✓ | hipscat-import | [smoke-test.yml](https://github.com/astronomy-commons/hipscat-import/actions/workflows/smoke-test.yml) | success | 02:50 Sep 27, 2023 |
 | ✓ | hipscat-import | [testing-and-coverage.yml](https://github.com/astronomy-commons/hipscat-import/actions/workflows/testing-and-coverage.yml) | success | 13:12 Sep 27, 2023 |
 | ✓ | hipscat-import | [build-documentation.yml](https://github.com/astronomy-commons/hipscat-import/actions/workflows/build-documentation.yml) | success | 13:11 Sep 27, 2023 |
