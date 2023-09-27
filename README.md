@@ -1,4 +1,4 @@
-Last Updated 03:18 Sep 27, 23
+Last Updated 03:30 Sep 27, 23
 
 | ? | repo | workflow | conclusion | updated at |
 | - | ---- | -------- | ---------- | ---------- |
@@ -12,7 +12,7 @@ Last Updated 03:18 Sep 27, 23
 | ✓ | hipscat | [build-documentation.yml](https://github.com/astronomy-commons/hipscat/actions/workflows/build-documentation.yml) | success | 19:06 Sep 26, 2023 |
 | ✓ | hipscat-import | [smoke-test.yml](https://github.com/astronomy-commons/hipscat-import/actions/workflows/smoke-test.yml) | success | 02:50 Sep 27, 2023 |
 | ✓ | hipscat-import | [testing-and-coverage.yml](https://github.com/astronomy-commons/hipscat-import/actions/workflows/testing-and-coverage.yml) | success | 19:20 Sep 26, 2023 |
-| ✓ | hipscat-import | [build-documentation.yml](https://github.com/astronomy-commons/hipscat-import/actions/workflows/build-documentation.yml) | success | 19:19 Sep 26, 2023 |
+| **⚠** | hipscat-import | [build-documentation.yml](https://github.com/astronomy-commons/hipscat-import/actions/workflows/build-documentation.yml) | bad api call | --- |
 | **⚠** | tape | [build-documentation.yml](https://github.com/lincc-frameworks/tape/actions/workflows/build-documentation.yml) | failure | 13:41 Sep 26, 2023 |
 | ✓ | tape | [smoke-test.yml](https://github.com/lincc-frameworks/tape/actions/workflows/smoke-test.yml) | success | 02:55 Sep 27, 2023 |
 | ✓ | tape | [testing-and-coverage.yml](https://github.com/lincc-frameworks/tape/actions/workflows/testing-and-coverage.yml) | success | 13:42 Sep 26, 2023 |
