@@ -11,7 +11,7 @@ jobs:
         uses: nanzm/get-time-action@v2.0
         id: time
         with:
-          timeZone: UTC-5
+          timeZone: UTC-4
           format: 'YYYY-MM-DD HH:mm'
       - name: Usage
         env:
@@ -29,5 +29,5 @@ jobs:
           git config --global user.name "OliviaLynn"
           git config --global user.email "olynn@andrew.cmu.edu"
           git add -A
-          git commit -m "Auto updated $TIME EST"
+          git commit -m "Auto updated $TIME EDT"
           git push
