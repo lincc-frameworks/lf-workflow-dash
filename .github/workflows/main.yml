@@ -7,15 +7,22 @@ jobs:
   demo_get_tape_runs:
     runs-on: ubuntu-latest
     steps:
+      - name: Get Timestamp Action
+        uses: nanzm/get-time-action@v2.0
+        id: time
+        with:
+          timeZone: UTC-5
+          format: 'YYYY-MM-DD-HH-mm-ss'
       - uses: actions/checkout@v3
       - run: |
           pip install pytz
           python update.py ${{ secrets.GITHUB_TOKEN }}
       - name: Commit and push changes
+        env:
+          TIME: "${{ steps.time.outputs.time }}"
         run: |
           git config --global user.name "OliviaLynn"
           git config --global user.email "olynn@andrew.cmu.edu"
-    
           git add -A
-          git commit -m "commit message"
+          git commit -m "Updated $TIME EST"
           git push
