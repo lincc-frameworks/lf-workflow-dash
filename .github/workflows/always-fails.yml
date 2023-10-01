@@ -1,6 +1,5 @@
 on:
   workflow_dispatch:
-  push:
 jobs:
   always_fails:
     runs-on: ubuntu-latest
