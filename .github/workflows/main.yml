@@ -7,6 +7,10 @@ jobs:
   demo_get_tape_runs:
     runs-on: ubuntu-latest
     steps:
+      - name: Set current date as env variable
+        run: echo "NOW=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
+      - name: Echo current date
+        run: echo $NOW # Gives "2022-12-11T01:42:20"
       - uses: actions/checkout@v3
       - run: |
           pip install pytz
@@ -15,7 +19,6 @@ jobs:
         run: |
           git config --global user.name "OliviaLynn"
           git config --global user.email "olynn@andrew.cmu.edu"
-    
           git add -A
-          git commit -m "commit message"
+          git commit -m "Updated $NOW"
           git push
