@@ -4,7 +4,7 @@ on:
   schedule:
     - cron: '*/15 * * * *'
 jobs:
-  demo_get_tape_runs:
+  get_status_and_update_dash:
     runs-on: ubuntu-latest
     steps:
       - name: Get Timestamp Action
@@ -12,7 +12,7 @@ jobs:
         id: time
         with:
           timeZone: UTC-5
-          format: 'YYYY-MM-DD-HH-mm-ss'
+          format: 'YYYY-MM-DD HH:mm'
       - uses: actions/checkout@v3
       - run: |
           pip install pytz
