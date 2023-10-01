@@ -1,0 +1,76 @@
+/* Apply styles to the table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #222; /* Dark background color */
+  color: #fff; /* Light text color */
+}
+
+/* Style the table header */
+th {
+  background: none;
+  text-align: left;
+  padding: 8px;
+  font-weight: bold;
+  border-bottom: 2px solid #444; /* Slightly darker border color */
+}
+
+/* Style the table cells */
+td {
+  padding: 8px;
+  border-bottom: 1px solid #444;
+}
+
+/* Alternate row background color */
+tr:nth-child(even) {
+  background-color: #333; /* Darker background for even rows */
+}
+
+/* Hover effect for table rows */
+tr:hover {
+  background-color: #444; /* Slightly lighter background on hover */
+}
+
+/* Style the links */
+a {
+  color: #66ccff; /* Light blue color for links */
+  text-decoration: none; /* Remove underlines from links */
+}
+
+/* Hover effect for links */
+a:hover {
+  text-decoration: underline; /* Underline links on hover */
+}
+
+/* Style the "Last Updated" paragraph */
+p {
+  font-style: italic;
+  text-align: right;
+  margin-top: 10px;
+  margin-right: 10px;
+  color: #888; /* Lighter text color for the paragraph */
+}
+
+/* Add left padding to the entire leftmost column */
+td:first-child, th:first-child {
+  padding-left: 20px; /* Adjust the amount of padding as needed */
+}
+
+/* Set background to black for the overall body (outside the table) */
+body {
+  background: black;
+}
+
+/* Define a class for green-colored icons */
+.green-icon {
+    color: #b7e08d; /* Match the blue color for links */
+    font-weight: bolder;
+}
+
+/* Define a class for red-colored icons */
+.red-icon {
+  color: #ff857c; /* Match the blue color for links */
+  font-weight: bolder;
+}
