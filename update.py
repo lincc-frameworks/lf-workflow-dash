@@ -5,14 +5,6 @@ import sys
 import pytz
 
 
-REPO_URLS = {
-    "lsdb": "https://github.com/astronomy-commons/lsdb",
-    "hipscat": "https://github.com/astronomy-commons/hipscat",
-    "hipscat-import": "https://github.com/astronomy-commons/hipscat-import",
-    "tape": "https://github.com/lincc-frameworks/tape",
-}
-
-
 class WorkflowData:
     def __init__(self, token, owner, repo, workflow, tz=""):
         self.token = token
@@ -21,18 +13,17 @@ class WorkflowData:
         self.workflow = workflow
         self.icon = "**⚠**"
 
-        self.url = ""
-        print(self.repo)
-        if self.repo in REPO_URLS:
-            self.url = f"{REPO_URLS[self.repo]}/actions/workflows/{self.workflow}"
-            print(self.url)
+        self.url = f"https://github.com/{owner}/{repo}/actions/workflows/{workflow}"
+        print(self.url)
 
         # View API details:
         # https://docs.github.com/en/rest/actions/workflow-runs?apiVersion=2022-11-28#list-workflow-runs-for-a-workflow
-        url = f"https://api.github.com/repos/{owner}/{repo}/actions/workflows/{workflow}/runs"
+        request_url = (
+            f"https://api.github.com/repos/{owner}/{repo}/actions/workflows/{workflow}/runs"
+        )
         payload = {}
         headers = {"accept": "application/vnd.github+json", "Authorization": f"Bearer {token}"}
-        response = requests.request("GET", url, headers=headers, data=payload)
+        response = requests.request("GET", request_url, headers=headers, data=payload)
         self.status_code = response.status_code
 
         if self.status_code == 200:  # success
