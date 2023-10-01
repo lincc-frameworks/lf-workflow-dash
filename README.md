@@ -1,10 +1,10 @@
-Last Updated 02:30 Oct 01, 23
+Last Updated 02:45 Oct 01, 23
 
 | ? | repo | workflow | conclusion | updated at |
 | - | ---- | -------- | ---------- | ---------- |
 | ✓ | lsdb | [smoke-test.yml](https://github.com/astronomy-commons/lsdb/actions/workflows/smoke-test.yml) | success | 02:48 Sep 30, 2023 |
 | ✓ | lsdb | [testing-and-coverage.yml](https://github.com/astronomy-commons/lsdb/actions/workflows/testing-and-coverage.yml) | success | 14:43 Sep 14, 2023 |
-| ✓ | lsdb | [asv-nightly.yml](https://github.com/astronomy-commons/lsdb/actions/workflows/asv-nightly.yml) | success | 02:46 Sep 30, 2023 |
+| **⚠** | lsdb | [asv-nightly.yml](https://github.com/astronomy-commons/lsdb/actions/workflows/asv-nightly.yml) | None | 02:45 Oct 01, 2023 |
 | ✓ | lsdb | [build-documentation.yml](https://github.com/astronomy-commons/lsdb/actions/workflows/build-documentation.yml) | success | 14:43 Sep 14, 2023 |
 | ✓ | hipscat | [smoke-test.yml](https://github.com/astronomy-commons/hipscat/actions/workflows/smoke-test.yml) | success | 02:48 Sep 30, 2023 |
 | ✓ | hipscat | [testing-and-coverage.yml](https://github.com/astronomy-commons/hipscat/actions/workflows/testing-and-coverage.yml) | success | 01:16 Sep 29, 2023 |
