@@ -61,8 +61,10 @@ class WorkflowData:
 
     def html_row(self):
         icon_color = 'class="red-icon"'
+        tr_class = 'class="alert"'
         if self.status_code == 200 and self.conclusion == "success":
             icon_color = 'class="green-icon"'
+            tr_class = ""
 
         if self.status_code == 200:
             return (
@@ -77,7 +79,7 @@ class WorkflowData:
             )
         else:
             return (
-                f'<tr class="alert">'
+                f"<tr {tr_class}>"
                 f"<td {icon_color}>{self.icon}</td>"
                 f"<td>{self.repo}</td>"
                 f'<td><a href="{self.workflow_url}">{self.workflow}</a></td>'

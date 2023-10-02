@@ -7,6 +7,7 @@ table {
   font-family: Arial, sans-serif;
   background-color: #222; /* Dark background color */
   color: #fff; /* Light text color */
+  font-size: 0.925em;
 }
 
 /* Style the table header */
@@ -45,9 +46,8 @@ a:hover {
   text-decoration: underline; /* Underline links on hover */
 }
 
-/* Style the "Last Updated" paragraph */
+/* Style the "Last Updated" at the bottom */
 p {
-  font-style: italic;
   text-align: right;
   margin-top: 10px;
   margin-right: 10px;
@@ -56,15 +56,10 @@ p {
 
 /* Add left padding to the entire leftmost column */
 td:first-child, th:first-child {
-  ppadding-left: 0vw; /* Adjust the amount of padding as needed */
   width: 1em;
 }
-/* Add left padding to the entire leftmost column */
-td:last-child, th:last-child {
-  ppadding-right: 0vw; /* Adjust the amount of padding as needed */
-}
 
-/* Set background to black for the overall body (outside the table) */
+/* Set background to something dark for the overall body (outside the table) */
 body {
   background: #171717;
 }
@@ -74,7 +69,7 @@ body {
     color: #9de598;
 }
 
-/* Define a class for red-colored icons */
+/* Define a class for red-colored icons (and entire row) */
 .red-icon, .alert {
   color: #ff5c3f;
 }
@@ -82,20 +77,9 @@ body {
 /* Media query for larger viewports */
 @media (min-width: 1000px) {
   table {
-    width: 70%; /* Set width to 80% for viewports with a minimum width of 768px */
+    width: 70%;
   }
   p {
     margin-right: 15vw;
   }
-}
-
-
-
-
-.colors {
-  color: #3b2765;
-  color: #7b6db0;
-  color: #504145;
-  color: #bdc1c6;
-  color: #ae9bf7;
 }
