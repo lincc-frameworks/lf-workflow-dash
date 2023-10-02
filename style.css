@@ -51,7 +51,8 @@ p {
   text-align: right;
   margin-top: 10px;
   margin-right: 10px;
-  color: #888; /* Lighter text color for the paragraph */
+  color: #888;
+  font-family: Arial, sans-serif;
 }
 
 /* Add left padding to the entire leftmost column */

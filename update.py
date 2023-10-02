@@ -68,7 +68,7 @@ class WorkflowData:
 
         if self.status_code == 200:
             return (
-                f"<tr>"
+                f"<tr {tr_class}>"
                 f"<td {icon_color}>{self.icon}</td>"
                 f"<td>{self.repo}</td>"
                 f'<td><a href="{self.workflow_url}">{self.workflow}</a></td>'
@@ -175,7 +175,13 @@ def update_html(token, tz):
 
         # Write postamble
         file_out.write("</table>")
-        file_out.write(f"<p>Last Updated {datetime.now(tz).strftime('%H:%M %B %d, %Y')}</p>")
+        file_out.write(
+            f"<p>"
+            f"Last Updated {datetime.now(tz).strftime('%H:%M %B %d, %Y')}"
+            f" | "
+            f"View <a href='https://github.com/OliviaLynn/workflow-dash'><i class="fa fa-github"></i> lf-workflow-dash</a>"
+            f"</p>"
+        )
         file_out.write("</body></html>")
 
 
