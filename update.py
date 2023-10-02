@@ -11,10 +11,10 @@ class WorkflowData:
         self.owner = owner
         self.repo = repo
         self.workflow = workflow
-        self.icon = "⚠"
+        self.icon = '<i class="fa fa-exclamation-triangle">'
 
-        self.url = f"https://github.com/{owner}/{repo}/actions/workflows/{workflow}"
-        print(self.url)
+        self.workflow_url = f"https://github.com/{owner}/{repo}/actions/workflows/{workflow}"
+        print(self.workflow_url)
 
         # View API details:
         # https://docs.github.com/en/rest/actions/workflow-runs?apiVersion=2022-11-28#list-workflow-runs-for-a-workflow
@@ -26,15 +26,38 @@ class WorkflowData:
         response = requests.request("GET", request_url, headers=headers, data=payload)
         self.status_code = response.status_code
 
+        self.run_time = ""
         if self.status_code == 200:  # success
             last_run = response.json()["workflow_runs"][0]
             self.conclusion = last_run["conclusion"]
+            self.created_at = last_run["created_at"]
             self.updated_at = last_run["updated_at"]
+
+            # Get run time
+            # Convert the timestamps to datetime objects
+            created_time = datetime.fromisoformat(self.created_at.replace("Z", "+00:00"))
+            updated_time = datetime.fromisoformat(self.updated_at.replace("Z", "+00:00"))
+
+            # Calculate the time difference
+            time_difference = updated_time - created_time
+
+            # Calculate total minutes and seconds
+            total_seconds = time_difference.total_seconds()
+            total_minutes = total_seconds // 60
+            remaining_seconds = total_seconds % 60
+
+            # Create a formatted string for total run time
+            self.run_time = f"{int(total_minutes)}m {int(remaining_seconds)}s"
+
+            self.run_url = ""
             if self.conclusion == "success":
-                self.icon = "✓"
+                self.icon = '<i class="fa fa-check-circle">'
+                self.run_url = last_run["html_url"]
             if tz:
                 utc_timestamp = datetime.strptime(self.updated_at, "%Y-%m-%dT%H:%M:%SZ")
-                self.updated_at = utc_timestamp.astimezone(tz).strftime("%H:%M %b %d, %Y")
+                self.updated_at = utc_timestamp.astimezone(tz).strftime("%H:%M %B %d, %Y")
+                self.updated_at_time = utc_timestamp.astimezone(tz).strftime("%H:%M")
+                self.updated_at_date = utc_timestamp.astimezone(tz).strftime("%B %d, %Y")
 
     def html_row(self):
         icon_color = 'class="red-icon"'
@@ -46,67 +69,23 @@ class WorkflowData:
                 f"<tr>"
                 f"<td {icon_color}>{self.icon}</td>"
                 f"<td>{self.repo}</td>"
-                f'<td><a href="{self.url}">{self.workflow}</a></td>'
+                f'<td><a href="{self.workflow_url}">{self.workflow}</a></td>'
                 f"<td>{self.conclusion}</td>"
                 f"<td>{self.updated_at}</td>"
+                f"<td>{self.run_time}</td>"
                 f"</tr>"
             )
         else:
             return (
-                f"<tr>"
+                f'<tr class="alert">'
                 f"<td {icon_color}>{self.icon}</td>"
                 f"<td>{self.repo}</td>"
-                f'<td><a href="{self.url}">{self.workflow}</a></td>'
+                f'<td><a href="{self.workflow_url}">{self.workflow}</a></td>'
                 f"<td>{self.status_code}</td>"
                 f"<td></td>"
+                f"<td>{self.run_time}</td>"
                 f"</tr>"
             )
-
-    def __str__(self):
-        workflow_cell = self.workflow
-        if self.url:
-            workflow_cell = f"[{self.workflow}]({self.url})"
-        if self.status_code == 200:
-            return f"| {self.icon} | {self.repo} | {workflow_cell} | {self.conclusion} | {self.updated_at} |"
-        else:
-            return f"| {self.icon} | {self.repo} | {workflow_cell} | bad api call | --- |"
-
-
-def update_readme(token, tz):
-    file_name = "README.md"
-
-    with open(file_name, "w") as file_out:
-
-        def add_text(line):
-            file_out.write(line)
-            file_out.write("\n\n")
-
-        def add_row(owner, repo, workflow):
-            file_out.write(str(WorkflowData(token, owner, repo, workflow, tz=tz)))
-            file_out.write("\n")
-
-        add_text(f"Last Updated {datetime.now(tz).strftime('%H:%M %b %d, %y')}")
-
-        file_out.write("| ? | repo | workflow | conclusion | updated at |\n")
-        file_out.write("| - | ---- | -------- | ---------- | ---------- |\n")
-
-        add_row("astronomy-commons", "lsdb", "smoke-test.yml")
-        add_row("astronomy-commons", "lsdb", "testing-and-coverage.yml")
-        add_row("astronomy-commons", "lsdb", "asv-nightly.yml")
-        add_row("astronomy-commons", "lsdb", "build-documentation.yml")
-
-        add_row("astronomy-commons", "hipscat", "smoke-test.yml")
-        add_row("astronomy-commons", "hipscat", "testing-and-coverage.yml")
-        add_row("astronomy-commons", "hipscat", "asv-nightly.yml")
-        add_row("astronomy-commons", "hipscat", "build-documentation.yml")
-
-        add_row("astronomy-commons", "hipscat-import", "smoke-test.yml")
-        add_row("astronomy-commons", "hipscat-import", "testing-and-coverage.yml")
-        add_row("astronomy-commons", "hipscat-import", "build-documentation.yml")
-
-        add_row("lincc-frameworks", "tape", "build-documentation.yml")
-        add_row("lincc-frameworks", "tape", "smoke-test.yml")
-        add_row("lincc-frameworks", "tape", "testing-and-coverage.yml")
 
 
 def update_html(token, tz):
@@ -129,16 +108,18 @@ def update_html(token, tz):
             <head>
                 <meta charset="utf-8">
                 <title>LF Workflow Dashboard</title>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
                 <link rel="stylesheet" href="style.css">
             </head>
             <body>
             <table>
             <tr>
-                <th> </th>
+                <th></th>
                 <th>Repository</th>
                 <th>Workflow</th>
                 <th>Conclusion</th>
                 <th>Last Run</th>
+                <th>Run Time</th>
             </tr>
             """
         file_out.write(html_preamble)
@@ -192,7 +173,7 @@ def update_html(token, tz):
 
         # Write postamble
         file_out.write("</table>")
-        file_out.write(f"<p>Last Updated {datetime.now(tz).strftime('%H:%M %b %d, %y')}</p>")
+        file_out.write(f"<p>Last Updated {datetime.now(tz).strftime('%H:%M %B %d, %Y')}</p>")
         file_out.write("</body></html>")
 
 

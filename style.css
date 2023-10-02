@@ -1,6 +1,7 @@
 /* Apply styles to the table */
 table {
   width: 100%;
+  margin: auto;
   border-collapse: collapse;
   margin-bottom: 20px;
   font-family: Arial, sans-serif;
@@ -35,7 +36,7 @@ tr:hover {
 
 /* Style the links */
 a {
-  color: #66ccff; /* Light blue color for links */
+  color: #70b4eb; /* Light color for links */
   text-decoration: none; /* Remove underlines from links */
 }
 
@@ -55,22 +56,46 @@ p {
 
 /* Add left padding to the entire leftmost column */
 td:first-child, th:first-child {
-  padding-left: 20px; /* Adjust the amount of padding as needed */
+  ppadding-left: 0vw; /* Adjust the amount of padding as needed */
+  width: 1em;
+}
+/* Add left padding to the entire leftmost column */
+td:last-child, th:last-child {
+  ppadding-right: 0vw; /* Adjust the amount of padding as needed */
 }
 
 /* Set background to black for the overall body (outside the table) */
 body {
-  background: black;
+  background: #171717;
 }
 
 /* Define a class for green-colored icons */
 .green-icon {
-    color: #b7e08d; /* Match the blue color for links */
-    font-weight: bolder;
+    color: #9de598;
 }
 
 /* Define a class for red-colored icons */
-.red-icon {
-  color: #ff857c; /* Match the blue color for links */
-  font-weight: bolder;
+.red-icon, .alert {
+  color: #ff5c3f;
+}
+
+/* Media query for larger viewports */
+@media (min-width: 1000px) {
+  table {
+    width: 70%; /* Set width to 80% for viewports with a minimum width of 768px */
+  }
+  p {
+    margin-right: 15vw;
+  }
+}
+
+
+
+
+.colors {
+  color: #3b2765;
+  color: #7b6db0;
+  color: #504145;
+  color: #bdc1c6;
+  color: #ae9bf7;
 }
