@@ -179,7 +179,7 @@ def update_html(token, tz):
             f"<p>"
             f"Last Updated {datetime.now(tz).strftime('%H:%M %B %d, %Y')}"
             f" | "
-            f"View <a href='https://github.com/OliviaLynn/workflow-dash'><i class="fa fa-github"></i> lf-workflow-dash</a>"
+            f"View <a href='https://github.com/OliviaLynn/workflow-dash'><i class=\"fa fa-github\"></i> lf-workflow-dash</a>"
             f"</p>"
         )
         file_out.write("</body></html>")
