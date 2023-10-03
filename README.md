@@ -1,6 +1,9 @@
-[![pages-build-deployment](https://github.com/OliviaLynn/lf-workflow-dash/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/OliviaLynn/lf-workflow-dash/actions/workflows/pages/pages-build-deployment)
-[![codecov](https://codecov.io/gh/OliviaLynn/lf-workflow-dash/branch/master/graph/badge.svg)](https://codecov.io/gh/OliviaLynn/lf-workflow-dash)
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/OliviaLynn/lf-workflow-dash/ci.yml)
+<!-- [![pages-build-deployment](https://github.com/OliviaLynn/lf-workflow-dash/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/OliviaLynn/lf-workflow-dash/actions/workflows/pages/pages-build-deployment) -->
+<!-- ![GitHub issues](https://img.shields.io/github/issues/OliviaLynn/lf-workflow-dash) -->
+<!-- [![codecov](https://codecov.io/gh/OliviaLynn/lf-workflow-dash/branch/master/graph/badge.svg)](https://codecov.io/gh/OliviaLynn/lf-workflow-dash) -->
+<!-- ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/OliviaLynn/lf-workflow-dash/ci.yml) -->
+
+<img src="https://www.lsstcorporation.org/lincc/sites/default/files/PastedGraphic-8.png" width="300" height="100">
 
 # LF Workflow Dash
 
