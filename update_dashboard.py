@@ -120,10 +120,8 @@ class WorkflowData:
             )
 
 
-def update_html(token, timezone, data_rows):
-    file_name = "rail.html"
-
-    with open(file_name, "w") as file_out:
+def update_html(out_file_name, token, timezone, data_rows):
+    with open(out_file_name, "w") as file_out:
         # Write preamble
         html_preamble = """
             <!DOCTYPE html>
@@ -201,4 +199,4 @@ if __name__ == "__main__":
     TIMEZONE = pytz.timezone("America/New_York")
 
     data_as_tuples = read_yaml_file(DATA_FILE)
-    update_html(TOKEN, TIMEZONE, data_as_tuples)
+    update_html(OUT_FILE, TOKEN, TIMEZONE, data_as_tuples)
