@@ -1,4 +1,9 @@
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/OliviaLynn/lf-workflow-dash/ci.yml)
+[![codecov](https://codecov.io/gh/OliviaLynn/lf-workflow-dash/branch/master/graph/badge.svg)](https://codecov.io/gh/OliviaLynn/lf-workflow-dash)
+
 # LF Workflow Dashboard
+
+**[View Dashboard](https://olivialynn.github.io/lf-workflow-dash/)**
 
 The **LF Workflow Dashboard** is a Python script that uses the GitHub API (TODO link) to fetch information about GitHub Actions workflow runs and generates an HTML dashboard to display the data. 
 
