@@ -1,13 +1,13 @@
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/OliviaLynn/lf-workflow-dash/ci.yml)
-[![codecov](https://codecov.io/gh/OliviaLynn/lf-workflow-dash/branch/master/graph/badge.svg)](https://codecov.io/gh/OliviaLynn/lf-workflow-dash)
+<!--- ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/OliviaLynn/lf-workflow-dash/ci.yml) --->
+<!--- [![codecov](https://codecov.io/gh/OliviaLynn/lf-workflow-dash/branch/master/graph/badge.svg)](https://codecov.io/gh/OliviaLynn/lf-workflow-dash) --->
 
-# LF Workflow Dashboard
+# LF Workflow Dashboard 
 
-**[View Dashboard](https://olivialynn.github.io/lf-workflow-dash/)**
+[**View Dashboard Here**](https://olivialynn.github.io/lf-workflow-dash/)
 
-The **LF Workflow Dashboard** is a Python script that uses the GitHub API (TODO link) to fetch information about GitHub Actions workflow runs and generates an HTML dashboard to display the data. 
+**LF Workflow Dashboard** is your simple solution for effortlessly monitoring and managing GitHub Actions workflows. Track workflows across any number of repositories, view statuses, run times, and more, all in one customizable dashboard.
 
-This provides an quick way to monitor the status and performance of workflows across multiple GitHub repositories at once.
+Powered by the [GitHub REST API](https://docs.github.com/en/rest), LF Workflow Dashboard regularly retrieves data on your chosen GitHub Actions workflow runs and updates the dashboard HTML. This automated process is managed through scheduled GitHub workflows and can be hosted easily using GitHub Pages."
 
 ## Getting Started
 
@@ -25,9 +25,7 @@ You can modify `tracked_workflows.yaml` in this repo if you want to make changes
      git clone https://github.com/OliviaLynn/workflow-dash.git
      ```
 
-   - Open the `tracked_workflows.yaml` file in the repository.
-
-   - Modify the YAML file to customize your LF dashboard. Add or remove repositories and workflows as needed. The format to follow is:
+   - Modify `tracked_workflows.yaml` to customize your LF dashboard. Add or remove repositories and workflows as needed. The format to follow is:
 
      ```yaml
      - repo: REPO_NAME
@@ -38,7 +36,6 @@ You can modify `tracked_workflows.yaml` in this repo if you want to make changes
          # Add more workflows if necessary
      ```
         The workflow name should be the entire file name, including the ".yml" or "yaml" ending.
-   - Save your changes.
 
 2. **Or submit an Issue**
 
@@ -47,16 +44,12 @@ You can modify `tracked_workflows.yaml` in this repo if you want to make changes
 ### Option 2: Fork the Repo to Make Your Own Dashboard
 
 1. **Fork this Repository**
-
-   - Click the "Fork" button in the top-right corner of this repository to create your copy.
    
    - Feel free to delete `rail.html` and `rail_tracked_workflows.yaml` right away.
 
 2. **Modify Your YAML**
 
-   - In your forked repository, navigate to the `tracked_workflows.yaml` file.
-
-   - Follow the same YAML format described above to customize your dashboard, then save your changes.
+   - In your forked repository, navigate to the `tracked_workflows.yaml` file. Follow the same YAML format described above to customize your dashboard, then save your changes.
 
 3. **Activate GitHub Actions**
 
@@ -64,9 +57,11 @@ You can modify `tracked_workflows.yaml` in this repo if you want to make changes
 
 4. **Authorization**
 
-   - This script uses a GitHub personal access token for authentication. Replace the username and email used in the commit step of `.github/workflows/main.yml`.
+   - Make sure to replace the username and email used in the commit step of `.github/workflows/main.yml`.
+     
+   - **GitHub builds:** Your personal access token will be automatically generated when running the workflow on GitHub.
 
-   - To build the HTML locally, run the following command in your repository:
+   - **Local builds:** To build the HTML locally, run the following command in your repository:
 
      ```shell
      python update_dashboard.py PERSONAL_ACCESS_TOKEN tracked_workflows.yaml index.html
@@ -82,7 +77,7 @@ You can modify `tracked_workflows.yaml` in this repo if you want to make changes
 
 6. **GitHub Pages (Optional)**
 
-   - If you want to host your dashboard on GitHub Pages, you'll need to [set up your repository for GitHub Pages.](TODO_ADD_LINK).
+   - If you want to host your dashboard on GitHub Pages, you'll need to [set up your repository for GitHub Pages.](TODO_ADD_LINK)
 
    - Alternatively, you can use the [GitHub HTML Preview Tool](https://htmlpreview.github.io/?) to see your HTML without hosting it yourself. 
       - For example, here's [LF Dashboard via GitHub HTML Preview](https://htmlpreview.github.io/?url=https://github.com/OliviaLynn/workflow-dash/blob/main/index.html).
