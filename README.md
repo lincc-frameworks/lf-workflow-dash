@@ -5,7 +5,7 @@
 
 [![view](https://img.shields.io/badge/view:-666666?style=for-the-badge)](#)
 [![link-to-dash](https://img.shields.io/badge/LF_Dashboard-7b6db0?style=for-the-badge)](https://olivialynn.github.io/lf-workflow-dash/)
-[![link-to-rail-dash](https://img.shields.io/badge/RAIL_Dashboard-b07b6d?style=for-the-badge)](https://olivialynn.github.io/lf-workflow-dash/rail.html)
+[![link-to-rail-dash](https://img.shields.io/badge/RAIL_Dashboard-b08b3d?style=for-the-badge)](https://olivialynn.github.io/lf-workflow-dash/rail.html)
 
 **LF Workflow Dash** is your simple solution for effortlessly monitoring and managing GitHub Actions workflows. Track workflows across any number of repositories, view statuses, run times, and more, all in one customizable dashboard.
 
