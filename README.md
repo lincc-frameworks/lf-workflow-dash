@@ -85,7 +85,7 @@ Keep reading to learn about modifying an existing dashboard, or how to build you
 
    Alternatively, you can use the [GitHub HTML Preview Tool](https://htmlpreview.github.io/?) to see your HTML without hosting it yourself. 
 
-   For example, here's [LF dashboard via GitHub HTML Preview](https://htmlpreview.github.io/?url=https://github.com/OliviaLynn/workflow-dash/blob/main/index.html).
+   For example, here's [LF dashboard via GitHub HTML Preview](https://htmlpreview.github.io/?url=https://github.com/OliviaLynn/lf-workflow-dash/blob/main/index.html).
 
 9. **Timezones (Optional)**
 
