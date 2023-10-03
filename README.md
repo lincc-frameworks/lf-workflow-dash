@@ -3,12 +3,14 @@
 
 # LF Workflow Dashboard 
 
-[![Button Example]][Link]
+[![Button1]][Link]
 <!----------------------------------------------------------------------------->
-[Link]: [#](https://olivialynn.github.io/lf-workflow-dash/) 'Link with example title.'
+[Link]: [Dashboard](https://olivialynn.github.io/lf-workflow-dash/)
 <!---------------------------------[ Buttons ]--------------------------------->
-[Button Example]: https://img.shields.io/badge/View_Dashboard_Here-7b6db0?style=for-the-badge
+[Button1]: https://img.shields.io/badge/View_Dashboard_Here-7b6db0?style=for-the-badge
 
+
+[![link-to-dash](https://img.shields.io/badge/View_Dashboard_Here-7b6db0?style=for-the-badge)](https://olivialynn.github.io/lf-workflow-dash/)
 
 **LF Workflow Dashboard** is your simple solution for effortlessly monitoring and managing GitHub Actions workflows. Track workflows across any number of repositories, view statuses, run times, and more, all in one customizable dashboard.
 
