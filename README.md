@@ -7,15 +7,17 @@
 [![link-to-dash](https://img.shields.io/badge/LF_Dashboard-7b6db0?style=for-the-badge)](https://olivialynn.github.io/lf-workflow-dash/)
 [![link-to-rail-dash](https://img.shields.io/badge/RAIL_Dashboard-b08b3d?style=for-the-badge)](https://olivialynn.github.io/lf-workflow-dash/rail.html)
 
-**LF Workflow Dash** is your simple solution for effortlessly monitoring and managing GitHub Actions workflows. Track workflows across any number of repositories, view statuses, run times, and more, all in one customizable dashboard.
+**LF Workflow Dash** is your simple solution for monitoring and managing GitHub Actions workflows. 
 
-Powered by the [GitHub REST API](https://docs.github.com/en/rest), **LF Workflow Dash** regularly retrieves data on your chosen GitHub Actions workflow runs and updates the dashboard HTML. This process is managed through scheduled GitHub workflows, and the output can be hosted easily using GitHub Pages."
+Track workflows across any number of repositories, view statuses, run times, and more, all in one customizable dashboard.
+
+Powered by the [GitHub REST API](https://docs.github.com/en/rest), **LF Workflow Dash** regularly retrieves data on specified GitHub Actions workflow runs and updates the dashboard HTML. This process is managed through scheduled GitHub workflows, and the output can be hosted easily using GitHub Pages."
 
 ## Getting Started
 
-Click any of the badges at the top of the README to view a dashboard.
+Click any of the badges at the top of the README to view a dashboard. 
 
-Keep reading to learn about modifying an existing dashboard or build your own dashboard.
+Keep reading to learn about modifying an existing dashboard, or how to build your own dashboard.
 
 ## Modify the LF Dashboard
 
@@ -93,7 +95,9 @@ That's it! You're ready to start monitoring your GitHub Actions workflows with y
 
 ## Contributing
 
-Contributions are welcome! If you have ideas for improvements or bug fixes, please feel free to open an issue or submit a pull request.
+Contributions are welcome! 
+
+If you have ideas for improvements or bug fixes, please feel free to open an issue or submit a pull request.
 
 ## License
 
