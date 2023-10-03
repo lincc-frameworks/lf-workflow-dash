@@ -1,5 +1,6 @@
-<!--- ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/OliviaLynn/lf-workflow-dash/ci.yml) --->
-<!--- [![codecov](https://codecov.io/gh/OliviaLynn/lf-workflow-dash/branch/master/graph/badge.svg)](https://codecov.io/gh/OliviaLynn/lf-workflow-dash) --->
+[![pages-build-deployment](https://github.com/OliviaLynn/lf-workflow-dash/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/OliviaLynn/lf-workflow-dash/actions/workflows/pages/pages-build-deployment)
+[![codecov](https://codecov.io/gh/OliviaLynn/lf-workflow-dash/branch/master/graph/badge.svg)](https://codecov.io/gh/OliviaLynn/lf-workflow-dash)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/OliviaLynn/lf-workflow-dash/ci.yml)
 
 # LF Workflow Dash
 
