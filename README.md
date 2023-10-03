@@ -1,21 +1,21 @@
 <!--- ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/OliviaLynn/lf-workflow-dash/ci.yml) --->
 <!--- [![codecov](https://codecov.io/gh/OliviaLynn/lf-workflow-dash/branch/master/graph/badge.svg)](https://codecov.io/gh/OliviaLynn/lf-workflow-dash) --->
 
-# LF Workflow Dashboard 
+# LF Workflow Dash
 
 [![view](https://img.shields.io/badge/view:-666666?style=for-the-badge)](#)
 [![link-to-dash](https://img.shields.io/badge/LF_Dashboard-7b6db0?style=for-the-badge)](https://olivialynn.github.io/lf-workflow-dash/)
 [![link-to-rail-dash](https://img.shields.io/badge/RAIL_Dashboard-b07b6d?style=for-the-badge)](https://olivialynn.github.io/lf-workflow-dash/rail.html)
 
-**LF Workflow Dashboard** is your simple solution for effortlessly monitoring and managing GitHub Actions workflows. Track workflows across any number of repositories, view statuses, run times, and more, all in one customizable dashboard.
+**LF Workflow Dash** is your simple solution for effortlessly monitoring and managing GitHub Actions workflows. Track workflows across any number of repositories, view statuses, run times, and more, all in one customizable dashboard.
 
-Powered by the [GitHub REST API](https://docs.github.com/en/rest), LF Workflow Dashboard regularly retrieves data on your chosen GitHub Actions workflow runs and updates the dashboard HTML. This automated process is managed through scheduled GitHub workflows and can be hosted easily using GitHub Pages."
+Powered by the [GitHub REST API](https://docs.github.com/en/rest), LF Workflow Dash regularly retrieves data on your chosen GitHub Actions workflow runs and updates the dashboard HTML. This automated process is managed through scheduled GitHub workflows and can be hosted easily using GitHub Pages."
 
 ## Getting Started
 
 This section will guide you through the steps to get started with monitoring your GitHub Actions workflows.
 
-You can modify `tracked_workflows.yaml` in this repo if you want to make changes to the LF Dashboard, or you can fork this repo and build your own dashboard.
+You can modify `tracked_workflows.yaml` in this repo if you want to make changes to the LF dashboard, or you can fork this repo and build your own dashboard.
 
 ### Option 1: Modify the LF Dashboard
 
@@ -82,14 +82,14 @@ You can modify `tracked_workflows.yaml` in this repo if you want to make changes
    - If you want to host your dashboard on GitHub Pages, you'll need to [set up your repository for GitHub Pages.](TODO_ADD_LINK)
 
    - Alternatively, you can use the [GitHub HTML Preview Tool](https://htmlpreview.github.io/?) to see your HTML without hosting it yourself. 
-      - For example, here's [LF Dashboard via GitHub HTML Preview](https://htmlpreview.github.io/?url=https://github.com/OliviaLynn/workflow-dash/blob/main/index.html).
+      - For example, here's [LF dashboard via GitHub HTML Preview](https://htmlpreview.github.io/?url=https://github.com/OliviaLynn/workflow-dash/blob/main/index.html).
 
 7. **Timezones (Optional)**
 
    - We specify timezones for both the commit message timestamp and the dashboard times. If you want a different timezone, update it in both `main.yml` and `update_dashboard.py`.
 
 
-That's it! You're ready to start monitoring your GitHub Actions workflows with your very own version of the LF Workflow Dashboard.
+That's it! You're ready to start monitoring your GitHub Actions workflows with your very own version of the LF dashboard.
 
 
 
@@ -99,6 +99,6 @@ Contributions are welcome! If you have ideas for improvements or bug fixes, plea
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License (probably) - see the [LICENSE](LICENSE) file for details.
 
 TODO add
