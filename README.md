@@ -5,7 +5,7 @@
 
 # LF Workflow Dashboard
 
-View the dashboard here!
+[View the dashboard here!](https://olivialynn.github.io/lf-workflow-dash/)
 
 The **LF Workflow Dashboard** is a Python script that uses the GitHub API (TODO link) to fetch information about GitHub Actions workflow runs and generates an HTML dashboard to display the data. 
 
