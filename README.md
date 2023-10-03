@@ -47,7 +47,7 @@ Keep reading to learn about modifying an existing dashboard, or how to build you
 
 2. **Modify Your Tracked Workflows**
 
-   Follow the instructions in [Modify the LF Dashboard](https://github.com/OliviaLynn/lf-workflow-dash/edit/main/README.md#modify-the-lf-dashboard) to make changes to your `tracked_workflows.yaml` file. 
+   Follow the instructions in [Modify the LF Dashboard](https://github.com/OliviaLynn/lf-workflow-dash/tree/main#modify-the-lf-dashboard) to make changes to your `tracked_workflows.yaml` file. 
 
 3. **Activate GitHub Actions**
 
