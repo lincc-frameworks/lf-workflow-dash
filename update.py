@@ -1,6 +1,7 @@
 from datetime import datetime
 import requests
 import sys
+import yaml
 
 import pytz
 
@@ -30,6 +31,9 @@ class WorkflowData:
         if self.status_code == 200:  # success
             last_run = response.json()["workflow_runs"][0]
             self.conclusion = last_run["conclusion"]
+            if self.conclusion == "None":  # if the workflow is currently being executed
+                last_run = response.json()["workflow_runs"][1]
+                self.conclusion = last_run["conclusion"]
             self.created_at = last_run["created_at"]
             self.updated_at = last_run["updated_at"]
 
@@ -76,6 +80,7 @@ class WorkflowData:
                 f"<td>{self.updated_at}</td>"
                 f"<td>{self.run_time}</td>"
                 f"</tr>"
+                f"\n"
             )
         else:
             return (
@@ -87,17 +92,14 @@ class WorkflowData:
                 f"<td></td>"
                 f"<td>{self.run_time}</td>"
                 f"</tr>"
+                f"\n"
             )
 
 
-def update_html(token, tz):
+def update_html(token, tz, data_rows):
     file_name = "index.html"
 
     with open(file_name, "w") as file_out:
-
-        def add_text(line):
-            file_out.write(line)
-            file_out.write("\n\n")
 
         def add_row(owner, repo, workflow):
             file_out.write(WorkflowData(token, owner, repo, workflow, tz=tz).html_row())
@@ -126,52 +128,10 @@ def update_html(token, tz):
             """
         file_out.write(html_preamble)
 
-        # Write middle
+        for row in data_rows:
+            file_out.write(WorkflowData(token, *row, tz=tz).html_row())
 
-        # ASV Formatter
-        add_row("lincc-frameworks", "asv-formatter", "smoke-test.yml")
-        add_row("lincc-frameworks", "asv-formatter", "testing-and-coverage.yml")
-
-        # Hipscat
-        add_row("astronomy-commons", "hipscat", "smoke-test.yml")
-        add_row("astronomy-commons", "hipscat", "testing-and-coverage.yml")
-        add_row("astronomy-commons", "hipscat", "asv-nightly.yml")
-        add_row("astronomy-commons", "hipscat", "build-documentation.yml")
-
-        # Hipscat Import
-        add_row("astronomy-commons", "hipscat-import", "smoke-test.yml")
-        add_row("astronomy-commons", "hipscat-import", "testing-and-coverage.yml")
-        add_row("astronomy-commons", "hipscat-import", "build-documentation.yml")
-
-        # Koffi
-        add_row("lincc-frameworks", "koffi", "smoke-test.yml")
-        add_row("lincc-frameworks", "koffi", "testing-and-coverage.yml")
-
-        # LSDB
-        add_row("astronomy-commons", "lsdb", "smoke-test.yml")
-        add_row("astronomy-commons", "lsdb", "testing-and-coverage.yml")
-        add_row("astronomy-commons", "lsdb", "asv-nightly.yml")
-        add_row("astronomy-commons", "lsdb", "build-documentation.yml")
-
-        # PPT
-        add_row("lincc-frameworks", "python-project-template", "ci.yml")
-
-        # Rail
-        add_row("lsstdesc", "rail", "build_documentation.yml")
-        add_row("lsstdesc", "rail", "smoke-test.yml")
-        add_row("lsstdesc", "rail", "testing-and-coverage.yml")
-        add_row("lsstdesc", "rail_base", "smoke-test.yml")
-        add_row("lsstdesc", "rail_base", "testing-and-coverage.yml")
-        add_row("lsstdesc", "rail_pipelines", "main.yml")
-
-        # Tables IO
-        add_row("lsstdesc", "tables_io", "smoke-test.yml")
-        add_row("lsstdesc", "tables_io", "testing-and-coverage.yml")
-
-        # Tape
-        add_row("lincc-frameworks", "tape", "build-documentation.yml")
-        add_row("lincc-frameworks", "tape", "smoke-test.yml")
-        add_row("lincc-frameworks", "tape", "testing-and-coverage.yml")
+        # add_row("lincc-frameworks", "asv-formatter", "smoke-test.yml")
 
         # Write postamble
         file_out.write("</table>")
@@ -179,13 +139,45 @@ def update_html(token, tz):
             f"<p>"
             f"Last Updated {datetime.now(tz).strftime('%H:%M %B %d, %Y')}"
             f" | "
-            f"View <a href='https://github.com/OliviaLynn/workflow-dash'><i class=\"fa fa-github\"></i> lf-workflow-dash</a>"
+            f"<a href='https://github.com/OliviaLynn/workflow-dash'><i class=\"fa fa-github\"></i> lf-workflow-dash</a>"
             f"</p>"
         )
         file_out.write("</body></html>")
 
 
+def read_yaml_file(file_path):
+    """Read data from a YAML file and return a list of tuples.
+
+    Parameters
+    ----------
+    file_path : str
+        Path to the YAML file.
+
+    Returns
+    -------
+    list of tuple
+        List of tuples containing ('owner', 'repo', 'workflow').
+    """
+    with open(file_path, "r") as yaml_file:
+        data = yaml.safe_load(yaml_file)
+
+    result = []
+    for item in data:
+        owner = item["owner"]
+        repo = item["repo"]
+        workflows = item["workflows"]
+        for workflow in workflows:
+            result.append((owner, repo, workflow))
+
+    return result
+
+
 if __name__ == "__main__":
     token = sys.argv[1]
+
     tz = pytz.timezone("America/New_York")
-    update_html(token, tz)
+
+    file_path = "tracked_workflows.yaml"
+    data_as_tuples = read_yaml_file(file_path)
+
+    update_html(token, tz, data_as_tuples)
