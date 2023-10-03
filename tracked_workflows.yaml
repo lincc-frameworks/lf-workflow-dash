@@ -3,6 +3,13 @@
   workflows:
     - smoke-test.yml
     - testing-and-coverage.yml
+    - build-documentation.yml
+
+- repo: asv-formatter
+  owner: lincc-frameworks
+  workflows:
+    - smoke-test.yml
+    - testing-and-coverage.yml
 
 - repo: hipscat
   owner: astronomy-commons
@@ -39,6 +46,12 @@
     - testing-and-coverage.yml
     - asv-nightly.yml
     - build-documentation.yml
+    
+- repo: metric-emitter
+  owner: lincc-frameworks
+  workflows:
+    - smoke-test.yml
+    - testing-and-coverage.yml
 
 - repo: python-project-template
   owner: lincc-frameworks
@@ -70,6 +83,13 @@
     - testing-and-coverage.yml
 
 - repo: tape
+  owner: lincc-frameworks
+  workflows:
+    - smoke-test.yml
+    - testing-and-coverage.yml
+    - build-documentation.yml
+
+- repo: tape_benchmarking
   owner: lincc-frameworks
   workflows:
     - smoke-test.yml
