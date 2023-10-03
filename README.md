@@ -101,6 +101,4 @@ If you have ideas for improvements or bug fixes, please feel free to open an iss
 
 ## License
 
-This project is licensed under the MIT License (probably) - see the [LICENSE](LICENSE) file for details.
-
-TODO add
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/OliviaLynn/lf-workflow-dash/blob/main/LICENSE) file for details.
