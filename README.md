@@ -1,4 +1,11 @@
+[![codecov](https://codecov.io/gh/LSSTDESC/RAIL/branch/master/graph/badge.svg)](https://codecov.io/gh/LSSTDESC/RAIL)
+![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/lincc-frameworks/python-project-template)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/lincc-frameworks/python-project-template/ci.yml)
+![Read the Docs](https://img.shields.io/readthedocs/lincc-ppt)
+
 # LF Workflow Dashboard
+
+View the dashboard here!
 
 The **LF Workflow Dashboard** is a Python script that uses the GitHub API (TODO link) to fetch information about GitHub Actions workflow runs and generates an HTML dashboard to display the data. 
 
