@@ -59,6 +59,11 @@
   owner: lsstdesc
   workflows:
     - main.yml
+    
+- repo: rail_notebooks
+  owner: OliviaLynn
+  workflows:
+    - render-notebooks.yml
 
 - repo: rail_pipelines
   owner: lsstdesc
