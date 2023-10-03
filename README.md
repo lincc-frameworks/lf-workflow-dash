@@ -11,9 +11,9 @@
 [![link-to-dash](https://img.shields.io/badge/LF_Dashboard-7b6db0?style=for-the-badge)](https://olivialynn.github.io/lf-workflow-dash/)
 [![link-to-rail-dash](https://img.shields.io/badge/RAIL_Dashboard-b08b3d?style=for-the-badge)](https://olivialynn.github.io/lf-workflow-dash/rail.html)
 
-**LF Workflow Dash** is your simple solution for monitoring and managing GitHub Actions workflows. 
+**LF Workflow Dash** is your easy solution for monitoring and managing GitHub Actions workflows. 
 
-Track workflows across any number of repositories, check status and other relevant metrics, and easily modify via yaml, all in one customizable dashboard.
+Track workflows across any number of repositories, check status and other relevant metrics, and quickly modify via yaml, all in one customizable dashboard.
 
 Powered by the [GitHub REST API](https://docs.github.com/en/rest), **LF Workflow Dash** regularly retrieves data on specified GitHub Actions workflow runs and updates the dashboard HTML. This process is managed through scheduled GitHub workflows, and the output can be hosted easily using GitHub Pages."
 
