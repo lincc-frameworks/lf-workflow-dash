@@ -13,21 +13,15 @@ Powered by the [GitHub REST API](https://docs.github.com/en/rest), LF Workflow D
 
 ## Getting Started
 
-This section will guide you through the steps to get started with monitoring your GitHub Actions workflows.
+Click any of the badges at the top of the README to view a dashboard.
 
-You can modify `tracked_workflows.yaml` in this repo if you want to make changes to the LF dashboard, or you can fork this repo and build your own dashboard.
+Keep reading to learn about modifying an existing dashboard or build your own dashboard.
 
-### Option 1: Modify the LF Dashboard
+## Modify the LF Dashboard
 
-1. **Modify the YAML in This Repo**
-
-   - Clone this repository to your local machine:
-
-     ```shell
-     git clone https://github.com/OliviaLynn/workflow-dash.git
-     ```
-
-   - Modify `tracked_workflows.yaml` to customize your LF dashboard. Add or remove repositories and workflows as needed. The format to follow is:
+1. **Modify the YAML in this repo**
+   
+   Modify `tracked_workflows.yaml` to customize the [LF dashboard](https://olivialynn.github.io/lf-workflow-dash/). Add or remove repositories and workflows as needed. The format to follow is:
 
      ```yaml
      - repo: REPO_NAME
@@ -37,56 +31,60 @@ You can modify `tracked_workflows.yaml` in this repo if you want to make changes
          - WORKFLOW_NAME_2
          # Add more workflows if necessary
      ```
-        The workflow name should be the entire file name, including the ".yml" or "yaml" ending.
+   The workflow name should be the entire file name, including the ".yml" or "yaml" ending.
 
-2. **Or submit an Issue**
+3. **Or, submit an Issue**
 
    If you'd like to suggest changes or need assistance with modifying the YAML, feel free to open an issue in this repository. We'll be happy to help!
 
-### Option 2: Fork the Repo to Make Your Own Dashboard
+## Make Your Own Dashboard
 
 1. **Fork this Repository**
    
-   - Feel free to delete `rail.html` and `rail_tracked_workflows.yaml` right away.
+   Feel free to delete `rail.html` and `rail_tracked_workflows.yaml` right away.
 
-2. **Modify Your YAML**
+2. **Modify Your Tracked Workflows**
 
-   - In your forked repository, navigate to the `tracked_workflows.yaml` file. Follow the same YAML format described above to customize your dashboard, then save your changes.
+   Follow the instructions in [Modify the LF Dashboard](https://github.com/OliviaLynn/lf-workflow-dash/edit/main/README.md#modify-the-lf-dashboard) to make changes to your `tracked_workflows.yaml` file. 
 
 3. **Activate GitHub Actions**
 
-   - Fresh forks require manual activation of GitHub Actions. Visit the "Actions" tab in your repository and enable the workflows.
+   Fresh forks require manual activation of GitHub Actions. Visit the "Actions" tab in your repository and enable the workflows.
 
 4. **Authorization**
 
-   - Make sure to replace the username and email used in the commit step of `.github/workflows/main.yml`.
+   Make sure to replace the username and email used in the commit step of `.github/workflows/main.yml`!
      
-   - **GitHub builds:** Your personal access token will be automatically generated when running the workflow on GitHub.
+   **GitHub builds:** Your personal access token will be automatically generated when running the workflow on GitHub.
 
-   - **Local builds:** To build the HTML locally, run the following command in your repository:
+   **Local builds:** To build the HTML locally, run the following command in your repository:
 
      ```shell
      python update_dashboard.py PERSONAL_ACCESS_TOKEN tracked_workflows.yaml index.html
      ```
 
-     You can generate a personal access token following these [GitHub token generation steps](TODO_ADD_LINK).
+   You can generate a personal access token following these [GitHub token generation steps](TODO_ADD_LINK).
 
-     Feel free to replace `tracked_workflows.yaml` with whatever input yaml you'd like; likewise, replace `index.html` with your desired output path.
+   Feel free to replace `tracked_workflows.yaml` with whatever input yaml you'd like; likewise, replace `index.html` with your desired output path.
 
 5. **Page Title, Favicon, and Footer**
 
-    - Remember to customize your `<title>` tag, your favicon, and the footer at the bottom of the page that links to the dashboard's repo.
+   Remember to customize your `<title>` tag, your favicon, and the footer at the bottom of the page that links to the dashboard's repo.
 
-6. **GitHub Pages (Optional)**
+   Note that these need to be changed in `update_dashboard.py`, as any changes made to an HTML file will be overwritten.
 
-   - If you want to host your dashboard on GitHub Pages, you'll need to [set up your repository for GitHub Pages.](TODO_ADD_LINK)
+7. **GitHub Pages (Optional)**
 
-   - Alternatively, you can use the [GitHub HTML Preview Tool](https://htmlpreview.github.io/?) to see your HTML without hosting it yourself. 
-      - For example, here's [LF dashboard via GitHub HTML Preview](https://htmlpreview.github.io/?url=https://github.com/OliviaLynn/workflow-dash/blob/main/index.html).
+   If you want to host your dashboard on GitHub Pages, you'll need to [set up your repository for GitHub Pages.](TODO_ADD_LINK)
 
-7. **Timezones (Optional)**
+   Alternatively, you can use the [GitHub HTML Preview Tool](https://htmlpreview.github.io/?) to see your HTML without hosting it yourself. 
 
-   - We specify timezones for both the commit message timestamp and the dashboard times. If you want a different timezone, update it in both `main.yml` and `update_dashboard.py`.
+   For example, here's [LF dashboard via GitHub HTML Preview](https://htmlpreview.github.io/?url=https://github.com/OliviaLynn/workflow-dash/blob/main/index.html).
+
+9. **Timezones (Optional)**
+
+   We specify timezones for both the commit message timestamp and the dashboard times. If you want a different timezone, update it in both `main.yml` and `update_dashboard.py`.
+
 
 
 That's it! You're ready to start monitoring your GitHub Actions workflows with your very own version of the LF dashboard.
