@@ -30,14 +30,19 @@ Keep reading to learn about modifying an existing dashboard, or how to build you
    Modify `tracked_workflows.yaml` to customize the [LF dashboard](https://olivialynn.github.io/lf-workflow-dash/). Add or remove repositories and workflows as needed. The format to follow is:
 
      ```yaml
-     - repo: REPO_NAME
-       owner: OWNER_NAME
-       workflows:
-         - WORKFLOW_NAME_1
-         - WORKFLOW_NAME_2
-         # Add more workflows if necessary
+     page_title: PAGE TITLE
+
+     repos:
+        - repo: REPO_NAME
+          owner: OWNER_NAME
+          workflows:
+            - WORKFLOW_NAME_1
+            - WORKFLOW_NAME_2
+            # Add more workflows if necessary
      ```
    The workflow name should be the entire file name, including the ".yml" or "yaml" ending.
+
+   The page title will be html `<title>` attribute of the dashboard.
 
 3. **Or, submit an Issue**
 
