@@ -1,15 +1,10 @@
-<!-- [![pages-build-deployment](https://github.com/OliviaLynn/lf-workflow-dash/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/OliviaLynn/lf-workflow-dash/actions/workflows/pages/pages-build-deployment) -->
-<!-- ![GitHub issues](https://img.shields.io/github/issues/OliviaLynn/lf-workflow-dash) -->
-<!-- [![codecov](https://codecov.io/gh/OliviaLynn/lf-workflow-dash/branch/master/graph/badge.svg)](https://codecov.io/gh/OliviaLynn/lf-workflow-dash) -->
-<!-- ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/OliviaLynn/lf-workflow-dash/ci.yml) -->
-
 <img src="https://www.lsstcorporation.org/lincc/sites/default/files/PastedGraphic-8.png" width="300" height="100">
 
 # LF Workflow Dash
 
 [![view](https://img.shields.io/badge/view:-666666?style=for-the-badge)](#)
-[![link-to-dash](https://img.shields.io/badge/LF_Dashboard-7b6db0?style=for-the-badge)](https://olivialynn.github.io/lf-workflow-dash/)
-[![link-to-rail-dash](https://img.shields.io/badge/RAIL_Dashboard-b08b3d?style=for-the-badge)](https://olivialynn.github.io/lf-workflow-dash/rail.html)
+[![link-to-dash](https://img.shields.io/badge/LF_Dashboard-7b6db0?style=for-the-badge)](https://lincc-frameworks.github.io/lf-workflow-dash/)
+[![link-to-rail-dash](https://img.shields.io/badge/RAIL_Dashboard-b08b3d?style=for-the-badge)](https://lincc-frameworks.github.io/lf-workflow-dash/rail.html)
 
 **LF Workflow Dash** is your easy solution for monitoring and managing GitHub Actions workflows. 
 
@@ -27,7 +22,7 @@ Keep reading to learn about modifying an existing dashboard, or how to build you
 
 1. **Modify the YAML in this repo**
    
-   Modify `tracked_workflows.yaml` to customize the [LF dashboard](https://olivialynn.github.io/lf-workflow-dash/). Add or remove repositories and workflows as needed. The format to follow is:
+   Modify `tracked_workflows.yaml` to customize the [LF dashboard](https://lincc-frameworks.github.io/lf-workflow-dash/). Add or remove repositories and workflows as needed. The format to follow is:
 
      ```yaml
      page_title: PAGE TITLE
@@ -56,7 +51,7 @@ Keep reading to learn about modifying an existing dashboard, or how to build you
 
 2. **Modify Your Tracked Workflows**
 
-   Follow the instructions in [Modify the LF Dashboard](https://github.com/OliviaLynn/lf-workflow-dash/tree/main#modify-the-lf-dashboard) to make changes to your `tracked_workflows.yaml` file. 
+   Follow the instructions in [Modify the LF Dashboard](https://github.com/lincc-frameworks/lf-workflow-dash/tree/main#modify-the-lf-dashboard) to make changes to your `tracked_workflows.yaml` file. 
 
 3. **Activate GitHub Actions**
 
@@ -74,7 +69,7 @@ Keep reading to learn about modifying an existing dashboard, or how to build you
      python update_dashboard.py PERSONAL_ACCESS_TOKEN tracked_workflows.yaml index.html
      ```
 
-   You can generate a personal access token following these [GitHub token generation steps](TODO_ADD_LINK).
+   You can generate a personal access token following these [GitHub token generation steps](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens).
 
    Feel free to replace `tracked_workflows.yaml` with whatever input yaml you'd like; likewise, replace `index.html` with your desired output path.
 
@@ -86,11 +81,11 @@ Keep reading to learn about modifying an existing dashboard, or how to build you
 
 7. **GitHub Pages (Optional)**
 
-   If you want to host your dashboard on GitHub Pages, you'll need to [set up your repository for GitHub Pages.](TODO_ADD_LINK)
+   If you want to host your dashboard on GitHub Pages, you'll need to [set up your repository for GitHub Pages.](https://docs.github.com/en/pages/quickstart)
 
    Alternatively, you can use the [GitHub HTML Preview Tool](https://htmlpreview.github.io/?) to see your HTML without hosting it yourself. 
 
-   For example, here's [LF dashboard via GitHub HTML Preview](https://htmlpreview.github.io/?https://github.com/OliviaLynn/lf-workflow-dash/blob/main/index.html).
+   For example, here's [LF dashboard via GitHub HTML Preview](https://htmlpreview.github.io/?https://github.com/lincc-frameworks/lf-workflow-dash/blob/main/index.html).
 
 9. **Timezones (Optional)**
 
@@ -110,4 +105,4 @@ If you have ideas for improvements or bug fixes, please feel free to open an iss
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/OliviaLynn/lf-workflow-dash/blob/main/LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/lincc-frameworks/lf-workflow-dash/blob/main/LICENSE) file for details.
