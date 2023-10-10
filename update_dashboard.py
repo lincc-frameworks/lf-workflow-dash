@@ -158,7 +158,7 @@ def update_html(out_file_name, token, timezone, page_title, data_rows):
             f"<p>"
             f"Last Updated {datetime.now(timezone).strftime('%H:%M %B %d, %Y')}"
             f" | "
-            f"<a href='https://github.com/lincc-frameworks/workflow-dash'><i class=\"fa fa-github\"></i> lf-workflow-dash</a>"
+            f"<a href='https://github.com/lincc-frameworks/lf-workflow-dash'><i class=\"fa fa-github\"></i> lf-workflow-dash</a>"
             f"</p>"
             f"</body>"
             f"</html>"
