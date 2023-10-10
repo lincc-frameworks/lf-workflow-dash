@@ -123,12 +123,12 @@ class WorkflowData:
 def update_html(out_file_name, token, timezone, data_rows):
     with open(out_file_name, "w") as file_out:
         # Write preamble
-        html_preamble = """
+        html_preamble = f"""
             <!DOCTYPE html>
             <html lang="en">
             <head>
                 <meta charset="utf-8">
-                <title>LF Workflow Dashboard</title>
+                <title>{page_title}</title>
                 <link rel="icon" type="image/x-icon" href="favicon.png">
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
                 <link rel="stylesheet" href="style.css">
@@ -165,7 +165,7 @@ def update_html(out_file_name, token, timezone, data_rows):
 
 
 def read_yaml_file(file_path):
-    """Read data from a YAML file and return a list of tuples.
+    """Read data from a YAML file and return a tuple with page title and a list of repository tuples.
 
     Parameters
     ----------
@@ -174,21 +174,24 @@ def read_yaml_file(file_path):
 
     Returns
     -------
-    list of tuple
-        List of tuples containing ('owner', 'repo', 'workflow').
+    tuple
+        A tuple containing the page title (str) and a list of tuples containing ('owner', 'repo', 'workflow').
     """
     with open(file_path, "r") as yaml_file:
         data = yaml.safe_load(yaml_file)
 
+    page_title = data.get("page_title", None)  # Get the page_title if it exists, otherwise set it to None
+
+    repos = data.get("repos", [])
     result = []
-    for item in data:
+    for item in repos:
         owner = item["owner"]
         repo = item["repo"]
         workflows = item["workflows"]
         for workflow in workflows:
             result.append((owner, repo, workflow))
 
-    return result
+    return page_title, result
 
 
 if __name__ == "__main__":
@@ -198,5 +201,5 @@ if __name__ == "__main__":
 
     TIMEZONE = pytz.timezone("America/New_York")
 
-    data_as_tuples = read_yaml_file(DATA_FILE)
-    update_html(OUT_FILE, TOKEN, TIMEZONE, data_as_tuples)
+    (page_title, data) = read_yaml_file(DATA_FILE)
+    update_html(OUT_FILE, TOKEN, TIMEZONE, page_title, data)
