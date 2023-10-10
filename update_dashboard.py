@@ -45,7 +45,9 @@ class WorkflowData:
                 self.conclusion = last_run["conclusion"]
 
                 # Check if the workflow is currently being executed
-                if self.conclusion == None:
+                if (
+                    self.conclusion == None
+                ):  # maybe should change to last_run["status"] != "completed"?
                     if len(response.json()["workflow_runs"]) > 1:  # get next most recent
                         last_run = response.json()["workflow_runs"][1]
                         self.conclusion = last_run["conclusion"]
@@ -113,7 +115,7 @@ class WorkflowData:
                 f"<td>{self.repo}</td>"
                 f'<td><a href="{self.workflow_url}">{self.workflow}</a></td>'
                 f"<td>{self.conclusion}</td>"
-                f"<td></td>"
+                f"<td>{self.updated_at}</td>"
                 f"<td>{self.run_time}</td>"
                 f"</tr>"
                 f"\n"
@@ -180,7 +182,9 @@ def read_yaml_file(file_path):
     with open(file_path, "r") as yaml_file:
         data = yaml.safe_load(yaml_file)
 
-    page_title = data.get("page_title", None)  # Get the page_title if it exists, otherwise set it to None
+    page_title = data.get(
+        "page_title", None
+    )  # Get the page_title if it exists, otherwise set it to None
 
     repos = data.get("repos", [])
     result = []
