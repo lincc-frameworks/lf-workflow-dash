@@ -129,9 +129,9 @@ def update_html(out_file_name, token, timezone, page_title, data_rows):
             <head>
                 <meta charset="utf-8">
                 <title>{page_title}</title>
-                <link rel="icon" type="image/x-icon" href="favicon.png">
+                <link rel="icon" type="image/x-icon" href="img/favicon.png">
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-                <link rel="stylesheet" href="style.css">
+                <link rel="stylesheet" href="css/styles.css">
             </head>
             <body>
             <table>
