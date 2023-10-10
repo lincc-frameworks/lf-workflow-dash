@@ -120,7 +120,7 @@ class WorkflowData:
             )
 
 
-def update_html(out_file_name, token, timezone, data_rows):
+def update_html(out_file_name, token, timezone, page_title, data_rows):
     with open(out_file_name, "w") as file_out:
         # Write preamble
         html_preamble = f"""
