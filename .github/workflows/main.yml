@@ -1,3 +1,6 @@
+# Run this to update the html dashboards. Will run automatically as well.
+
+name: Update dashboard html
 on:
   workflow_dispatch:
   schedule:
