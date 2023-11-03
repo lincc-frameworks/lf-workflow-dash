@@ -29,6 +29,12 @@ class WorkflowElemData:
             self.display_class = ""
 
     def set_status(self, status):
+        """Set the completion status of a workflow. This will also update the display class
+        to suit the warning level.
+
+        Args:
+            status (str): how the workflow completed (e.g. "success" or "failure")
+        """
         self.workflow_status = status
         if status == "success":
             self.display_class = ""

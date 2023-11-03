@@ -2,6 +2,12 @@ import requests
 
 
 def update_workflow_status(workflow_elem, token):
+    """Determine the status of a workflow run, using the github API.
+
+    Args:
+        workflow_elem (WorkflowElemData): the workflow to request
+        token (str): auth token for hitting the github API
+    """
     if workflow_elem is None:
         return
 
@@ -12,7 +18,9 @@ def update_workflow_status(workflow_elem, token):
         "accept": "application/vnd.github+json",
         "Authorization": f"Bearer {token}",
     }
-    response = requests.request("GET", request_url, headers=headers, data=payload)
+    response = requests.request(
+        "GET", request_url, headers=headers, data=payload, timeout=15
+    )
     status_code = response.status_code
     conclusion = "pending"
 
@@ -36,4 +44,3 @@ def update_workflow_status(workflow_elem, token):
                     conclusion = "pending"
     else:
         conclusion = status_code
-
