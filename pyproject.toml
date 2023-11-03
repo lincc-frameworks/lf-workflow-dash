@@ -15,7 +15,7 @@ classifiers = [
 ]
 dynamic = ["version"]
 dependencies = [
-    "yaml",
+    "pyyaml",
     "pytz",
     "requests",
 ]
