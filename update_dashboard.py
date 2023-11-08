@@ -1,9 +1,9 @@
-from datetime import datetime
-import requests
 import sys
-import yaml
+from datetime import datetime
 
 import pytz
+import requests
+import yaml
 
 
 class WorkflowData:
@@ -77,7 +77,7 @@ class WorkflowData:
             self.conclusion = self.status_code
 
     def get_run_time(self, last_run):
-        self.created_at = last_run["created_at"]
+        self.created_at = last_run["run_started_at"]
         self.updated_at = last_run["updated_at"]
 
         # Convert the timestamps to datetime objects
