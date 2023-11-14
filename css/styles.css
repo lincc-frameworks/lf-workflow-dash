@@ -5,10 +5,8 @@ table {
   border-collapse: collapse;
   margin-bottom: 20px;
   font-family: Arial, sans-serif;
-  background-color: #222;
-  /* Dark background color */
-  color: #fff;
-  /* Light text color */
+  background-color: #222; /* Dark background color */
+  color: #fff; /* Light text color */
   font-size: 0.8em;
 }
 
@@ -18,8 +16,7 @@ th {
   text-align: left;
   padding: 8px;
   font-weight: bold;
-  border-bottom: 2px solid #444;
-  /* Slightly darker border color */
+  border-bottom: 2px solid #444; /* Slightly darker border color */
 }
 
 /* Style the table cells */
@@ -30,28 +27,23 @@ td {
 
 /* Alternate row background color */
 tr:nth-child(even) {
-  background-color: #333;
-  /* Darker background for even rows */
+  background-color: #333; /* Darker background for even rows */
 }
 
 /* Hover effect for table rows */
 tr:hover {
-  background-color: #444;
-  /* Slightly lighter background on hover */
+  background-color: #444; /* Slightly lighter background on hover */
 }
 
 /* Style the links */
 a {
-  color: #70b4eb;
-  /* Light color for links */
-  text-decoration: none;
-  /* Remove underlines from links */
+  color: #70b4eb; /* Light color for links */
+  text-decoration: none; /* Remove underlines from links */
 }
 
 /* Hover effect for links */
 a:hover {
-  text-decoration: underline;
-  /* Underline links on hover */
+  text-decoration: underline; /* Underline links on hover */
 }
 
 /* Style the "Last Updated" at the bottom */
@@ -65,8 +57,7 @@ p {
 }
 
 /* Add left padding to the entire leftmost column */
-td:first-child,
-th:first-child {
+td:first-child, th:first-child {
   width: 1em;
 }
 
@@ -77,12 +68,11 @@ body {
 
 /* Define a class for green-colored icons */
 .green-icon {
-  color: #9de598;
+    color: #9de598;
 }
 
 /* Define a class for red-colored icons (and entire row) */
-.red-icon,
-.alert {
+.red-icon, .alert {
   color: #ff5c3f;
 }
 
@@ -109,23 +99,15 @@ body {
   color: black
 }
 
-/* Define a class for red-colored icons (and entire row) */
-.red-icon,
-.alert {
-  color: #ff5c3f;
-}
-
 /* Media query for larger viewports */
 @media (min-width: 1050px) {
   table {
     width: 70%;
     font-size: 0.9em;
   }
-
   p {
     margin-right: 15vw;
   }
-
   td {
     padding: 8px;
   }
