@@ -76,6 +76,29 @@ body {
   color: #ff5c3f;
 }
 
+/* Define a class for green-colored icons */
+.green-icon {
+  color: #9de598;
+}
+
+/* Define a class for "pending" cells */
+.red-cell {
+  background-color: #ff5c3f;
+}
+
+.red-cell>a {
+  color: black
+}
+
+/* Define a class for "pending" cells */
+.yellow-cell {
+  background-color: #aa9d26;
+}
+
+.yellow-cell>a {
+  color: black
+}
+
 /* Media query for larger viewports */
 @media (min-width: 1050px) {
   table {

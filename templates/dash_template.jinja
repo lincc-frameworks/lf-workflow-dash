@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>{{page_title}}</title>
+        <link rel="icon" type="image/x-icon" href="img/favicon.png">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+    <body>
+    <table>
+    <tr>
+        <th>Repository</th>
+        <th>Nightly Test</th>
+        <th>Nightly <br/> Benchmarks</th>
+        <th>Build Docs</th>
+        <th>Live Build</th>
+        <th>Other <br/> workflows</th>
+    </tr>
+
+    {% for project in all_projects %}
+    <tr>
+        <td><a href="{{project.repo_url}}">{{project.repo}}</a></td>
+        <td class="{{project.smoke_test.display_class}}"><a href="{{project.smoke_test.workflow_url}}">{{project.smoke_test.workflow_status}}</a></td>
+        <td class="{{project.benchmarks.display_class}}"><a href="{{project.benchmarks.workflow_url}}">{{project.benchmarks.workflow_status}}</a></td>
+        <td class="{{project.build_docs.display_class}}"><a href="{{project.build_docs.workflow_url}}">{{project.build_docs.workflow_status}}</a></td>
+        <td class="{{project.live_build.display_class}}"><a href="{{project.live_build.workflow_url}}">{{project.live_build.workflow_status}}</a></td>
+        <td>
+            {% for workflow in project.other_workflows %}
+            <a href="{{workflow.url}}">{{workflow.name}} {{workflow.status}}</a>
+            {% endfor %}
+        </td>
+    </tr>
+    {% endfor %}
+
+    </table>
+    <p>
+    Last Updated {{last_updated}} | 
+    <a href='https://github.com/lincc-frameworks/{{dash_repo}}'><i class=\"fa fa-github\"></i> {{dash_repo}}</a>
+    </p>
+    </body>
+</html>
