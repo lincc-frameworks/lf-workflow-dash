@@ -20,16 +20,16 @@
 
     {% for project in all_projects %}
     <tr>
-        <th><a href="{{project.repo_url}}">{{project.repo}}</a></th>
-        <th class="{{project.smoke_test.display_class}}"><a href="{{project.smoke_test.workflow_url}}">{{project.smoke_test.workflow_status}}</a></th>
-        <th class="{{project.benchmarks.display_class}}"><a href="{{project.benchmarks.workflow_url}}">{{project.benchmarks.workflow_status}}</a></th>
-        <th class="{{project.build_docs.display_class}}"><a href="{{project.build_docs.workflow_url}}">{{project.build_docs.workflow_status}}</a></th>
-        <th class="{{project.live_build.display_class}}"><a href="{{project.live_build.workflow_url}}">{{project.live_build.workflow_status}}</a></th>
-        <th>
+        <td><a href="{{project.repo_url}}">{{project.repo}}</a></td>
+        <td class="{{project.smoke_test.display_class}}"><a href="{{project.smoke_test.workflow_url}}">{{project.smoke_test.workflow_status}}</a></td>
+        <td class="{{project.benchmarks.display_class}}"><a href="{{project.benchmarks.workflow_url}}">{{project.benchmarks.workflow_status}}</a></td>
+        <td class="{{project.build_docs.display_class}}"><a href="{{project.build_docs.workflow_url}}">{{project.build_docs.workflow_status}}</a></td>
+        <td class="{{project.live_build.display_class}}"><a href="{{project.live_build.workflow_url}}">{{project.live_build.workflow_status}}</a></td>
+        <td>
             {% for workflow in project.other_workflows %}
             <a href="{{workflow.url}}">{{workflow.name}} {{workflow.status}}</a>
             {% endfor %}
-        </th>
+        </td>
     </tr>
     {% endfor %}
 

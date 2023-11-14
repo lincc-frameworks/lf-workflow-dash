@@ -1,6 +1,8 @@
 from dataclasses import dataclass, field
+from datetime import datetime
 from typing import List
 
+import pytz
 import yaml
 
 
@@ -19,14 +21,6 @@ class WorkflowElemData:
         self.workflow_url = f"{repo_url}/actions/workflows/{self.workflow_name}"
         self.workflow_status = "pending"
         self.display_class = "yellow-cell"
-
-        ## silly temporary data
-        if "doc" in self.workflow_name:
-            self.workflow_status = "FAILED"
-            self.display_class = "red-cell"
-        elif "smoke" in self.workflow_name:
-            self.workflow_status = "success"
-            self.display_class = ""
 
     def set_status(self, status):
         """Set the completion status of a workflow. This will also update the display class
@@ -78,9 +72,8 @@ def read_yaml_file(file_path):
     with open(file_path, "r", encoding="utf8") as yaml_file:
         data = yaml.safe_load(yaml_file)
 
-    page_title = data.get(
-        "page_title", None
-    )  # Get the page_title if it exists, otherwise set it to None
+    # Get the page_title if it exists, otherwise set it to None
+    page_title = data.get("page_title", None)
 
     repos = data.get("repos", [])
     all_projects = []
@@ -108,10 +101,13 @@ def read_yaml_file(file_path):
 
         all_projects.append(project_data)
 
+    timezone = pytz.timezone("America/New_York")
+    last_updated = datetime.now(timezone).strftime("%H:%M %B %d, %Y")
+
     return {
         "page_title": page_title,
         "all_projects": all_projects,
         "dash_name": "LINCC Frameworks Builds",
         "dash_repo": "lf-workflow-dash",
-        "last_updated": "just now!",
+        "last_updated": last_updated,
     }
