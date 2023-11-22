@@ -15,9 +15,13 @@ class WorkflowElemData:
     workflow_status: str = ""
     display_class: str = ""
     last_run_url: str = ""
+    owner: str = ""
+    repo: str = ""
 
-    def __init__(self, workflow_name, repo_url):
+    def __init__(self, workflow_name, repo_url, owner, repo):
         self.workflow_name = workflow_name
+        self.owner = owner
+        self.repo = repo
         self.workflow_url = f"{repo_url}/actions/workflows/{self.workflow_name}"
         self.workflow_status = "pending"
         self.display_class = "yellow-cell"
@@ -84,19 +88,19 @@ def read_yaml_file(file_path):
 
         if "smoke-test" in item:
             project_data.smoke_test = WorkflowElemData(
-                item["smoke-test"], repo_url=project_data.repo_url
+                item["smoke-test"], repo_url=project_data.repo_url, owner=owner, repo=repo
             )
         if "build-docs" in item:
             project_data.build_docs = WorkflowElemData(
-                item["build-docs"], repo_url=project_data.repo_url
+                item["build-docs"], repo_url=project_data.repo_url, owner=owner, repo=repo
             )
         if "benchmarks" in item:
             project_data.benchmarks = WorkflowElemData(
-                item["benchmarks"], repo_url=project_data.repo_url
+                item["benchmarks"], repo_url=project_data.repo_url, owner=owner, repo=repo
             )
         if "live-build" in item:
             project_data.live_build = WorkflowElemData(
-                item["live-build"], repo_url=project_data.repo_url
+                item["live-build"], repo_url=project_data.repo_url, owner=owner, repo=repo
             )
 
         all_projects.append(project_data)
