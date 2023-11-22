@@ -8,7 +8,7 @@ def update_html(out_file, context):
     """Fetch the jinja template, and update with all of the gathered context.
     
     Args:
-        out_file (str): write to write the hyrated html file to
+        out_file (str): path to write the hydrated html file to
         context (dict): local variables representing workflow status
     """
     environment = Environment(loader=FileSystemLoader("templates/"))
@@ -18,7 +18,7 @@ def update_html(out_file, context):
 
 
 def update_status(context, token):
-    """Issue requests to the github JSON API and update each workflow status accordingly
+    """Issue requests to the github JSON API and update each workflow status accordingly.
     
     Args:
         context (dict): local variables representing workflow status
