@@ -15,6 +15,7 @@ classifiers = [
 ]
 dynamic = ["version"]
 dependencies = [
+    "jinja2",
     "pyyaml",
     "pytz",
     "requests",
@@ -46,3 +47,11 @@ testpaths = [
 
 [tool.coverage.run]
 omit=["src/lf_workflow_dash/_version.py"]
+
+[tool.black]
+line-length = 110
+target-version = ["py38"]
+
+[tool.isort]
+profile = "black"
+line_length = 110

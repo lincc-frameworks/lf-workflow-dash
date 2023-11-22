@@ -48,8 +48,7 @@ repos:
   - repo: rail
     owner: lsstdesc
     smoke-test: smoke-test.yml
-    build-docs: build-documentation.yml
-    benchmarks: asv-nightly.yml
+    build-docs: build_documentation.yml
     live-build: testing-and-coverage.yml
   
   - repo: rail_base
