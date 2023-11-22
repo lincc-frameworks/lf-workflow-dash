@@ -15,6 +15,7 @@ classifiers = [
 ]
 dynamic = ["version"]
 dependencies = [
+    "jinja2",
     "pyyaml",
     "pytz",
     "requests",

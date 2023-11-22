@@ -25,6 +25,8 @@ jobs:
           pip install pytz
           python update_dashboard.py ${{ secrets.GITHUB_TOKEN }} tracked_workflows.yaml index.html
           python update_dashboard.py ${{ secrets.GITHUB_TOKEN }} rail_tracked_workflows.yaml rail.html
+          python update_dashboard_group.py ${{ secrets.GITHUB_TOKEN }} tracked_workflows_group.yaml index_group.html
+          python update_dashboard_group.py ${{ secrets.GITHUB_TOKEN }} rail_tracked_workflows_group.yaml rail_group.html
       - name: Commit and push changes
         env:
           TIME: "${{ steps.time.outputs.time }}"
