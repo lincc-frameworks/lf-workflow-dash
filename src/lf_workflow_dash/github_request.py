@@ -25,17 +25,26 @@ def update_workflow_status(workflow_elem, token):
     response = requests.request("GET", request_url, headers=headers, data=payload, timeout=15)
     status_code = response.status_code
     conclusion = "pending"
+    # TODO set the conclusion_time to a default here
+    # TODO also set is_stale
 
     # Process data
     if status_code == 200:  # API was successful
         response_json = response.json()
         if len(response_json["workflow_runs"]) == 0:  # workflow has no runs
             conclusion = "not yet run"
+            
+            # TODO set the conclusion_time to something like zero or None here
+            # TODO also set is_stale
+        
         else:
             last_run = response_json["workflow_runs"][0]
 
             # Get the workflow conclusion ("success", "failure", etc)
             conclusion = last_run["conclusion"]
+            
+            # TODO set the conclusion_time to the proper value here
+            # TODO also set is_stale
 
             # Check if the workflow is currently being executed
             if conclusion is None:
