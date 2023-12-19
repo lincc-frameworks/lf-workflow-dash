@@ -5,18 +5,18 @@ table {
   border-collapse: collapse;
   margin-bottom: 20px;
   font-family: Arial, sans-serif;
-  background-color: #222; /* Dark background color */
-  color: #fff; /* Light text color */
+  background-color: #222; 
+  color: #fff;
   font-size: 0.8em;
 }
 
 /* Style the table header */
 th {
   background: none;
-  text-align: left;
+  text-align: center;
   padding: 8px;
   font-weight: bold;
-  border-bottom: 2px solid #444; /* Slightly darker border color */
+  border-bottom: 2px solid #444;
 }
 
 /* Style the table cells */
@@ -27,17 +27,17 @@ td {
 
 /* Alternate row background color */
 tr:nth-child(even) {
-  background-color: #333; /* Darker background for even rows */
+  background-color: #333;
 }
 
 /* Hover effect for table rows */
 tr:hover {
-  background-color: #444; /* Slightly lighter background on hover */
+  background-color: #444;
 }
 
 /* Style the links */
 a {
-  color: #70b4eb; /* Light color for links */
+  color: #70b4eb;
   text-decoration: none; /* Remove underlines from links */
 }
 
@@ -67,36 +67,18 @@ body {
 }
 
 /* Define a class for green-colored icons */
-.green-icon {
-    color: #9de598;
-}
-
-/* Define a class for red-colored icons (and entire row) */
-.red-icon, .alert {
-  color: #ff5c3f;
-}
-
-/* Define a class for green-colored icons */
-.green-icon {
+td.green-cell {
   color: #9de598;
 }
 
-/* Define a class for "pending" cells */
-.red-cell {
-  background-color: #ff5c3f;
+.red-cell, .red-cell>a {
+  color: #ff5c3f;
+  font-weight: bold;
 }
 
-.red-cell>a {
-  color: black
-}
-
-/* Define a class for "pending" cells */
-.yellow-cell {
-  background-color: #aa9d26;
-}
-
-.yellow-cell>a {
-  color: black
+.yellow-cell, .yellow-cell>a {
+  color: #bdad21;
+  font-weight: bold;
 }
 
 /* Media query for larger viewports */
@@ -111,4 +93,12 @@ body {
   td {
     padding: 8px;
   }
+}
+
+/* Alignment */
+.align-right {
+  text-align: right;
+}
+.align-center {
+  text-align: center;
 }
