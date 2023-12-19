@@ -9,22 +9,99 @@
     </head>
     <body>
     <table>
-    <tr>
-        <th>Repository</th>
-        <th>Nightly Test</th>
-        <th>Nightly <br/> Benchmarks</th>
-        <th>Build Docs</th>
-        <th>Live Build</th>
-        <th>Other <br/> workflows</th>
+        <col>
+            <tr>
+                <th colspan="1" scope="colgroup">Repository</th>
+                <th colspan="3" scope="colgroup">Nightly Test</th>
+                <th colspan="3" scope="colgroup">Nightly<br>Benchmarks</th>
+                <th colspan="3" scope="colgroup">Build Docs</th>
+                <th colspan="3" scope="colgroup">Live Build</th>
+                <th colspan="1" scope="colgroup">Other Workflows</th>
+            </tr>
     </tr>
 
     {% for project in all_projects %}
     <tr>
         <td><a href="{{project.repo_url}}">{{project.repo}}</a></td>
-        <td class="{{project.smoke_test.display_class}}"><a href="{{project.smoke_test.workflow_url}}">{{project.smoke_test.workflow_status}}</a></td>
-        <td class="{{project.benchmarks.display_class}}"><a href="{{project.benchmarks.workflow_url}}">{{project.benchmarks.workflow_status}}</a></td>
-        <td class="{{project.build_docs.display_class}}"><a href="{{project.build_docs.workflow_url}}">{{project.build_docs.workflow_status}}</a></td>
-        <td class="{{project.live_build.display_class}}"><a href="{{project.live_build.workflow_url}}">{{project.live_build.workflow_status}}</a></td>
+
+        <!-- Smoke Test -->
+        <td class="{{project.smoke_test.display_class}} align-right">
+                    {{project.smoke_test.workflow_status}}
+        </td>
+        <td class="{{project.smoke_test.display_class}} align-center">
+                {% if project.smoke_test.workflow_status == "success" %}
+                    <i class="fa fa-check-circle"></i>
+                {% elif project.smoke_test.workflow_status == "failure" %}
+                    <i class="fa fa-times-circle"></i>
+                {% elif project.smoke_test.workflow_status %}
+                    <i class="fa fa-question-circle"></i>
+                {% endif %}
+        </td>
+        <td class="{{project.smoke_test.display_class}}">
+            <a href="{{project.smoke_test.workflow_url}}">
+                {{project.smoke_test.conclusion_time}}
+            </a>
+        </td>
+
+
+        <!-- Benchmarks -->
+        <td class="{{project.benchmarks.display_class}} align-right">
+                    {{project.benchmarks.workflow_status}}
+        </td>
+        <td class="{{project.benchmarks.display_class}} align-center">
+                {% if project.benchmarks.workflow_status == "success" %}
+                    <i class="fa fa-check-circle"></i>
+                {% elif project.benchmarks.workflow_status == "failure" %}
+                    <i class="fa fa-times-circle"></i>
+                {% elif project.benchmarks.workflow_status %}
+                    <i class="fa fa-question-circle"></i>
+                {% endif %}
+        </td>
+        <td class="{{project.benchmarks.display_class}}">
+            <a href="{{project.benchmarks.workflow_url}}">
+                {{project.benchmarks.conclusion_time}}
+            </a>
+        </td>
+
+        <!-- Build Docs -->
+        <td class="{{project.build_docs.display_class}} align-right">
+                    {{project.build_docs.workflow_status}}
+        </td>
+        <td class="{{project.build_docs.display_class}} align-center">
+                {% if project.build_docs.workflow_status == "success" %}
+                    <i class="fa fa-check-circle"></i>
+                {% elif project.build_docs.workflow_status == "failure" %}
+                    <i class="fa fa-times-circle"></i>
+                {% elif project.build_docs.workflow_status %}
+                    <i class="fa fa-question-circle"></i>
+                {% endif %}
+        </td>
+        <td class="{{project.build_docs.display_class}}">
+            <a href="{{project.build_docs.workflow_url}}">
+                {{project.build_docs.conclusion_time}}
+            </a>
+        </td>
+
+        <!-- Live Build -->
+        <td class="{{project.live_build.display_class}} align-right">
+            {{project.live_build.workflow_status}}
+        </td>
+        <td class="{{project.live_build.display_class}} align-center">
+            {% if project.live_build.workflow_status == "success" %}
+                <i class="fa fa-check-circle"></i>
+            {% elif project.live_build.workflow_status == "failure" %}
+                <i class="fa fa-times-circle"></i>
+            {% elif project.live_build.workflow_status %}
+                <i class="fa fa-question-circle"></i>
+            {% endif %}
+        </td>
+        <td class="{{project.live_build.display_class}}">
+            <a href="{{project.live_build.workflow_url}}">
+                {{project.live_build.conclusion_time}}
+            </a>
+        </td>
+
+        <!-- Other -->
         <td>
             {% for workflow in project.other_workflows %}
             <a href="{{workflow.url}}">{{workflow.name}} {{workflow.status}}</a>
@@ -35,8 +112,8 @@
 
     </table>
     <p>
-    Last Updated {{last_updated}} | 
-    <a href='https://github.com/lincc-frameworks/{{dash_repo}}'><i class=\"fa fa-github\"></i> {{dash_repo}}</a>
+        Last Updated {{last_updated}} | 
+        <a href='https://github.com/lincc-frameworks/{{dash_repo}}'><i class=\"fa fa-github\"></i> {{dash_repo}}</a>
     </p>
     </body>
 </html>
