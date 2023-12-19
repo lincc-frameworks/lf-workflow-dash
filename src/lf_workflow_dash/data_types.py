@@ -17,7 +17,8 @@ class WorkflowElemData:
     last_run_url: str = ""
     owner: str = ""
     repo: str = ""
-    # TODO add conclusion_time
+    conclusion_time: str = ""
+    conclusion_date: str = ""
     # TODO add is_stale
 
     def __init__(self, workflow_name, repo_url, owner, repo):
@@ -27,23 +28,23 @@ class WorkflowElemData:
         self.workflow_url = f"{repo_url}/actions/workflows/{self.workflow_name}"
         self.workflow_status = "pending"
         self.display_class = "yellow-cell"
-        # TODO add conclusion_time
         # TODO add is_stale
 
-    def set_status(self, status):
+    def set_status(self, status, conclusion_time):
         """Set the completion status of a workflow. This will also update the display class
         to suit the warning level.
 
-        TODO update docstring to add stale logic
+        TODO update docstring to add is_stale logic
 
         Args:
             status (str): how the workflow completed (e.g. "success" or "failure")
         """
         self.workflow_status = status
+        self.conclusion_time = conclusion_time
         # TODO self.is_stale = is_stale
         # TODO a nested branch here - first check if it's stale, and only if it isn't, check success
         if status == "success":
-            self.display_class = ""
+            self.display_class = "green-cell"
         elif status == "failure":
             self.display_class = "red-cell"
 
