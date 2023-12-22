@@ -14,6 +14,7 @@ class WorkflowElemData:
     workflow_url: str = ""
     workflow_status: str = ""
     display_class: str = ""
+    icon_class: str = ""
     last_run_url: str = ""
     owner: str = ""
     repo: str = ""
@@ -28,6 +29,7 @@ class WorkflowElemData:
         self.workflow_url = f"{repo_url}/actions/workflows/{self.workflow_name}"
         self.workflow_status = "pending"
         self.display_class = "yellow-cell"
+        self.icon_class = "fa fa-question-circle"
         # TODO add is_stale
 
     def set_status(self, status, conclusion_time):
@@ -45,8 +47,10 @@ class WorkflowElemData:
         # TODO a nested branch here - first check if it's stale, and only if it isn't, check success
         if status == "success":
             self.display_class = "green-cell"
+            self.icon_class = "fa fa-check-circle"
         elif status == "failure":
             self.display_class = "red-cell"
+            self.icon_class = "fa fa-times-circle"
 
 
 @dataclass
