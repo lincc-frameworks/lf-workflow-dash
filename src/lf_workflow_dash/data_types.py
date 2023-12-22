@@ -119,7 +119,7 @@ def read_yaml_file(file_path):
         all_projects.append(project_data)
 
     timezone = pytz.timezone("America/New_York")
-    last_updated = datetime.now(timezone).strftime("%H:%M %B %d, %Y")
+    last_updated = datetime.now(timezone).strftime("%H:%M %B %d, %Y (US-NYC)")
 
     return {
         "page_title": page_title,
