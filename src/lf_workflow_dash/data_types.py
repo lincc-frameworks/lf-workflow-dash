@@ -14,9 +14,13 @@ class WorkflowElemData:
     workflow_url: str = ""
     workflow_status: str = ""
     display_class: str = ""
+    icon_class: str = ""
     last_run_url: str = ""
     owner: str = ""
     repo: str = ""
+    conclusion_time: str = ""
+    conclusion_date: str = ""
+    # TODO add is_stale
 
     def __init__(self, workflow_name, repo_url, owner, repo):
         self.workflow_name = workflow_name
@@ -25,19 +29,28 @@ class WorkflowElemData:
         self.workflow_url = f"{repo_url}/actions/workflows/{self.workflow_name}"
         self.workflow_status = "pending"
         self.display_class = "yellow-cell"
+        self.icon_class = "fa fa-question-circle"
+        # TODO add is_stale
 
-    def set_status(self, status):
+    def set_status(self, status, conclusion_time):
         """Set the completion status of a workflow. This will also update the display class
         to suit the warning level.
+
+        TODO update docstring to add is_stale logic
 
         Args:
             status (str): how the workflow completed (e.g. "success" or "failure")
         """
         self.workflow_status = status
+        self.conclusion_time = conclusion_time
+        # TODO self.is_stale = is_stale
+        # TODO a nested branch here - first check if it's stale, and only if it isn't, check success
         if status == "success":
-            self.display_class = ""
+            self.display_class = "green-cell"
+            self.icon_class = "fa fa-check-circle"
         elif status == "failure":
             self.display_class = "red-cell"
+            self.icon_class = "fa fa-times-circle"
 
 
 @dataclass
@@ -106,7 +119,7 @@ def read_yaml_file(file_path):
         all_projects.append(project_data)
 
     timezone = pytz.timezone("America/New_York")
-    last_updated = datetime.now(timezone).strftime("%H:%M %B %d, %Y")
+    last_updated = datetime.now(timezone).strftime("%H:%M %B %d, %Y (US-NYC)")
 
     return {
         "page_title": page_title,

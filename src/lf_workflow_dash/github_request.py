@@ -1,4 +1,29 @@
+from datetime import datetime
 import requests
+import pytz
+
+def get_conclusion_time(last_run):
+    """Get the workflow conclusion time and set the proper timezone
+    
+    Args:
+        last_run (dict): the most recent run of the workflow
+    """
+    timestamp_str = last_run["updated_at"]
+
+    # Parse the timestamp
+    timestamp = datetime.strptime(timestamp_str, "%Y-%m-%dT%H:%M:%SZ")
+
+    # Define the time zones for UTC and New York
+    utc_timezone = pytz.timezone("UTC")
+    ny_timezone = pytz.timezone("America/New_York")
+
+    # Convert the timestamp to New York time
+    timestamp_ny = timestamp.replace(tzinfo=utc_timezone).astimezone(ny_timezone)
+
+    # Format the timestamp
+    formatted_timestamp = timestamp_ny.strftime("%H:%M<br>%m/%d/%y")
+
+    return formatted_timestamp
 
 
 def update_workflow_status(workflow_elem, token):
@@ -25,17 +50,23 @@ def update_workflow_status(workflow_elem, token):
     response = requests.request("GET", request_url, headers=headers, data=payload, timeout=15)
     status_code = response.status_code
     conclusion = "pending"
+    conclusion_time = ""
+    # TODO set is_stale
 
     # Process data
     if status_code == 200:  # API was successful
         response_json = response.json()
         if len(response_json["workflow_runs"]) == 0:  # workflow has no runs
             conclusion = "not yet run"
+        
         else:
             last_run = response_json["workflow_runs"][0]
 
             # Get the workflow conclusion ("success", "failure", etc)
             conclusion = last_run["conclusion"]
+
+            # Get the time this workflow concluded (in New York time)
+            conclusion_time = get_conclusion_time(last_run)
 
             # Check if the workflow is currently being executed
             if conclusion is None:
@@ -43,10 +74,15 @@ def update_workflow_status(workflow_elem, token):
                 if len(response_json["workflow_runs"]) > 1:
                     last_run = response_json["workflow_runs"][1]
                     conclusion = last_run["conclusion"]
+                    conclusion_time = get_conclusion_time(last_run)
                 else:
                     conclusion = "pending"
+                    conclusion_time = ""
+
+            # TODO set is_stale
+
     else:
         print("    ", status_code)
         conclusion = status_code
 
-    workflow_elem.set_status(conclusion)
+    workflow_elem.set_status(conclusion, conclusion_time)
