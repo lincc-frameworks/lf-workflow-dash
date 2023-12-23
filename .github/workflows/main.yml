@@ -40,6 +40,7 @@ jobs:
           TIME: "${{ steps.time.outputs.time }}"
         run: |
           git config --global user.name "Dashboard Auto Update"
+          git config --global user.email auto-update@example.com
           git add -A
           git commit -m "Auto updated $TIME"
           git push
