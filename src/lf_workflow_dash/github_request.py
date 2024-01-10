@@ -1,10 +1,12 @@
 from datetime import datetime
-import requests
+
 import pytz
+import requests
+
 
 def get_conclusion_time(last_run):
     """Get the workflow conclusion time and set the proper timezone
-    
+
     Args:
         last_run (dict): the most recent run of the workflow
     """
@@ -58,7 +60,7 @@ def update_workflow_status(workflow_elem, token):
         response_json = response.json()
         if len(response_json["workflow_runs"]) == 0:  # workflow has no runs
             conclusion = "not yet run"
-        
+
         else:
             last_run = response_json["workflow_runs"][0]
 

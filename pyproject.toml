@@ -3,7 +3,7 @@ name = "lf_workflow_dash"
 license = {file = "LICENSE"}
 readme = "README.md"
 authors = [
-    { name = "Olivia Lynn", email = "lincc-frameworks-team@lists.lsst.org" }
+    { name = "LINCC Frameworks", email = "lincc-frameworks-team@lists.lsst.org" }
 ]
 classifiers = [
     "Development Status :: 4 - Beta",
@@ -20,6 +20,9 @@ dependencies = [
     "pytz",
     "requests",
 ]
+
+[project.urls]
+"Source Code" = "https://github.com/lincc-frameworks/lf_workflow_dash"
 
 # On a mac, install optional dependencies with `pip install '.[dev]'` (include the single quotes)
 [project.optional-dependencies]
