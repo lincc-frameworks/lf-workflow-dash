@@ -1,7 +1,5 @@
 import sys
 
-from jinja2 import Environment, FileSystemLoader
-
 from lf_workflow_dash.update_dashboard import do_the_work
 
 if __name__ == "__main__":

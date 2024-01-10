@@ -6,7 +6,7 @@ from lf_workflow_dash.github_request import update_workflow_status
 
 def update_html(out_file, context):
     """Fetch the jinja template, and update with all of the gathered context.
-    
+
     Args:
         out_file (str): path to write the hydrated html file to
         context (dict): local variables representing workflow status
@@ -19,7 +19,7 @@ def update_html(out_file, context):
 
 def update_status(context, token):
     """Issue requests to the github JSON API and update each workflow status accordingly.
-    
+
     Args:
         context (dict): local variables representing workflow status
         token (str): github personal access token
@@ -36,7 +36,7 @@ def update_status(context, token):
 
 def do_the_work(token, datafile, outfile):
     """Wrapper to call all of the methods necessary to build the final hydrated page.
-    
+
     Args:
         token (str): github personal access token
         datafile (str): path to the yaml config file with workflow data

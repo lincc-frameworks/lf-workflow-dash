@@ -1,9 +1,9 @@
 # Changes here will be overwritten by Copier
-_commit: v1.4.3
+_commit: v1.4.6
 _src_path: gh:lincc-frameworks/python-project-template
 author_email: lincc-frameworks-team@lists.lsst.org
-author_name: Olivia Lynn
-create_example_module: true
+author_name: LINCC Frameworks
+create_example_module: false
 custom_install: true
 include_benchmarks: false
 include_docs: false
@@ -12,5 +12,5 @@ package_name: lf_workflow_dash
 preferred_linter: pylint
 project_license: MIT
 project_name: lf_workflow_dash
-use_gitlfs: none
+project_organization: lincc-frameworks
 use_isort: true
