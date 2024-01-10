@@ -5,6 +5,8 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '*/15 * * * *'
+  push:
+    branches: [ main ]
 jobs:
   run_update:
     runs-on: ubuntu-latest
@@ -30,17 +32,15 @@ jobs:
           sudo apt-get update
           python -m pip install --upgrade pip
           pip install .
-      - run: |
-          python update_dashboard.py ${{ secrets.GITHUB_TOKEN }} tracked_workflows.yaml index.html
-          python update_dashboard.py ${{ secrets.GITHUB_TOKEN }} rail_tracked_workflows.yaml rail.html
-          python update_dashboard_group.py ${{ secrets.GITHUB_TOKEN }} tracked_workflows_group.yaml index_group.html
-          python update_dashboard_group.py ${{ secrets.GITHUB_TOKEN }} rail_tracked_workflows_group.yaml rail_group.html
-      - name: Commit and push changes
-        env:
-          TIME: "${{ steps.time.outputs.time }}"
+
+      - name: Update HTML
         run: |
-          git config --global user.name "Dashboard Auto Update"
-          git config --global user.email dashboard@auto.update
-          git add -A
-          git commit -m "Auto updated $TIME"
-          git push
+          python update_dashboard.py ${{ secrets.GITHUB_TOKEN }} config/tracked_workflows.yaml html/index.html
+          python update_dashboard.py ${{ secrets.GITHUB_TOKEN }} config/rail_tracked_workflows.yaml html/rail.html
+          python update_dashboard_group.py ${{ secrets.GITHUB_TOKEN }} config/tracked_workflows_group.yaml html/index_group.html
+          python update_dashboard_group.py ${{ secrets.GITHUB_TOKEN }} config/rail_tracked_workflows_group.yaml html/rail_group.html
+      - name: Deploy to Github pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: html
