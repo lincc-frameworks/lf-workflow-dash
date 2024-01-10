@@ -11,17 +11,6 @@ jobs:
   run_update:
     runs-on: ubuntu-latest
     steps:
-      - name: Get Timestamp Action
-        uses: nanzm/get-time-action@v2.0
-        id: time
-        with:
-          # timeZone: UTC-4
-          format: 'YYYY-MM-DD HH:mm'
-      - name: Usage
-        env:
-          TIME: "${{ steps.time.outputs.time }}"
-        run: |
-            echo $TIME
       - uses: actions/checkout@v3
       - name: Set up Python 3.10
         uses: actions/setup-python@v4
