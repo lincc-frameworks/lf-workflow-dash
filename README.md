@@ -1,4 +1,5 @@
-<img src="https://www.lsstcorporation.org/lincc/sites/default/files/PastedGraphic-8.png" width="300" height="100">
+<img src="https://github.com/lincc-frameworks/tape/blob/main/docs/DARK_Combo_sm.png?raw=true" width="300" height="100">
+
 
 # LF Workflow Dash
 
@@ -10,7 +11,7 @@
 
 Track workflows across any number of repositories, check status and other relevant metrics, and quickly modify via yaml, all in one customizable dashboard.
 
-Powered by the [GitHub REST API](https://docs.github.com/en/rest), **LF Workflow Dash** regularly retrieves data on specified GitHub Actions workflow runs and updates the dashboard HTML. This process is managed through scheduled GitHub workflows, and the output can be hosted easily using GitHub Pages."
+Powered by the [GitHub REST API](https://docs.github.com/en/rest), **LF Workflow Dash** regularly retrieves data on specified GitHub Actions workflow runs and updates the dashboard HTML. This process is managed through scheduled GitHub workflows, and the output can be hosted easily using GitHub Pages.
 
 ## Getting Started
 
@@ -22,24 +23,24 @@ Keep reading to learn about modifying an existing dashboard, or how to build you
 
 1. **Modify the YAML in this repo**
    
-   Modify `tracked_workflows.yaml` to customize the [LF dashboard](https://lincc-frameworks.github.io/lf-workflow-dash/). Add or remove repositories and workflows as needed. The format to follow is:
+   Modify `config/tracked_workflows.yaml` to customize the [LF dashboard](https://lincc-frameworks.github.io/lf-workflow-dash/). Add or remove repositories and workflows as needed. The format to follow is:
 
-     ```yaml
-     page_title: PAGE TITLE
+   ```yaml
+   repos:
+      - repo: REPO_NAME
+         owner: OWNER_NAME # github organization
+         smoke-test: smoke-test.yml
+         build-docs: build-documentation.yml
+         benchmarks: asv-nightly.yml
+         live-build: testing-and-coverage.yml
+         other_workflows: 
+         # Add more workflows if necessary
+   ```
 
-     repos:
-        - repo: REPO_NAME
-          owner: OWNER_NAME
-          workflows:
-            - WORKFLOW_NAME_1
-            - WORKFLOW_NAME_2
-            # Add more workflows if necessary
-     ```
-   The workflow name should be the entire file name, including the ".yml" or "yaml" ending.
+   We have columns for these 4 workflows, and the value should be the leaf yaml
+   file name. If you have additional workflows, you can add them as `other_workflows`.
 
-   The page title will be html `<title>` attribute of the dashboard.
-
-3. **Or, submit an Issue**
+2. **Or, submit an Issue**
 
    If you'd like to suggest changes or need assistance with modifying the YAML, feel free to open an issue in this repository. We'll be happy to help!
 
@@ -57,10 +58,11 @@ Keep reading to learn about modifying an existing dashboard, or how to build you
 
    Fresh forks require manual activation of GitHub Actions. Visit the "Actions" tab in your repository and enable the workflows.
 
+   When enabled, the github workflow `.github/workflows/main.yml` will run every
+   15 minutes to refresh the status of your dashboard.
+
 4. **Authorization**
 
-   Make sure to replace the username and email used in the commit step of `.github/workflows/main.yml`!
-     
    **GitHub builds:** Your personal access token will be automatically generated when running the workflow on GitHub.
 
    **Local builds:** To build the HTML locally, run the following command in your repository:
@@ -77,11 +79,13 @@ Keep reading to learn about modifying an existing dashboard, or how to build you
 
    Remember to customize your `<title>` tag, your favicon, and the footer at the bottom of the page that links to the dashboard's repo.
 
-   Note that these need to be changed in `update_dashboard.py`, as any changes made to an HTML file will be overwritten.
+   Note that these need to be changed in `templates/dash_template.jinja`, as any changes made to an HTML file will be overwritten.
 
 7. **GitHub Pages (Optional)**
 
    If you want to host your dashboard on GitHub Pages, you'll need to [set up your repository for GitHub Pages.](https://docs.github.com/en/pages/quickstart)
+   The github action for this repository will put the rendered HTML into a
+   `gh-pages` branch, that should be used for hosting your Pages.
 
    Alternatively, you can use the [GitHub HTML Preview Tool](https://htmlpreview.github.io/?) to see your HTML without hosting it yourself. 
 

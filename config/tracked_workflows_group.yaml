@@ -13,12 +13,18 @@ repos:
     benchmarks: asv-nightly.yml
     live-build: testing-and-coverage.yml
 
+  - repo: hipscat-cloudtests
+    owner: astronomy-commons
+    smoke-test: smoke-test.yml
+    benchmarks: asv-nightly.yml
+    live-build: testing-and-coverage.yml
+
   - repo: hipscat-import
     owner: astronomy-commons
     smoke-test: smoke-test.yml
     build-docs: build-documentation.yml
     live-build: testing-and-coverage.yml
-  
+
   - repo: kbmod
     owner: dirac-institute
     smoke-test: canary_builds.yaml
@@ -28,6 +34,7 @@ repos:
   - repo: koffi
     owner: lincc-frameworks
     smoke-test: smoke-test.yml
+    live-build: testing-and-coverage.yml
   
   - repo: lsdb
     owner: astronomy-commons
@@ -58,7 +65,8 @@ repos:
   
   - repo: rail_pipelines
     owner: lsstdesc
-    live-build: main.yml
+    smoke-test: smoke-test.yml
+    live-build: testing-and-coverage.yml
   
   - repo: tables_io
     owner: lsstdesc
