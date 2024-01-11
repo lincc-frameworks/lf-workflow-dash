@@ -25,9 +25,15 @@
 
         <!-- Smoke Test -->
         <td class="{{project.smoke_test.display_class}} align-right">
+            {%- if project.smoke_test.is_stale %}
+            <span class="gray-cell">stale</span><br/>
+            {%- endif %}
             {{project.smoke_test.workflow_status}}
         </td>
         <td class="{{project.smoke_test.display_class}} align-center">
+            {%- if project.smoke_test.is_stale %}
+            <i class="gray-cell fa fa-clock-o"></i><br/>
+            {%- endif %}
             <i class="{{project.smoke_test.icon_class}}"></i>
         </td>
         <td class="{{project.smoke_test.display_class}}">
@@ -38,9 +44,15 @@
 
         <!-- Benchmarks -->
         <td class="{{project.benchmarks.display_class}} align-right">
+            {%- if project.benchmarks.is_stale %}
+            <span class="gray-cell">stale</span><br/>
+            {%- endif %}
             {{project.benchmarks.workflow_status}}
         </td>
         <td class="{{project.benchmarks.display_class}} align-center">
+            {%- if project.benchmarks.is_stale %}
+            <i class="gray-cell fa fa-clock-o"></i><br/>
+            {%- endif %}
             <i class="{{project.benchmarks.icon_class}}"></i>
         </td>
         <td class="{{project.benchmarks.display_class}}">
@@ -49,7 +61,7 @@
             </a>
         </td>
 
-        <!-- Build Docs -->
+        <!-- Build Docs (don't worry about is_stale here) -->
         <td class="{{project.build_docs.display_class}} align-right">
             {{project.build_docs.workflow_status}}
         </td>
@@ -64,9 +76,15 @@
 
         <!-- Live Build -->
         <td class="{{project.live_build.display_class}} align-right">
+            {%- if project.live_build.is_stale %}
+            <span class="gray-cell">stale</span><br/>
+            {%- endif %}
             {{project.live_build.workflow_status}}
         </td>
         <td class="{{project.live_build.display_class}} align-center">
+            {%- if project.live_build.is_stale %}
+            <i class="gray-cell fa fa-clock-o"></i><br/>
+            {%- endif %}
             <i class="{{project.live_build.icon_class}}"></i>
         </td>
         <td class="{{project.live_build.display_class}}">

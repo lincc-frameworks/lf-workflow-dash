@@ -58,6 +58,7 @@ def update_workflow_status(workflow_elem, token):
     status_code = response.status_code
     conclusion = "pending"
     conclusion_time = ""
+    is_stale = False
 
     # Process data
     if status_code == 200:  # API was successful
@@ -73,8 +74,6 @@ def update_workflow_status(workflow_elem, token):
 
             # Get the time this workflow concluded (in New York time)
             (conclusion_time, is_stale) = get_conclusion_time(last_run)
-            if is_stale:
-                conclusion = "stale"
 
             # Check if the workflow is currently being executed
             if conclusion is None:
@@ -83,8 +82,6 @@ def update_workflow_status(workflow_elem, token):
                     last_run = response_json["workflow_runs"][1]
                     conclusion = last_run["conclusion"]
                     (conclusion_time, is_stale) = get_conclusion_time(last_run)
-                    if is_stale:
-                        conclusion = "stale"
                 else:
                     conclusion = "pending"
                     conclusion_time = ""
@@ -93,4 +90,4 @@ def update_workflow_status(workflow_elem, token):
         print("    ", status_code)
         conclusion = status_code
 
-    workflow_elem.set_status(conclusion, conclusion_time)
+    workflow_elem.set_status(conclusion, conclusion_time, is_stale)
