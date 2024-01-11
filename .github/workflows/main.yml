@@ -21,11 +21,10 @@ jobs:
           sudo apt-get update
           python -m pip install --upgrade pip
           pip install .
-
       - name: Update HTML
         run: |
-          python update_dashboard.py ${{ secrets.GITHUB_TOKEN }} config/tracked_workflows_group.yaml html/index.html
-          python update_dashboard.py ${{ secrets.GITHUB_TOKEN }} config/rail_tracked_workflows_group.yaml html/rail.html
+          python update_dashboard.py ${{ secrets.GITHUB_TOKEN }} config/tracked_workflows.yaml html/index.html
+          python update_dashboard.py ${{ secrets.GITHUB_TOKEN }} config/rail_tracked_workflows.yaml html/rail.html
       - name: Deploy to Github pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
