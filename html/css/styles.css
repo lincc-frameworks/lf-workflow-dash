@@ -81,6 +81,11 @@ td.green-cell {
   font-weight: bold;
 }
 
+.gray-cell, .gray-cell>a {
+  color: rgb(181, 178, 136);
+  font-weight: bold;
+}
+
 /* Media query for larger viewports */
 @media (min-width: 1050px) {
   table {

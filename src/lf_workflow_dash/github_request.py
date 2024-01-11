@@ -25,7 +25,12 @@ def get_conclusion_time(last_run):
     # Format the timestamp
     formatted_timestamp = timestamp_ny.strftime("%H:%M<br>%m/%d/%y")
 
-    return formatted_timestamp
+    # Figure out how old this conclusion time is. If it's more than 2 weeks, it's stale.
+    current_date = datetime.now()
+    date_diff = current_date - timestamp
+    is_stale = date_diff.days > 14
+
+    return (formatted_timestamp, is_stale)
 
 
 def update_workflow_status(workflow_elem, token):
@@ -53,7 +58,7 @@ def update_workflow_status(workflow_elem, token):
     status_code = response.status_code
     conclusion = "pending"
     conclusion_time = ""
-    # TODO set is_stale
+    is_stale = False
 
     # Process data
     if status_code == 200:  # API was successful
@@ -68,7 +73,7 @@ def update_workflow_status(workflow_elem, token):
             conclusion = last_run["conclusion"]
 
             # Get the time this workflow concluded (in New York time)
-            conclusion_time = get_conclusion_time(last_run)
+            (conclusion_time, is_stale) = get_conclusion_time(last_run)
 
             # Check if the workflow is currently being executed
             if conclusion is None:
@@ -76,15 +81,13 @@ def update_workflow_status(workflow_elem, token):
                 if len(response_json["workflow_runs"]) > 1:
                     last_run = response_json["workflow_runs"][1]
                     conclusion = last_run["conclusion"]
-                    conclusion_time = get_conclusion_time(last_run)
+                    (conclusion_time, is_stale) = get_conclusion_time(last_run)
                 else:
                     conclusion = "pending"
                     conclusion_time = ""
-
-            # TODO set is_stale
 
     else:
         print("    ", status_code)
         conclusion = status_code
 
-    workflow_elem.set_status(conclusion, conclusion_time)
+    workflow_elem.set_status(conclusion, conclusion_time, is_stale)
