@@ -9,9 +9,9 @@ from lf_workflow_dash.update_dashboard import update_html
 @pytest.mark.parametrize(
     "datafile, outfile",
     [
-        ("config/tracked_workflows_group.yaml", "lincc_output.html"),
-        ("config/rail_tracked_workflows_group.yaml", "rail_output.html"),
-        # ("tracked_incubator_group.yaml", "incubator_output.html")
+        ("config/tracked_workflows.yaml", "lincc_output.html"),
+        ("config/rail_tracked_workflows.yaml", "rail_output.html"),
+        # ("config/tracked_incubator.yaml", "incubator_output.html")
     ],
 )
 def test_do_the_work(datafile, outfile, tmp_path):

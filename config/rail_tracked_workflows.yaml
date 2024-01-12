@@ -3,101 +3,89 @@ page_title: RAIL Workflow Dashboard
 repos:
   - repo: rail
     owner: lsstdesc
-    workflows:
-      - smoke-test.yml
-      - testing-and-coverage.yml
-      - build_documentation.yml
+    smoke-test: smoke-test.yml
+    build-docs: build_documentation.yml
+    live-build: testing-and-coverage.yml
   
   - repo: rail_astro_tools
     owner: lsstdesc
-    workflows:
-      - smoke-test.yml
-      - testing-and-coverage.yml
+    smoke-test: smoke-test.yml
+    live-build: testing-and-coverage.yml
   
   - repo: rail_base
     owner: lsstdesc
-    workflows:
-      - smoke-test.yml
-      - testing-and-coverage.yml
+    smoke-test: smoke-test.yml
+    live-build: testing-and-coverage.yml
   
   - repo: rail_bpz
     owner: lsstdesc
-    workflows:
-      - smoke-test.yml
-      - testing-and-coverage.yml
+    smoke-test: smoke-test.yml
+    live-build: testing-and-coverage.yml
   
   - repo: rail_cmnn
     owner: lsstdesc
-    workflows:
-      - main.yml
+    smoke-test: smoke-test.yml
+    live-build: testing-and-coverage.yml
   
   - repo: rail_delight
     owner: lsstdesc
-    workflows:
-      - main.yml
+    smoke-test: smoke-test.yml
+    live-build: testing-and-coverage.yml
   
   - repo: rail_dsps
     owner: lsstdesc
-    workflows:
-      - smoke-test.yml
-      - testing-and-coverage.yml
+    smoke-test: smoke-test.yml
+    live-build: testing-and-coverage.yml
   
   - repo: rail_flexzboost
     owner: lsstdesc
-    workflows:
-      - main.yml
+    smoke-test: smoke-test.yml
+    live-build: testing-and-coverage.yml
   
   - repo: rail_fsps
     owner: lsstdesc
-    workflows:
-      - smoke-test.yml
-      - testing-and-coverage.yml
+    smoke-test: smoke-test.yml
+    live-build: testing-and-coverage.yml
   
   - repo: rail_gpz_v1
     owner: lsstdesc
-    workflows:
-      - main.yml
+    smoke-test: smoke-test.yml
+    live-build: testing-and-coverage.yml
   
   - repo: rail_lib_gp_comp
     owner: lsstdesc
-    workflows:
-      - main.yml
+    smoke-test: smoke-test.yml
+    live-build: testing-and-coverage.yml
       
   - repo: rail_notebooks
     owner: OliviaLynn
-    workflows:
-      - render-notebooks.yml
+    build-docs: render-notebooks.yml
   
   - repo: rail_pipelines
     owner: lsstdesc
-    workflows:
-      - main.yml
+    smoke-test: smoke-test.yml
+    live-build: testing-and-coverage.yml
   
   - repo: RAIL-project-template
     owner: lsstdesc
-    workflows:
-      - ci.yml
+    live-build: ci.yml
   
   - repo: rail_pzflow
     owner: lsstdesc
-    workflows:
-      - smoke-test.yml
-      - testing-and-coverage.yml
+    smoke-test: smoke-test.yml
+    live-build: testing-and-coverage.yml
   
   - repo: rail_sklearn
     owner: lsstdesc
-    workflows:
-      - smoke-test.yml
-      - testing-and-coverage.yml
+    smoke-test: smoke-test.yml
+    live-build: testing-and-coverage.yml
   
   - repo: rail_som
     owner: lsstdesc
-    workflows:
-      - smoke-test.yml
-      - testing-and-coverage.yml
+    smoke-test: smoke-test.yml
+    live-build: testing-and-coverage.yml
   
   - repo: tables_io
     owner: lsstdesc
-    workflows:
-      - smoke-test.yml
-      - testing-and-coverage.yml
+    smoke-test: smoke-test.yml
+    live-build: testing-and-coverage.yml
