@@ -25,6 +25,7 @@ jobs:
         run: |
           python update_dashboard.py ${{ secrets.GITHUB_TOKEN }} config/tracked_workflows.yaml html/index.html
           python update_dashboard.py ${{ secrets.GITHUB_TOKEN }} config/rail_tracked_workflows.yaml html/rail.html
+          python update_dashboard.py ${{ secrets.GITHUB_TOKEN }} config/tracked_incubator.yaml html/incubator.html
       - name: Deploy to Github pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
