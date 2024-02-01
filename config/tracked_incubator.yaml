@@ -1,0 +1,32 @@
+page_title: Incubator Friends
+
+repos:  
+  - repo: superphot-plus
+    owner: VTDA-Group
+    smoke-test: smoke-test.yml
+    build-docs: build-documentation.yml
+    benchmarks: asv-nightly.yml
+    live-build: testing-and-coverage.yml
+
+  - repo: superphot-plus-antares
+    owner: VTDA-Group
+    smoke-test: smoke-test.yml
+    live-build: testing-and-coverage.yml
+
+  - repo: lsdb_macauff
+    owner: macauff
+    smoke-test: smoke-test.yml
+    live-build: testing-and-coverage.yml
+
+  - repo: macauff
+    owner: macauff
+    smoke-test: smoke-test.yml
+    build-docs: build-documentation.yml
+    benchmarks: asv-nightly.yml
+    live-build: testing-and-coverage.yml
+
+  - repo: deepdisc
+    owner: lincc-frameworks
+    smoke-test: smoke-test.yml
+    build-docs: build-documentation.yml
+    live-build: testing-and-coverage.yml

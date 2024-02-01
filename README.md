@@ -6,6 +6,7 @@
 [![view](https://img.shields.io/badge/view:-666666?style=for-the-badge)](#)
 [![link-to-dash](https://img.shields.io/badge/LF_Dashboard-7b6db0?style=for-the-badge)](https://lincc-frameworks.github.io/lf-workflow-dash/)
 [![link-to-rail-dash](https://img.shields.io/badge/RAIL_Dashboard-b08b3d?style=for-the-badge)](https://lincc-frameworks.github.io/lf-workflow-dash/rail.html)
+[![link-to-rail-dash](https://img.shields.io/badge/Incubator_Dashboard-ECD53F?style=for-the-badge)](https://lincc-frameworks.github.io/lf-workflow-dash/incubator.html)
 
 **LF Workflow Dash** is your easy solution for monitoring and managing GitHub Actions workflows. 
 
