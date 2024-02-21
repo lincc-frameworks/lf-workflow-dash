@@ -31,6 +31,5 @@ jobs:
         with:
           branch: gh-pages
           folder: html
-          git-config-name: auto-deploy
+          git-config-name: deploy-bot
           git-config-email: <>
-          single-commit: true
