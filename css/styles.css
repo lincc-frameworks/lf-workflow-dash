@@ -1,0 +1,109 @@
+/* Apply styles to the table */
+table {
+  width: 100%;
+  margin: auto;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #222; 
+  color: #fff;
+  font-size: 0.8em;
+}
+
+/* Style the table header */
+th {
+  background: none;
+  text-align: center;
+  padding: 8px;
+  font-weight: bold;
+  border-bottom: 2px solid #444;
+}
+
+/* Style the table cells */
+td {
+  padding: 6px;
+  border-bottom: 1px solid #444;
+}
+
+/* Alternate row background color */
+tr:nth-child(even) {
+  background-color: #333;
+}
+
+/* Hover effect for table rows */
+tr:hover {
+  background-color: #444;
+}
+
+/* Style the links */
+a {
+  color: #70b4eb;
+  text-decoration: none; /* Remove underlines from links */
+}
+
+/* Hover effect for links */
+a:hover {
+  text-decoration: underline; /* Underline links on hover */
+}
+
+/* Style the "Last Updated" at the bottom */
+p {
+  text-align: right;
+  margin-top: 10px;
+  margin-right: 10px;
+  color: #888;
+  font-family: Arial, sans-serif;
+  font-size: 0.9em;
+}
+
+/* Add left padding to the entire leftmost column */
+td:first-child, th:first-child {
+  width: 1em;
+}
+
+/* Set background to something dark for the overall body (outside the table) */
+body {
+  background: #171717;
+}
+
+/* Define a class for green-colored icons */
+td.green-cell {
+  color: #9de598;
+}
+
+.red-cell, .red-cell>a {
+  color: #ff5c3f;
+  font-weight: bold;
+}
+
+.yellow-cell, .yellow-cell>a {
+  color: #bdad21;
+  font-weight: bold;
+}
+
+.gray-cell, .gray-cell>a {
+  color: rgb(181, 178, 136);
+  font-weight: bold;
+}
+
+/* Media query for larger viewports */
+@media (min-width: 1050px) {
+  table {
+    width: 70%;
+    font-size: 0.9em;
+  }
+  p {
+    margin-right: 15vw;
+  }
+  td {
+    padding: 8px;
+  }
+}
+
+/* Alignment */
+.align-right {
+  text-align: right;
+}
+.align-center {
+  text-align: center;
+}
