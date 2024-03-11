@@ -69,7 +69,7 @@ Keep reading to learn about modifying an existing dashboard, or how to build you
    **Local builds:** To build the HTML locally, run the following command in your repository:
 
      ```shell
-     python update_dashboard.py PERSONAL_ACCESS_TOKEN tracked_workflows.yaml index.html
+     python update_dashboard.py PERSONAL_ACCESS_TOKEN ./config/tracked_workflows.yaml index.html
      ```
 
    You can generate a personal access token following these [GitHub token generation steps](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens).

@@ -2,6 +2,7 @@ from datetime import datetime
 
 import pytz
 import requests
+import yaml
 
 
 def get_conclusion_time(last_run):
@@ -91,3 +92,28 @@ def update_workflow_status(workflow_elem, token):
         conclusion = status_code
 
     workflow_elem.set_status(conclusion, conclusion_time, is_stale)
+
+
+def _read_copier_version(content):
+    try:
+        copier_config = yaml.safe_load(content)
+        return copier_config.get("_commit", "")
+    except yaml.YAMLError:
+        return ""
+
+
+def update_copier_version(project_data, token):
+    """ Find the copier version from the repo's `.copier_answers.yml` file.
+
+    Args:
+        project_data (ProjectData): container for the project's data
+        token (str): auth token for hitting the github API
+    """
+    request_url = (
+        f"https://raw.githubusercontent.com/{project_data.owner}/{project_data.repo}/main/.copier-answers.yml"
+    )
+
+    headers = {"Authorization": f"Bearer {token}"}
+    response = requests.request("GET", request_url, headers=headers, timeout=15)
+
+    project_data.copier_version = _read_copier_version(response.content)

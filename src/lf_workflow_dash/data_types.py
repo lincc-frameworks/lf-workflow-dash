@@ -58,6 +58,7 @@ class ProjectData:
     repo: str = ""
     icon: str = ""
     repo_url: str = ""
+    copier_version: str = ""
 
     smoke_test: WorkflowElemData = None
     build_docs: WorkflowElemData = None
