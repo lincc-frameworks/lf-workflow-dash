@@ -11,6 +11,7 @@
     <table>
         <tr>
             <th colspan="1" scope="colgroup">Repository</th>
+            <th colspan="1" scope="colgroup">Copier<br>Version</th>
             <th colspan="3" scope="colgroup">Nightly Test</th>
             <th colspan="3" scope="colgroup">Nightly<br>Benchmarks</th>
             <th colspan="3" scope="colgroup">Build Docs</th>
@@ -22,6 +23,7 @@
     {% for project in all_projects %}
     <tr>
         <td><a href="{{project.repo_url}}">{{project.repo}}</a></td>
+        <td><a href="{{project.repo_url}}">{{project.copier_version}}</a></td>
 
         <!-- Smoke Test -->
         <td class="{{project.smoke_test.display_class}} align-right">
