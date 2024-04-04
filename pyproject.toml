@@ -51,9 +51,6 @@ testpaths = [
     "tests",
 ]
 
-[tool.coverage.run]
-omit=["src/lf_workflow_dash/_version.py"]
-
 [tool.black]
 line-length = 110
 target-version = ["py39"]
