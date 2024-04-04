@@ -103,7 +103,7 @@ def _read_copier_version(content):
 
 
 def update_copier_version(project_data, token):
-    """ Find the copier version from the repo's `.copier_answers.yml` file.
+    """Find the copier version from the repo's `.copier_answers.yml` file.
 
     Args:
         project_data (ProjectData): container for the project's data
