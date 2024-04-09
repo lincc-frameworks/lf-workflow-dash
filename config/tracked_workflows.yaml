@@ -43,14 +43,10 @@ repos:
     benchmarks: asv-nightly.yml
     live-build: testing-and-coverage.yml
       
-  - repo: metric-emitter
-    owner: lincc-frameworks
-    smoke-test: smoke-test.yml
-    live-build: testing-and-coverage.yml
-  
   - repo: python-project-template
     owner: lincc-frameworks
     live-build: ci.yml
+    smoke-test: smoke-test.yml
   
   - repo: rail
     owner: lsstdesc
