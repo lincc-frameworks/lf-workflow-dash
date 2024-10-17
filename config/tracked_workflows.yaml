@@ -6,20 +6,20 @@ repos:
     smoke-test: smoke-test.yml
     live-build: testing-and-coverage.yml
   
-  - repo: hipscat
+  - repo: hats
     owner: astronomy-commons
     smoke-test: smoke-test.yml
     build-docs: build-documentation.yml
     benchmarks: asv-nightly.yml
     live-build: testing-and-coverage.yml
 
-  - repo: hipscat-cloudtests
+  - repo: hats-cloudtests
     owner: astronomy-commons
     smoke-test: smoke-test.yml
     benchmarks: asv-nightly.yml
     live-build: testing-and-coverage.yml
 
-  - repo: hipscat-import
+  - repo: hats-import
     owner: astronomy-commons
     smoke-test: smoke-test.yml
     build-docs: build-documentation.yml
