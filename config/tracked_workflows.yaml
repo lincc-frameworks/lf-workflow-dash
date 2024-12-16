@@ -43,6 +43,20 @@ repos:
     benchmarks: asv-nightly.yml
     live-build: testing-and-coverage.yml
       
+  - repo: nested-dask
+    owner: lincc-frameworks
+    smoke-test: smoke-test.yml
+    build-docs: build-documentation.yml
+    benchmarks: asv-nightly.yml
+    live-build: testing-and-coverage.yml
+      
+  - repo: nested-pandas
+    owner: lincc-frameworks
+    smoke-test: smoke-test.yml
+    build-docs: build-documentation.yml
+    benchmarks: asv-nightly.yml
+    live-build: testing-and-coverage.yml
+      
   - repo: python-project-template
     owner: lincc-frameworks
     live-build: ci.yml
@@ -69,14 +83,3 @@ repos:
     smoke-test: smoke-test.yml
     live-build: testing-and-coverage.yml
   
-  - repo: tape
-    owner: lincc-frameworks
-    smoke-test: smoke-test.yml
-    build-docs: build-documentation.yml
-    live-build: testing-and-coverage.yml
-  
-  - repo: tape_benchmarking
-    owner: lincc-frameworks
-    smoke-test: smoke-test.yml
-    build-docs: build-documentation.yml
-    live-build: testing-and-coverage.yml
