@@ -5,7 +5,14 @@ repos:
     owner: lincc-frameworks
     smoke-test: smoke-test.yml
     live-build: testing-and-coverage.yml
-  
+
+  - repo: fibad
+    owner: lincc-frameworks
+    smoke-test: smoke-test.yml
+    build-docs: build-documentation.yml
+    benchmarks: asv-nightly.yml
+    live-build: testing-and-coverage.yml
+
   - repo: hats
     owner: astronomy-commons
     smoke-test: smoke-test.yml
@@ -82,4 +89,9 @@ repos:
     owner: lsstdesc
     smoke-test: smoke-test.yml
     live-build: testing-and-coverage.yml
-  
+
+  - repo: tdastro
+    owner: lincc-frameworks
+    smoke-test: smoke-test.yml
+    benchmarks: asv-nightly.yml
+    live-build: testing-and-coverage.yml
