@@ -42,9 +42,11 @@ jobs:
     - name: Send status to Slack app
       if: ${{ failure() && github.event_name != 'workflow_dispatch' }}
       id: slack
-      uses: slackapi/slack-github-action@v1
+      uses: slackapi/slack-github-action@v2
       with:
         # For posting a rich message using Block Kit
+        webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
+        webhook-type: webhook-trigger
         payload: |
           {
             "blocks": [
@@ -74,6 +76,3 @@ jobs:
               }
             ]
           }
-      env:
-        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
