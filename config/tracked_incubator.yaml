@@ -30,3 +30,33 @@ repos:
     smoke-test: smoke-test.yml
     build-docs: build-documentation.yml
     live-build: testing-and-coverage.yml
+
+  - repo: rail_deepdisc
+    owner: lsstdesc
+    smoke-test: smoke-test.yml
+    build-docs: build-documentation.yml
+    live-build: testing-and-coverage.yml
+
+  - repo: lephare
+    owner: lephare-photoz
+    smoke-test: smoke-test.yml
+    build-docs: build-documentation.yml
+    live-build: testing-and-coverage.yml
+
+  - repo: rail_lephare
+    owner: lsstdesc
+    smoke-test: smoke-test.yml
+    build-docs: build-documentation.yml
+    live-build: testing-and-coverage.yml
+
+  - repo: resspect
+    owner: lsstdesc
+    smoke-test: smoke-test.yml
+    build-docs: build-documentation.yml
+    live-build: testing-and-coverage.yml
+
+  - repo: sorcha
+    owner: dirac-institute
+    smoke-test: smoke-test.yml
+    build-docs: build-documentation.yml
+    live-build: testing-and-coverage.yml
