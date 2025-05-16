@@ -89,9 +89,11 @@ def read_yaml_file(file_path):
 
     # Get the page_title if it exists, otherwise set it to None
     page_title = data.get("page_title", None)
+    extra_links = data.get("extra_links", [])
 
     repos = data.get("repos", [])
     all_projects = []
+    contains_other = False
     for item in repos:
         owner = item["owner"]
         repo = item["repo"]
@@ -113,6 +115,8 @@ def read_yaml_file(file_path):
             project_data.live_build = WorkflowElemData(
                 item["live-build"], repo_url=project_data.repo_url, owner=owner, repo=repo
             )
+        if "other_workflows" in item:
+            contains_other = True
 
         all_projects.append(project_data)
 
@@ -122,7 +126,9 @@ def read_yaml_file(file_path):
     return {
         "page_title": page_title,
         "all_projects": all_projects,
+        "contains_other": contains_other,
         "dash_name": "LINCC Frameworks Builds",
         "dash_repo": "lf-workflow-dash",
         "last_updated": last_updated,
+        "extra_links": extra_links,
     }

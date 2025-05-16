@@ -1,0 +1,45 @@
+page_title: LSDB Builds
+
+repos: 
+  - repo: hats
+    owner: astronomy-commons
+    smoke-test: smoke-test.yml
+    build-docs: build-documentation.yml
+    benchmarks: asv-nightly.yml
+    live-build: testing-and-coverage.yml
+
+  - repo: hats-cloudtests
+    owner: astronomy-commons
+    smoke-test: smoke-test.yml
+    benchmarks: asv-nightly.yml
+    live-build: testing-and-coverage.yml
+
+  - repo: hats-import
+    owner: astronomy-commons
+    smoke-test: smoke-test.yml
+    build-docs: build-documentation.yml
+    live-build: testing-and-coverage.yml
+
+  - repo: lsdb
+    owner: astronomy-commons
+    smoke-test: smoke-test.yml
+    build-docs: build-documentation.yml
+    benchmarks: asv-nightly.yml
+    live-build: testing-and-coverage.yml
+
+  - repo: lsdb-rubin
+    owner: astronomy-commons
+    smoke-test: smoke-test.yml
+    build-docs: build-documentation.yml
+    live-build: testing-and-coverage.yml
+
+  - repo: nested-pandas
+    owner: lincc-frameworks
+    smoke-test: smoke-test.yml
+    build-docs: build-documentation.yml
+    benchmarks: asv-nightly.yml
+    live-build: testing-and-coverage.yml
+
+extra_links: 
+  - text: LINCC Frameworks Dash
+    url: https://lincc-frameworks.github.io/lf-workflow-dash/
