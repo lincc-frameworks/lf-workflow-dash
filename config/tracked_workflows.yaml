@@ -6,10 +6,9 @@ repos:
     smoke-test: smoke-test.yml
     live-build: testing-and-coverage.yml
 
-  - repo: fibad
+  - repo: citation-compass
     owner: lincc-frameworks
     smoke-test: smoke-test.yml
-    build-docs: build-documentation.yml
     benchmarks: asv-nightly.yml
     live-build: testing-and-coverage.yml
 
@@ -30,6 +29,13 @@ repos:
     owner: astronomy-commons
     smoke-test: smoke-test.yml
     build-docs: build-documentation.yml
+    live-build: testing-and-coverage.yml
+
+  - repo: hyrax
+    owner: lincc-frameworks
+    smoke-test: smoke-test.yml
+    build-docs: build-documentation.yml
+    benchmarks: asv-nightly.yml
     live-build: testing-and-coverage.yml
 
   - repo: kbmod
@@ -69,29 +75,16 @@ repos:
     live-build: ci.yml
     smoke-test: smoke-test.yml
   
-  - repo: rail
-    owner: lsstdesc
-    smoke-test: smoke-test.yml
-    build-docs: build_documentation.yml
-    live-build: testing-and-coverage.yml
-  
-  - repo: rail_base
-    owner: lsstdesc
-    smoke-test: smoke-test.yml
-    live-build: testing-and-coverage.yml
-  
-  - repo: rail_pipelines
-    owner: lsstdesc
-    smoke-test: smoke-test.yml
-    live-build: testing-and-coverage.yml
-  
-  - repo: tables_io
-    owner: lsstdesc
-    smoke-test: smoke-test.yml
-    live-build: testing-and-coverage.yml
-
   - repo: tdastro
     owner: lincc-frameworks
     smoke-test: smoke-test.yml
     benchmarks: asv-nightly.yml
     live-build: testing-and-coverage.yml
+  
+extra_links: 
+  - text: LSDB Dash
+    url: https://lincc-frameworks.github.io/lf-workflow-dash/lsdb.html
+  - text: RAIL Dash
+    url: https://lincc-frameworks.github.io/lf-workflow-dash/rail.html
+  - text: Incubator Dash
+    url: https://lincc-frameworks.github.io/lf-workflow-dash/incubator.html
