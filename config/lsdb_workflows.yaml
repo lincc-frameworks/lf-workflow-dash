@@ -27,6 +27,11 @@ repos:
     benchmarks: asv-nightly.yml
     live-build: testing-and-coverage.yml
 
+  - repo: lsdb-crossmatch
+    owner: astronomy-commons
+    smoke-test: smoke-test.yml
+    live-build: testing-and-coverage.yml
+
   - repo: lsdb-rubin
     owner: astronomy-commons
     smoke-test: smoke-test.yml
