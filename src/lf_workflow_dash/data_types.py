@@ -15,11 +15,11 @@ class WorkflowElemData:
     workflow_status: str = ""
     display_class: str = ""
     icon_class: str = ""
-    last_run_url: str = ""
     owner: str = ""
     repo: str = ""
     conclusion_time: str = ""
     is_stale: bool = False
+    friendly_name: str = ""
 
     def __init__(self, workflow_name, repo_url, owner, repo):
         self.workflow_name = workflow_name
@@ -116,6 +116,10 @@ def read_yaml_file(file_path):
                 item["live-build"], repo_url=project_data.repo_url, owner=owner, repo=repo
             )
         if "other_workflows" in item:
+            for name in item["other_workflows"]:
+                project_data.other_workflows.append(
+                    WorkflowElemData(name, repo_url=project_data.repo_url, owner=owner, repo=repo)
+                )
             contains_other = True
 
         all_projects.append(project_data)

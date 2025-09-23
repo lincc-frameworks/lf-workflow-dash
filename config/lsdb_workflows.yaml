@@ -37,6 +37,9 @@ repos:
     smoke-test: smoke-test.yml
     build-docs: build-documentation.yml
     live-build: testing-and-coverage.yml
+    benchmarks: asv-nightly.yml
+    other_workflows: 
+      - smoke_test_conda.yml
 
   - repo: nested-pandas
     owner: lincc-frameworks
