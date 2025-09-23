@@ -3,8 +3,8 @@ import os
 import pytest
 
 from lf_workflow_dash.data_types import read_yaml_file
-from lf_workflow_dash.update_dashboard import update_html
 from lf_workflow_dash.github_request import get_conclusion_time
+from lf_workflow_dash.update_dashboard import update_html
 
 
 @pytest.mark.parametrize(
