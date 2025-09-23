@@ -67,7 +67,7 @@ body {
 }
 
 /* Define a class for green-colored icons */
-td.green-cell {
+.green-cell {
   color: #9de598;
 }
 

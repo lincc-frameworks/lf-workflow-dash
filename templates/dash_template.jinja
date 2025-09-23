@@ -105,7 +105,10 @@
         <!-- Other -->
         <td>
             {% for workflow in project.other_workflows %}
-                <a href="{{workflow.url}}">{{workflow.name}} {{workflow.status}}</a>
+                <a href="{{workflow.workflow_url}}">{{workflow.friendly_name}}</a>
+                <br/>
+                <span class="{{workflow.display_class}}">{{workflow.workflow_status}} <i class="{{workflow.icon_class}}"></i></span>
+                <br/>
             {% endfor %}
         </td>
         {%- endif %}

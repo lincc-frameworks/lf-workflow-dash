@@ -75,7 +75,7 @@ repos:
     live-build: ci.yml
     smoke-test: smoke-test.yml
   
-  - repo: tdastro
+  - repo: lightcurvelynx
     owner: lincc-frameworks
     smoke-test: smoke-test.yml
     benchmarks: asv-nightly.yml

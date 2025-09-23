@@ -69,6 +69,7 @@ def update_workflow_status(workflow_elem, token):
 
         else:
             last_run = response_json["workflow_runs"][0]
+            workflow_elem.friendly_name = last_run["name"]
 
             # Get the workflow conclusion ("success", "failure", etc)
             conclusion = last_run["conclusion"]
