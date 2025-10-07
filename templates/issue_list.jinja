@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>External GitHub Issues</title>
+<style>
+body { font-family: sans-serif; margin: 2em; }
+table { border-collapse: collapse; width: 100%; }
+th, td { border: 1px solid #ccc; padding: 0.5em; text-align: left; }
+th { background: #eee; }
+tr:nth-child(even) { background: #f9f9f9; }
+a { color: #0366d6; text-decoration: none; }
+a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<h2>External Issues (most recent activity first)</h2>
+<table>
+<thead>
+<tr>
+<th>Last Activity</th>
+<th>Author</th>
+<th>Commenters</th>
+<th>Title</th>
+</tr>
+</thead>
+<tbody>
+
+{% for issue in external_issues %}
+    <tr>
+        <td>{{issue.updated_human}}</td>
+        <td>{{issue.author}}</td>
+        <td>{{issue.commenters}}</td>
+        <td><a href="{{issue.url}}">{{issue.title}}</a></td>
+    </tr>
+{% endfor %}
+</tbody>
+</table>
+</body>
+</html>
