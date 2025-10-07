@@ -147,7 +147,7 @@ def get_humanized_updated_at(iso_time: str, now: datetime) -> str:
     try:
         dt = datetime.strptime(iso_time, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
         return human_readable.date_time(dt, when=now)
-    except Exception:
+    except Exception:  # pylint: disable=broad-except
         return iso_time
 
 
