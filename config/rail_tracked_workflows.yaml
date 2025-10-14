@@ -1,4 +1,5 @@
 page_title: RAIL Workflow Dashboard
+copier_project: lsstdesc/RAIL-project-template
 
 repos:
   - repo: rail

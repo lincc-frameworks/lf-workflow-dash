@@ -59,6 +59,7 @@ class ProjectData:
     icon: str = ""
     repo_url: str = ""
     copier_version: str = ""
+    copier_version_display_class: str = "yellow-cell"
 
     smoke_test: WorkflowElemData = None
     build_docs: WorkflowElemData = None
@@ -69,6 +70,23 @@ class ProjectData:
 
     def __post_init__(self):
         self.repo_url = f"https://github.com/{self.owner}/{self.repo}"
+
+    def set_copier_version(self, this_version, template_version):
+        """Set the copier template version used in this project.
+        This will also update the display class to suit if this project's version
+        matches the copier template version.
+
+        Args:
+            this_version (semver.Version): version of this project
+            template_version (semver.Version): version of the copier template project
+        """
+        self.copier_version = str(this_version)
+        if this_version < template_version:
+            self.copier_version_display_class = "yellow-cell"
+        elif this_version == template_version:
+            self.copier_version_display_class = "green-cell"
+        else:
+            self.copier_version_display_class = "red-cell"
 
 
 def read_yaml_file(file_path):
@@ -90,6 +108,7 @@ def read_yaml_file(file_path):
     # Get the page_title if it exists, otherwise set it to None
     page_title = data.get("page_title", None)
     extra_links = data.get("extra_links", [])
+    copier_project = data.get("copier_project", "lincc-frameworks/python-project-template")
 
     repos = data.get("repos", [])
     all_projects = []
@@ -135,4 +154,5 @@ def read_yaml_file(file_path):
         "dash_repo": "lf-workflow-dash",
         "last_updated": last_updated,
         "extra_links": extra_links,
+        "copier_project": copier_project,
     }

@@ -1,8 +1,10 @@
+import re
 from datetime import datetime
 
 import pytz
 import requests
 import yaml
+from semver import Version
 
 
 def get_conclusion_time(last_run):
@@ -103,7 +105,7 @@ def _read_copier_version(content):
         return ""
 
 
-def update_copier_version(project_data, token):
+def update_copier_version(project_data, token, copier_semver):
     """Find the copier version from the repo's `.copier_answers.yml` file.
 
     Args:
@@ -117,4 +119,40 @@ def update_copier_version(project_data, token):
     headers = {"Authorization": f"Bearer {token}"}
     response = requests.request("GET", request_url, headers=headers, timeout=15)
 
-    project_data.copier_version = _read_copier_version(response.content)
+    project_data.set_copier_version(
+        _coerce_copier_version(_read_copier_version(response.content)), copier_semver
+    )
+
+
+def get_copier_version(context, token):
+    """Get the current version of the copier template for projects."""
+
+    request_url = f"https://api.github.com/repos/{context['copier_project']}/releases/latest"
+    headers = {"Authorization": f"Bearer {token}"}
+    response = requests.request("GET", request_url, headers=headers, timeout=15)
+    response_json = response.json()
+    context["copier_semver"] = _coerce_copier_version(response_json["tag_name"])
+
+
+BASEVERSION = re.compile(
+    r"""[vV]?
+        (?P<major>0|[1-9]\d*)
+        (\.
+        (?P<minor>0|[1-9]\d*)
+        (\.
+            (?P<patch>0|[1-9]\d*)
+        )?
+        )?
+    """,
+    re.VERBOSE,
+)
+
+
+def _coerce_copier_version(input_semver):
+    match = BASEVERSION.search(input_semver)
+    if not match:
+        return (None, input_semver)
+
+    ver = {key: 0 if value is None else value for key, value in match.groupdict().items()}
+    ver = Version(**ver)
+    return ver

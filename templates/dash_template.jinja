@@ -30,7 +30,7 @@
     {% for project in all_projects %}
     <tr>
         <td><a href="{{project.repo_url}}">{{project.repo}}</a></td>
-        <td><a href="{{project.repo_url}}">{{project.copier_version}}</a></td>
+        <td class="{{project.copier_version_display_class}}">{{project.copier_version}}</td>
 
         <!-- Smoke Test -->
         <td class="{{project.smoke_test.display_class}} align-right">
