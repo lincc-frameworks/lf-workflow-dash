@@ -80,6 +80,8 @@ class ProjectData:
             this_version (semver.Version): version of this project
             template_version (semver.Version): version of the copier template project
         """
+        if not this_version:
+            return
         self.copier_version = str(this_version)
         if this_version < template_version:
             self.copier_version_display_class = "yellow-cell"

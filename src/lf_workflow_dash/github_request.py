@@ -149,9 +149,11 @@ BASEVERSION = re.compile(
 
 
 def _coerce_copier_version(input_semver):
+    if not input_semver:
+        return None
     match = BASEVERSION.search(input_semver)
     if not match:
-        return (None, input_semver)
+        return None
 
     ver = {key: 0 if value is None else value for key, value in match.groupdict().items()}
     ver = Version(**ver)
