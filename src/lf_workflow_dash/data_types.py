@@ -3,7 +3,6 @@ from datetime import datetime
 from typing import List
 
 import pytz
-import semver
 import yaml
 
 
@@ -73,6 +72,14 @@ class ProjectData:
         self.repo_url = f"https://github.com/{self.owner}/{self.repo}"
 
     def set_copier_version(self, this_version, template_version):
+        """Set the copier template version used in this project.
+        This will also update the display class to suit if this project's version
+        matches the copier template version.
+
+        Args:
+            this_version (semver.Version): version of this project
+            template_version (semver.Version): version of the copier template project
+        """
         self.copier_version = str(this_version)
         if this_version < template_version:
             self.copier_version_display_class = "yellow-cell"
