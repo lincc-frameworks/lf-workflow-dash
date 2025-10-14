@@ -127,7 +127,7 @@ def update_copier_version(project_data, token, copier_semver):
 def get_copier_version(context, token):
     """Get the current version of the copier template for projects."""
 
-    request_url = f"https://api.github.com/repos/{context["copier_project"]}/releases/latest"
+    request_url = f"https://api.github.com/repos/{context['copier_project']}/releases/latest"
     headers = {"Authorization": f"Bearer {token}"}
     response = requests.request("GET", request_url, headers=headers, timeout=15)
     response_json = response.json()
