@@ -81,6 +81,12 @@ repos:
     smoke-test: smoke-test.yml
     benchmarks: asv-nightly.yml
     live-build: testing-and-coverage.yml
+
+  - repo: uncle-val
+    owner: lincc-frameworks
+    smoke-test: smoke-test.yml
+    benchmarks: asv-nightly.yml
+    live-build: testing-and-coverage.yml
   
 extra_links: 
   - text: LSDB Dash
