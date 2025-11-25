@@ -107,7 +107,7 @@ def update_workflow_status(workflow_elem, token):
 def _read_copier_version(content):
     try:
         copier_config = yaml.safe_load(content)
-        copier_version =  copier_config.get("_commit", "")
+        copier_version = copier_config.get("_commit", "")
         print("   copier version:", copier_version)
         return copier_version
     except yaml.YAMLError:
