@@ -18,10 +18,12 @@ class WorkflowElemData:
     owner: str = ""
     repo: str = ""
     conclusion_time: str = ""
+    conclusion_time_oneline: str = ""
     is_stale: bool = False
     friendly_name: str = ""
+    branch: str = ""
 
-    def __init__(self, workflow_name, repo_url, owner, repo):
+    def __init__(self, workflow_name, repo_url, owner, repo, branch=""):
         self.workflow_name = workflow_name
         self.owner = owner
         self.repo = repo
@@ -29,6 +31,7 @@ class WorkflowElemData:
         self.workflow_status = "pending"
         self.display_class = "yellow-cell"
         self.icon_class = "fa fa-question-circle"
+        self.branch = branch
 
     def set_status(self, status, conclusion_time, is_stale):
         """Set the completion status of a workflow. This will also update the display class
@@ -41,6 +44,7 @@ class WorkflowElemData:
         """
         self.workflow_status = status
         self.conclusion_time = conclusion_time
+        self.conclusion_time_oneline = conclusion_time.replace("<br>", " ")
         self.is_stale = is_stale
         if status == "success":
             self.display_class = "green-cell"
@@ -115,6 +119,10 @@ def read_yaml_file(file_path):
     repos = data.get("repos", [])
     all_projects = []
     contains_other = False
+    contains_smoke = False
+    contains_bench = False
+    contains_docs = False
+    contains_live = False
     for item in repos:
         owner = item["owner"]
         repo = item["repo"]
@@ -124,18 +132,26 @@ def read_yaml_file(file_path):
             project_data.smoke_test = WorkflowElemData(
                 item["smoke-test"], repo_url=project_data.repo_url, owner=owner, repo=repo
             )
+            contains_smoke = True
         if "build-docs" in item:
             project_data.build_docs = WorkflowElemData(
                 item["build-docs"], repo_url=project_data.repo_url, owner=owner, repo=repo
             )
+            contains_docs = True
         if "benchmarks" in item:
             project_data.benchmarks = WorkflowElemData(
                 item["benchmarks"], repo_url=project_data.repo_url, owner=owner, repo=repo
             )
+            contains_bench = True
         if "live-build" in item:
             project_data.live_build = WorkflowElemData(
-                item["live-build"], repo_url=project_data.repo_url, owner=owner, repo=repo
+                item["live-build"],
+                repo_url=project_data.repo_url,
+                owner=owner,
+                repo=repo,
+                branch="main",
             )
+            contains_live = True
         if "other_workflows" in item:
             for name in item["other_workflows"]:
                 project_data.other_workflows.append(
@@ -152,6 +168,10 @@ def read_yaml_file(file_path):
         "page_title": page_title,
         "all_projects": all_projects,
         "contains_other": contains_other,
+        "contains_smoke": contains_smoke,
+        "contains_docs": contains_docs,
+        "contains_bench": contains_bench,
+        "contains_live": contains_live,
         "dash_name": "LINCC Frameworks Builds",
         "dash_repo": "lf-workflow-dash",
         "last_updated": last_updated,

@@ -1,5 +1,6 @@
 import re
 from datetime import datetime
+from urllib.parse import urlencode
 
 import pytz
 import requests
@@ -52,6 +53,12 @@ def update_workflow_status(workflow_elem, token):
         f"https://api.github.com/repos/{workflow_elem.owner}/{workflow_elem.repo}"
         f"/actions/workflows/{workflow_elem.workflow_name}/runs"
     )
+    query_params = {}
+    if workflow_elem.branch:
+        query_params["branch"] = workflow_elem.branch
+    if len(query_params) > 0:
+        request_url += "?" + urlencode(query_params, doseq=True)
+
     payload = {}
     headers = {
         "accept": "application/vnd.github+json",
@@ -91,7 +98,7 @@ def update_workflow_status(workflow_elem, token):
                     conclusion_time = ""
 
     else:
-        print("    ", status_code)
+        print("    ", status_code, request_url)
         conclusion = status_code
 
     workflow_elem.set_status(conclusion, conclusion_time, is_stale)
@@ -100,7 +107,9 @@ def update_workflow_status(workflow_elem, token):
 def _read_copier_version(content):
     try:
         copier_config = yaml.safe_load(content)
-        return copier_config.get("_commit", "")
+        copier_version =  copier_config.get("_commit", "")
+        print("   copier version:", copier_version)
+        return copier_version
     except yaml.YAMLError:
         return ""
 

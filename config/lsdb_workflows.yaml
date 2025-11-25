@@ -2,10 +2,15 @@ page_title: LSDB Builds
 copier_project: lincc-frameworks/python-project-template
 
 repos: 
+  # Blocked by https://github.com/astronomy-commons/data.lsdb.io/issues/133
+  # - repo: data.lsdb.io
+  #   owner: astronomy-commons
+  #   other_workflows:
+  #     - connectivity-checks.yml
+
   - repo: hats
     owner: astronomy-commons
     smoke-test: smoke-test.yml
-    build-docs: build-documentation.yml
     benchmarks: asv-nightly.yml
     live-build: testing-and-coverage.yml
 
@@ -18,13 +23,11 @@ repos:
   - repo: hats-import
     owner: astronomy-commons
     smoke-test: smoke-test.yml
-    build-docs: build-documentation.yml
     live-build: testing-and-coverage.yml
 
   - repo: lsdb
     owner: astronomy-commons
     smoke-test: smoke-test.yml
-    build-docs: build-documentation.yml
     benchmarks: asv-nightly.yml
     live-build: testing-and-coverage.yml
 
@@ -36,7 +39,6 @@ repos:
   - repo: lsdb-rubin
     owner: astronomy-commons
     smoke-test: smoke-test.yml
-    build-docs: build-documentation.yml
     live-build: testing-and-coverage.yml
     benchmarks: asv-nightly.yml
     other_workflows: 
@@ -45,7 +47,6 @@ repos:
   - repo: nested-pandas
     owner: lincc-frameworks
     smoke-test: smoke-test.yml
-    build-docs: build-documentation.yml
     benchmarks: asv-nightly.yml
     live-build: testing-and-coverage.yml
 

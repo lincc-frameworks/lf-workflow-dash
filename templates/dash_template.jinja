@@ -17,10 +17,18 @@
         <tr>
             <th colspan="1" scope="colgroup" style="width:150px">Repository</th>
             <th colspan="1" scope="colgroup" style="width:50px">Copier<br>Version</th>
+            {%- if contains_smoke %}
             <th colspan="3" scope="colgroup">Nightly Test</th>
+            {%- endif %}
+            {%- if contains_bench %}
             <th colspan="3" scope="colgroup">Nightly<br>Benchmarks</th>
+            {%- endif %}
+            {%- if contains_docs %}
             <th colspan="3" scope="colgroup">Build Docs</th>
+            {%- endif %}
+            {%- if contains_live %}
             <th colspan="3" scope="colgroup">Live Build</th>
+            {%- endif %}
             {%- if contains_other %}
             <th colspan="1" scope="colgroup">Other Workflows</th>
             {%- endif %}
@@ -32,6 +40,7 @@
         <td><a href="{{project.repo_url}}">{{project.repo}}</a></td>
         <td class="{{project.copier_version_display_class}}">{{project.copier_version}}</td>
 
+        {%- if contains_smoke %}
         <!-- Smoke Test -->
         <td class="{{project.smoke_test.display_class}} align-right">
             {%- if project.smoke_test.is_stale %}
@@ -50,7 +59,9 @@
                 {{project.smoke_test.conclusion_time}}
             </a>
         </td>
+        {%- endif %}
 
+        {%- if contains_bench %}
         <!-- Benchmarks -->
         <td class="{{project.benchmarks.display_class}} align-right">
             {%- if project.benchmarks.is_stale %}
@@ -69,7 +80,9 @@
                 {{project.benchmarks.conclusion_time}}
             </a>
         </td>
+        {%- endif %}
 
+        {%- if contains_docs %}
         <!-- Build Docs (don't worry about is_stale here) -->
         <td class="{{project.build_docs.display_class}} align-right">
             {{project.build_docs.workflow_status}}
@@ -82,7 +95,9 @@
                 {{project.build_docs.conclusion_time}}
             </a>
         </td>
+        {%- endif %}
 
+        {%- if contains_live %}
         <!-- Live Build -->
         <td class="{{project.live_build.display_class}} align-right">
             {%- if project.live_build.is_stale %}
@@ -101,14 +116,18 @@
                 {{project.live_build.conclusion_time}}
             </a>
         </td>
+        {%- endif %}
+        
         {%- if contains_other %}
         <!-- Other -->
         <td>
             {% for workflow in project.other_workflows %}
                 <a href="{{workflow.workflow_url}}">{{workflow.friendly_name}}</a>
                 <br/>
-                <span class="{{workflow.display_class}}">{{workflow.workflow_status}} <i class="{{workflow.icon_class}}"></i></span>
+                <div class="{{workflow.display_class}} inline">{{workflow.workflow_status}} <i class="{{workflow.icon_class}}"></i></div>
+                <div class="inline"><a href="{{workflow.workflow_url}}">{{workflow.conclusion_time_oneline}}</a></div>
                 <br/>
+            </a>
             {% endfor %}
         </td>
         {%- endif %}
