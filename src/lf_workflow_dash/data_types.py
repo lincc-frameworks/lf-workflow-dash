@@ -18,7 +18,7 @@ class WorkflowElemData:
     owner: str = ""
     repo: str = ""
     conclusion_time: str = ""
-    conclusion_time_oneline: str = ""
+    conclusion_time_one_line: str = ""
     is_stale: bool = False
     friendly_name: str = ""
     branch: str = ""
@@ -44,7 +44,7 @@ class WorkflowElemData:
         """
         self.workflow_status = status
         self.conclusion_time = conclusion_time
-        self.conclusion_time_oneline = conclusion_time.replace("<br>", " ")
+        self.conclusion_time_one_line = conclusion_time.replace("<br>", " ")
         self.is_stale = is_stale
         if status == "success":
             self.display_class = "green-cell"
