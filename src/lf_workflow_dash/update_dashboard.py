@@ -17,7 +17,7 @@ def update_html(out_file, context):
         results.write(template.render(context))
 
 
-def update_status(context, token):
+def update_status(context, token):  # pragma: no cover
     """Issue requests to the github JSON API and update each workflow status accordingly.
 
     Args:
@@ -35,7 +35,7 @@ def update_status(context, token):
             update_workflow_status(other_wf, token)
 
 
-def do_the_work(token, datafile, outfile):
+def do_the_work(token, datafile, outfile):  # pragma: no cover
     """Wrapper to call all of the methods necessary to build the final hydrated page.
 
     Args:

@@ -1,42 +1,11 @@
-import re
-from datetime import datetime
+from urllib.parse import urlencode
 
-import pytz
 import requests
-import yaml
-from semver import Version
+
+from lf_workflow_dash.string_helpers import coerce_copier_version, get_conclusion_time, read_copier_version
 
 
-def get_conclusion_time(last_run):
-    """Get the workflow conclusion time and set the proper timezone
-
-    Args:
-        last_run (dict): the most recent run of the workflow
-    """
-    timestamp_str = last_run["updated_at"]
-
-    # Parse the timestamp
-    timestamp = datetime.strptime(timestamp_str, "%Y-%m-%dT%H:%M:%SZ")
-
-    # Define the time zones for UTC and New York
-    utc_timezone = pytz.timezone("UTC")
-    ny_timezone = pytz.timezone("America/New_York")
-
-    # Convert the timestamp to New York time
-    timestamp_ny = timestamp.replace(tzinfo=utc_timezone).astimezone(ny_timezone)
-
-    # Format the timestamp
-    formatted_timestamp = timestamp_ny.strftime("%H:%M<br>%m/%d/%y")
-
-    # Figure out how old this conclusion time is. If it's more than 2 weeks, it's stale.
-    current_date = datetime.now()
-    date_diff = current_date - timestamp
-    is_stale = date_diff.days > 14
-
-    return (formatted_timestamp, is_stale)
-
-
-def update_workflow_status(workflow_elem, token):
+def update_workflow_status(workflow_elem, token):  # pragma: no cover
     """Determine the status of a workflow run, using the github API.
 
     Args:
@@ -52,6 +21,12 @@ def update_workflow_status(workflow_elem, token):
         f"https://api.github.com/repos/{workflow_elem.owner}/{workflow_elem.repo}"
         f"/actions/workflows/{workflow_elem.workflow_name}/runs"
     )
+    query_params = {}
+    if workflow_elem.branch:
+        query_params["branch"] = workflow_elem.branch
+    if len(query_params) > 0:
+        request_url += "?" + urlencode(query_params, doseq=True)
+
     payload = {}
     headers = {
         "accept": "application/vnd.github+json",
@@ -91,21 +66,13 @@ def update_workflow_status(workflow_elem, token):
                     conclusion_time = ""
 
     else:
-        print("    ", status_code)
+        print("    ", status_code, request_url)
         conclusion = status_code
 
     workflow_elem.set_status(conclusion, conclusion_time, is_stale)
 
 
-def _read_copier_version(content):
-    try:
-        copier_config = yaml.safe_load(content)
-        return copier_config.get("_commit", "")
-    except yaml.YAMLError:
-        return ""
-
-
-def update_copier_version(project_data, token, copier_semver):
+def update_copier_version(project_data, token, copier_semver):  # pragma: no cover
     """Find the copier version from the repo's `.copier_answers.yml` file.
 
     Args:
@@ -120,41 +87,15 @@ def update_copier_version(project_data, token, copier_semver):
     response = requests.request("GET", request_url, headers=headers, timeout=15)
 
     project_data.set_copier_version(
-        _coerce_copier_version(_read_copier_version(response.content)), copier_semver
+        coerce_copier_version(read_copier_version(response.content)), copier_semver
     )
 
 
-def get_copier_version(context, token):
+def get_copier_version(context, token):  # pragma: no cover
     """Get the current version of the copier template for projects."""
 
     request_url = f"https://api.github.com/repos/{context['copier_project']}/releases/latest"
     headers = {"Authorization": f"Bearer {token}"}
     response = requests.request("GET", request_url, headers=headers, timeout=15)
     response_json = response.json()
-    context["copier_semver"] = _coerce_copier_version(response_json["tag_name"])
-
-
-BASEVERSION = re.compile(
-    r"""[vV]?
-        (?P<major>0|[1-9]\d*)
-        (\.
-        (?P<minor>0|[1-9]\d*)
-        (\.
-            (?P<patch>0|[1-9]\d*)
-        )?
-        )?
-    """,
-    re.VERBOSE,
-)
-
-
-def _coerce_copier_version(input_semver):
-    if not input_semver:
-        return None
-    match = BASEVERSION.search(input_semver)
-    if not match:
-        return None
-
-    ver = {key: 0 if value is None else value for key, value in match.groupdict().items()}
-    ver = Version(**ver)
-    return ver
+    context["copier_semver"] = coerce_copier_version(response_json["tag_name"])
