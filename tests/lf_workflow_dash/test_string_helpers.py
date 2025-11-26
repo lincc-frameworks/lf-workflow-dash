@@ -63,10 +63,10 @@ def test_coerce_copier_version_good():
 
 def test_coerce_copier_version_bad():
     copier_version_string = coerce_copier_version("yaml: yes")
-    assert copier_version_string == None
+    assert copier_version_string is None
 
     copier_version_string = coerce_copier_version(None)
-    assert copier_version_string == None
+    assert copier_version_string is None
 
     copier_version_string = coerce_copier_version("")
-    assert copier_version_string == None
+    assert copier_version_string is None

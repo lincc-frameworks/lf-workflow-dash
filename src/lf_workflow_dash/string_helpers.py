@@ -50,6 +50,9 @@ BASEVERSION = re.compile(
 
 
 def coerce_copier_version(input_semver):
+    """Coerce a version string into a semantic version object.
+
+    Allows for strings with `v` or ``version` at the start of the string."""
     if not input_semver:
         return None
     match = BASEVERSION.search(input_semver)
@@ -62,6 +65,7 @@ def coerce_copier_version(input_semver):
 
 
 def read_copier_version(content):
+    """Read the `_commit` from a copier answers config file."""
     try:
         copier_config = yaml.safe_load(content)
         copier_version = copier_config.get("_commit", "")
