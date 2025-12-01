@@ -105,7 +105,7 @@ def write_html_issues(external_issues: List[Dict], html_file: str):
 
 def main(token, out_file):
     """Convenience method to do the work."""
-    repos = get_lsdb_repos("astronomy-commons", token)
+    repos = get_lsdb_repos(token)
     external_issues = get_open_issues("astronomy-commons", repos, TEAM_MEMBERS, token)
     # Sort by most recent activity
     external_issues.sort(key=lambda x: x["updatedAt"], reverse=True)
