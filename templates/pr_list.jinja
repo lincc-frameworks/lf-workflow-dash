@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Pull Requests</title>
+<style>
+body { font-family: sans-serif; margin: 2em; }
+table { border-collapse: collapse; width: 100%; }
+th, td { border: 1px solid #ccc; padding: 0.5em; text-align: left; }
+th { background: #eee; }
+tr:nth-child(even) { background: #f9f9f9; }
+a { color: #0366d6; text-decoration: none; }
+a:hover { text-decoration: underline; }
+td.bot {color: gray; font-style:italic}
+</style>
+</head>
+<body>
+<h2>Pull Requests ({{num_results}}) (most recent activity first)</h2>
+<table>
+<thead>
+<tr>
+<th>Last Activity</th>
+<th>Author</th>
+<th>Repo</th>
+<th>Draft?</th>
+<th>Title</th>
+</tr>
+</thead>
+<tbody>
+
+{% for pr in all_prs %}
+    <tr>
+        <td>{{pr.updated_human}}</td>
+        <td{% if pr.is_bot %} class="bot"{% endif %}>{{pr.author}}</td>
+        <td>{{pr.repo}}</td>
+        <td>{{pr.is_draft}}</td>
+        <td><a href="{{pr.url}}">{{pr.title}}</a></td>
+    </tr>
+{% endfor %}
+</tbody>
+</table>
+</body>
+</html>
