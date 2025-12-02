@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Pull Requests</title>
+<title>{{page_title}}</title>
 <style>
 body { font-family: sans-serif; margin: 2em; }
 table { border-collapse: collapse; width: 100%; }
@@ -15,12 +15,13 @@ td.bot {color: gray; font-style:italic}
 </style>
 </head>
 <body>
-<h2>Pull Requests ({{num_results}}) (most recent activity first)</h2>
+<h2>{{page_title}} ({{num_results}}) (most recent activity first)</h2>
 <table>
 <thead>
 <tr>
 <th>Last Activity</th>
 <th>Author</th>
+<th>Reviewers</th>
 <th>Repo</th>
 <th>Draft?</th>
 <th>Title</th>
@@ -32,6 +33,7 @@ td.bot {color: gray; font-style:italic}
     <tr>
         <td>{{pr.updated_human}}</td>
         <td{% if pr.is_bot %} class="bot"{% endif %}>{{pr.author}}</td>
+        <td>{{pr.reviewers}}</td>
         <td>{{pr.repo}}</td>
         <td>{{pr.is_draft}}</td>
         <td><a href="{{pr.url}}">{{pr.title}}</a></td>
@@ -39,5 +41,33 @@ td.bot {color: gray; font-style:italic}
 {% endfor %}
 </tbody>
 </table>
+
+<br/>
+<hr/>
+<h2>This time, by reviewer</h2>
+<table>
+<thead>
+<tr>
+<th>Reviewer</th>
+<th>Last Activity</th>
+<th>Author</th>
+<th>Repo</th>
+<th>Title</th>
+</tr>
+</thead>
+<tbody>
+
+{% for pr in reviewer_prs %}
+    <tr>
+        <td>{{pr.reviewer}}</td>
+        <td>{{pr.updated_human}}</td>
+        <td>{{pr.author}}</td>
+        <td>{{pr.repo}}</td>
+        <td><a href="{{pr.url}}">{{pr.title}}</a></td>
+    </tr>
+{% endfor %}
+</tbody>
+</table>
+
 </body>
 </html>
