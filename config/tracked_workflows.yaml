@@ -16,7 +16,6 @@ repos:
   - repo: hats
     owner: astronomy-commons
     smoke-test: smoke-test.yml
-    build-docs: build-documentation.yml
     benchmarks: asv-nightly.yml
     live-build: testing-and-coverage.yml
 
@@ -29,7 +28,6 @@ repos:
   - repo: hats-import
     owner: astronomy-commons
     smoke-test: smoke-test.yml
-    build-docs: build-documentation.yml
     live-build: testing-and-coverage.yml
 
   - repo: hyrax
@@ -53,14 +51,6 @@ repos:
   - repo: lsdb
     owner: astronomy-commons
     smoke-test: smoke-test.yml
-    build-docs: build-documentation.yml
-    benchmarks: asv-nightly.yml
-    live-build: testing-and-coverage.yml
-      
-  - repo: nested-dask
-    owner: lincc-frameworks
-    smoke-test: smoke-test.yml
-    build-docs: build-documentation.yml
     benchmarks: asv-nightly.yml
     live-build: testing-and-coverage.yml
       
