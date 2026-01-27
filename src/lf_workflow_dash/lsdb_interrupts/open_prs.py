@@ -31,9 +31,15 @@ def get_open_prs(org: str, repos: List[str], token: str) -> List[Dict]:
                 author = pr["user"]["login"] if pr["user"] else "unknown"
 
                 # Reviewers are not returned in the pull request list response. Make a new request.
+                url = f"{GITHUB_API_BASE}/repos/{org}/{repo}/pulls/{pr['number']}/requested_reviewers"
+                requested_reviewers = paginate_github_api(session, url)
+                requested_reviewers = set(person["login"] for person in requested_reviewers[0]["users"])
+
                 url = f"{GITHUB_API_BASE}/repos/{org}/{repo}/pulls/{pr['number']}/reviews"
                 reviewers = paginate_github_api(session, url)
-                reviewers = set(person["user"]["login"] for person in reviewers) - set([author])
+                reviewers = set(person["user"]["login"] for person in reviewers)
+
+                reviewers = reviewers | requested_reviewers - set(author)
                 list(reviewers).sort()
 
                 prs.append(
