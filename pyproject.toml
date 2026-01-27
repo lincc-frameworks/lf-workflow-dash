@@ -7,6 +7,7 @@ readme = "README.md"
 authors = [
     { name = "LINCC Frameworks", email = "lincc-frameworks-team@lists.lsst.org" }
 ]
+description = "Solution for monitoring and managing GitHub Actions workflows"
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
@@ -15,7 +16,7 @@ classifiers = [
     "Programming Language :: Python",
 ]
 dynamic = ["version"]
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 dependencies = [
     "jinja2",
     "pyyaml",
@@ -59,7 +60,6 @@ addopts = "--doctest-modules --doctest-glob=*.rst"
 
 [tool.black]
 line-length = 110
-target-version = ["py39"]
 [tool.isort]
 profile = "black"
 line_length = 110
