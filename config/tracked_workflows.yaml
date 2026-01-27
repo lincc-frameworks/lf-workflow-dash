@@ -66,6 +66,11 @@ repos:
     live-build: ci.yml
     smoke-test: smoke-test.yml
   
+  - repo: pre-commit-hooks
+    owner: lincc-frameworks
+    live-build: testing-and-coverage.yml
+    smoke-test: smoke-test.yml
+
   - repo: lightcurvelynx
     owner: lincc-frameworks
     smoke-test: smoke-test.yml
