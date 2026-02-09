@@ -25,6 +25,12 @@ repos:
     smoke-test: smoke-test.yml
     live-build: testing-and-coverage.yml
 
+  - repo: hats-tap
+    owner: astronomy-commons
+    smoke-test: smoke-test.yml
+    benchmarks: asv-nightly.yml
+    live-build: testing-and-coverage.yml
+
   - repo: lsdb
     owner: astronomy-commons
     smoke-test: smoke-test.yml
@@ -43,6 +49,10 @@ repos:
     benchmarks: asv-nightly.yml
     other_workflows: 
       - smoke_test_conda.yml
+
+  - repo: lsdb-server
+    owner: astronomy-commons
+    live-build: build.yml
 
   - repo: nested-pandas
     owner: lincc-frameworks
