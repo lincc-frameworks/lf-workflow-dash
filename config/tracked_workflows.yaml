@@ -48,6 +48,13 @@ repos:
     smoke-test: smoke-test.yml
     live-build: testing-and-coverage.yml
   
+  - repo: lf-workflow-dash
+    owner: lincc-frameworks
+    smoke-test: smoke-test.yml
+    live-build: testing-and-coverage.yml
+    other_workflows: 
+      - main.yml
+
   - repo: lsdb
     owner: astronomy-commons
     smoke-test: smoke-test.yml
@@ -66,6 +73,11 @@ repos:
     live-build: ci.yml
     smoke-test: smoke-test.yml
   
+  - repo: pre-commit-hooks
+    owner: lincc-frameworks
+    live-build: testing-and-coverage.yml
+    smoke-test: smoke-test.yml
+
   - repo: lightcurvelynx
     owner: lincc-frameworks
     smoke-test: smoke-test.yml

@@ -52,7 +52,7 @@ def update_workflow_status(workflow_elem, token):  # pragma: no cover
             conclusion = last_run["conclusion"]
 
             # Get the time this workflow concluded (in New York time)
-            (conclusion_time, is_stale) = get_conclusion_time(last_run)
+            conclusion_time, is_stale = get_conclusion_time(last_run)
 
             # Check if the workflow is currently being executed
             if conclusion is None:
@@ -60,7 +60,7 @@ def update_workflow_status(workflow_elem, token):  # pragma: no cover
                 if len(response_json["workflow_runs"]) > 1:
                     last_run = response_json["workflow_runs"][1]
                     conclusion = last_run["conclusion"]
-                    (conclusion_time, is_stale) = get_conclusion_time(last_run)
+                    conclusion_time, is_stale = get_conclusion_time(last_run)
                 else:
                     conclusion = "pending"
                     conclusion_time = ""
