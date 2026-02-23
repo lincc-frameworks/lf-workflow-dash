@@ -22,13 +22,13 @@ from lf_workflow_dash.lsdb_interrupts.github_api import (
 )
 
 
-def get_open_issues(org: str, repos: List[str], org_members: Set[str], token: str) -> List[Dict]:
+def get_open_issues(repos: List[str], org_members: Set[str], token: str) -> List[Dict]:
     """Find all OPEN issues that were either CREATED or COMMENTED on by folks
     NOT in the core team."""
     print("Fetching open issues for all repositories...")
     session = create_github_session(token)
     all_issues = []
-    for repo in repos:
+    for org, repo in repos:
         print(f"  {repo}...")
         try:
             ## First, find all issues with some external interest, in the form of comments.
@@ -106,7 +106,7 @@ def write_html_issues(external_issues: List[Dict], html_file: str):
 def main(token, out_file):
     """Convenience method to do the work."""
     repos = get_lsdb_repos(token)
-    external_issues = get_open_issues("astronomy-commons", repos, TEAM_MEMBERS, token)
+    external_issues = get_open_issues(repos, TEAM_MEMBERS, token)
     # Sort by most recent activity
     external_issues.sort(key=lambda x: x["updatedAt"], reverse=True)
 

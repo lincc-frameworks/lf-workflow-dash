@@ -70,7 +70,7 @@ def get_org_repos(org: str, token: str) -> List[str]:
     session = create_github_session(token)
     url = f"{GITHUB_API_BASE}/orgs/{org}/repos?per_page=100"
     repos_data = paginate_github_api(session, url)
-    repos = [repo["name"] for repo in repos_data if not repo["archived"]]
+    repos = [(org, repo["name"]) for repo in repos_data if not repo["archived"]]
     print(f"  Found {len(repos)} repositories.")
     return repos
 
@@ -82,7 +82,8 @@ def get_lsdb_repos(token: str) -> List[str]:
     url = f"{GITHUB_API_BASE}/orgs/astronomy-commons/repos?per_page=100"
     repos_data = paginate_github_api(session, url)
     repos = [repo["name"] for repo in repos_data]
-    repos = [repo for repo in repos if "hats" in repo or "lsdb" in repo]
+    repos = [("astronomy-commons", repo) for repo in repos if "hats" in repo or "lsdb" in repo]
+    repos.append(("lincc-frameworks", "nested-pandas"))
     print(f"  Found {len(repos)} repositories.")
     return repos
 

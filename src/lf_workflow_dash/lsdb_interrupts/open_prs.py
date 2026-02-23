@@ -15,12 +15,12 @@ from lf_workflow_dash.lsdb_interrupts.github_api import (
 )
 
 
-def get_open_prs(org: str, repos: List[str], token: str) -> List[Dict]:
+def get_open_prs(repos: List[str], token: str) -> List[Dict]:
     """Find all OPEN PRs."""
     print("Fetching open PRs for all repositories...")
     session = create_github_session(token)
     all_prs = []
-    for repo in repos:
+    for org, repo in repos:
         print(f"  {repo}...")
         try:
             url = f"{GITHUB_API_BASE}/repos/{org}/{repo}/pulls?state=open&per_page=100"
@@ -119,11 +119,11 @@ def write_html_prs(prs: List[Dict], html_file: str, page_title: str = "Pull Requ
 def main(token):
     """Convenience method to do the work."""
     repos = get_lsdb_repos(token)
-    prs = get_open_prs("astronomy-commons", repos, token)
+    prs = get_open_prs(repos, token)
     write_html_prs(prs, "html/lsdb_prs.html", "LSDB PRs")
 
     repos = get_org_repos("lincc-frameworks", token)
-    prs = get_open_prs("lincc-frameworks", repos, token)
+    prs = get_open_prs(repos, token)
     write_html_prs(prs, "html/lincc_prs.html", "lincc-frameworks PRs")
 
 
