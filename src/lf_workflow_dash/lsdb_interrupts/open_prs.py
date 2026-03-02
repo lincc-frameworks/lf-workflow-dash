@@ -13,6 +13,7 @@ from lf_workflow_dash.lsdb_interrupts.github_api import (
     get_org_repos,
     paginate_github_api,
 )
+from lf_workflow_dash.string_helpers import now_time_formatted
 
 
 def get_open_prs(repos: List[str], token: str) -> List[Dict]:
@@ -63,53 +64,59 @@ def get_open_prs(repos: List[str], token: str) -> List[Dict]:
     return all_prs
 
 
-def write_html_prs(prs: List[Dict], html_file: str, page_title: str = "Pull Requests"):
+def write_html_prs(prs: List[Dict], html_file: str, attributes: dict):
     """Fill in the jinja template, using the prs found"""
     print(f"Writing HTML output to {html_file} ...")
 
     prs.sort(key=lambda x: x["updatedAt"], reverse=True)
     now = datetime.now(timezone.utc)
     pr_summaries = []
+    gsoc_summaries = []
     reviewer_summaries = []
     for pr in prs:
         author = pr["author"]["login"] if pr["author"] else "unknown"
         updated_at = get_humanized_updated_at(pr["updatedAt"], now)
         tidy_title = pr["title"].replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-        pr_summaries.append(
-            {
-                "updated_human": updated_at,
-                "author": author,
-                "title": tidy_title,
-                "url": pr["url"],
-                "repo": pr["repo"],
-                "is_draft": "DRAFT" if pr["is_draft"] else "",
-                "is_bot": author in ["dependabot[bot]", "Copilot"],
-                "reviewers": ", ".join(pr["reviewers"]),
-            }
-        )
-        reviewer_summaries.extend(
-            [
-                {
-                    "updated_human": updated_at,
-                    "author": author,
-                    "title": tidy_title,
-                    "url": pr["url"],
-                    "repo": pr["repo"],
-                    "reviewer": reviewer,
-                }
-                for reviewer in pr["reviewers"]
-            ]
-        )
+        pr_summary = {
+            "updated_human": updated_at,
+            "author": author,
+            "title": tidy_title,
+            "url": pr["url"],
+            "repo": pr["repo"],
+            "is_draft": "DRAFT" if pr["is_draft"] else "",
+            "is_bot": author in ["dependabot[bot]", "Copilot"],
+            "reviewers": ", ".join(pr["reviewers"]),
+        }
+
+        if "GSOC26" in tidy_title:
+            gsoc_summaries.append(pr_summary)
+        else:
+            pr_summaries.append(pr_summary)
+            reviewer_summaries.extend(
+                [
+                    {
+                        "updated_human": updated_at,
+                        "author": author,
+                        "title": tidy_title,
+                        "url": pr["url"],
+                        "repo": pr["repo"],
+                        "reviewer": reviewer,
+                    }
+                    for reviewer in pr["reviewers"]
+                ]
+            )
 
     reviewer_summaries.sort(key=lambda x: x["reviewer"])
 
     environment = Environment(loader=FileSystemLoader("templates/"))
     template = environment.get_template("pr_list.jinja")
-    attributes = {
-        "page_title": page_title,
+    attributes = attributes | {
         "all_prs": pr_summaries,
+        "gsoc_prs": gsoc_summaries,
         "reviewer_prs": reviewer_summaries,
         "num_results": len(pr_summaries),
+        "num_gsoc_results": len(gsoc_summaries),
+        "last_updated": now_time_formatted(),
     }
     with open(html_file, mode="w", encoding="utf-8") as results:
         results.write(template.render(attributes))
@@ -120,11 +127,39 @@ def main(token):
     """Convenience method to do the work."""
     repos = get_lsdb_repos(token)
     prs = get_open_prs(repos, token)
-    write_html_prs(prs, "html/lsdb_prs.html", "LSDB PRs")
+    write_html_prs(
+        prs,
+        "html/lsdb_prs.html",
+        {
+            "page_title": "LSDB PRs",
+            "extra_links": [
+                {
+                    "text": "LSDB Workflows",
+                    "url": "https://lincc-frameworks.github.io/lf-workflow-dash/lsdb.html",
+                },
+                {
+                    "text": "LSDB External Issues",
+                    "url": "https://lincc-frameworks.github.io/lf-workflow-dash/lsdb_issues.html",
+                },
+            ],
+        },
+    )
 
     repos = get_org_repos("lincc-frameworks", token)
     prs = get_open_prs(repos, token)
-    write_html_prs(prs, "html/lincc_prs.html", "lincc-frameworks PRs")
+    write_html_prs(
+        prs,
+        "html/lincc_prs.html",
+        {
+            "page_title": "lincc-frameworks PRs",
+            "extra_links": [
+                {
+                    "text": "LINCC Frameworks Dash",
+                    "url": "https://lincc-frameworks.github.io/lf-workflow-dash/",
+                }
+            ],
+        },
+    )
 
 
 if __name__ == "__main__":

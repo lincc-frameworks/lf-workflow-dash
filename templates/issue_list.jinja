@@ -14,6 +14,12 @@ a:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
+<p>
+    Last Updated {{last_updated}}
+    {% for link in extra_links %}
+    | <a href='{{link.url}}'><i class=\"fa fa-github\"></i> {{link.text}}</a>
+    {% endfor %}
+</p>
 <h2>External Issues (most recent activity first)</h2>
 <table>
 <thead>
