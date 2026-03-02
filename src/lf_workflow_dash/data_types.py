@@ -1,9 +1,9 @@
 from dataclasses import dataclass, field
-from datetime import datetime
 from typing import List
 
-import pytz
 import yaml
+
+from lf_workflow_dash.string_helpers import now_time_formatted
 
 
 @dataclass
@@ -161,9 +161,6 @@ def read_yaml_file(file_path):
 
         all_projects.append(project_data)
 
-    timezone = pytz.timezone("America/New_York")
-    last_updated = datetime.now(timezone).strftime("%H:%M %B %d, %Y (US-NYC)")
-
     return {
         "page_title": page_title,
         "all_projects": all_projects,
@@ -174,7 +171,7 @@ def read_yaml_file(file_path):
         "contains_live": contains_live,
         "dash_name": "LINCC Frameworks Builds",
         "dash_repo": "lf-workflow-dash",
-        "last_updated": last_updated,
+        "last_updated": now_time_formatted(),
         "extra_links": extra_links,
         "copier_project": copier_project,
     }

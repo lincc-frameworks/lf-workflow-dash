@@ -20,6 +20,7 @@ from lf_workflow_dash.lsdb_interrupts.github_api import (
     get_lsdb_repos,
     paginate_github_api,
 )
+from lf_workflow_dash.string_helpers import now_time_formatted
 
 
 def get_open_issues(repos: List[str], org_members: Set[str], token: str) -> List[Dict]:
@@ -99,7 +100,24 @@ def write_html_issues(external_issues: List[Dict], html_file: str):
     environment = Environment(loader=FileSystemLoader("templates/"))
     template = environment.get_template("issue_list.jinja")
     with open(html_file, mode="w", encoding="utf-8") as results:
-        results.write(template.render({"external_issues": issue_summaries}))
+        results.write(
+            template.render(
+                {
+                    "external_issues": issue_summaries,
+                    "last_updated": now_time_formatted(),
+                    "extra_links": [
+                        {
+                            "text": "LSDB Workflows",
+                            "url": "https://lincc-frameworks.github.io/lf-workflow-dash/lsdb.html",
+                        },
+                        {
+                            "text": "LSDB PRs",
+                            "url": "https://lincc-frameworks.github.io/lf-workflow-dash/lsdb_issues.html",
+                        },
+                    ],
+                }
+            )
+        )
     print(f"HTML output written to {html_file}")
 
 

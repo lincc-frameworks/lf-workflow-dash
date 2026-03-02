@@ -35,6 +35,14 @@ def get_conclusion_time(last_run):
     return (formatted_timestamp, is_stale)
 
 
+def now_time_formatted():
+    """Format the current time for America/New York timezone.
+
+    Used in `last_updated` field in rendered HTML."""
+    timezone = pytz.timezone("America/New_York")
+    return datetime.now(timezone).strftime("%H:%M %B %d, %Y (US-NYC)")
+
+
 BASEVERSION = re.compile(
     r"""[vV]?
         (?P<major>0|[1-9]\d*)
