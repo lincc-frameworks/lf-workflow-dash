@@ -83,7 +83,7 @@ def get_lsdb_repos(token: str) -> List[str]:
     repos_data = paginate_github_api(session, url)
     repos = [repo["name"] for repo in repos_data]
     repos = [("astronomy-commons", repo) for repo in repos if "hats" in repo or "lsdb" in repo]
-    repos.append(("lincc-frameworks", "nested-pandas"))
+    repos.append(("lincc-frameworks", "nested-pandas"), ("lincc-frameworks", "rubin-dash"), ("lincc-frameworks", "lsdb-benchmarking"))
     print(f"  Found {len(repos)} repositories.")
     return repos
 
