@@ -2,11 +2,10 @@ page_title: LSDB Builds
 copier_project: lincc-frameworks/python-project-template
 
 repos: 
-  # Blocked by https://github.com/astronomy-commons/data.lsdb.io/issues/133
-  # - repo: data.lsdb.io
-  #   owner: astronomy-commons
-  #   other_workflows:
-  #     - connectivity-checks.yml
+  - repo: data.lsdb.io
+    owner: astronomy-commons
+    other_workflows:
+      - connectivity-checks.yml
 
   - repo: hats
     owner: astronomy-commons
