@@ -2,11 +2,6 @@ page_title: LSDB Builds
 copier_project: lincc-frameworks/python-project-template
 
 repos: 
-  - repo: data.lsdb.io
-    owner: astronomy-commons
-    other_workflows:
-      - connectivity-checks.yml
-
   - repo: hats
     owner: astronomy-commons
     smoke-test: smoke-test.yml
@@ -64,6 +59,11 @@ repos:
     smoke-test: smoke-test.yml
     benchmarks: asv-nightly.yml
     live-build: testing-and-coverage.yml
+
+  - repo: registry.lsdb.io
+    owner: astronomy-commons
+    other_workflows:
+      - connectivity-checks.yml
 
   - repo: rubin-dash
     owner: lincc-frameworks
