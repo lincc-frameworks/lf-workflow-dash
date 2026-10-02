@@ -18,6 +18,8 @@ repos:
     smoke-test: smoke-test.yml
     benchmarks: asv-nightly.yml
     live-build: testing-and-coverage.yml
+    other_workflows:
+      - connectivity-test.yml
 
   - repo: hats-import
     owner: astronomy-commons
