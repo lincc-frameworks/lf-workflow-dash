@@ -21,6 +21,7 @@ TEAM_MEMBERS = [
     "MayoKashyap",
     "drewoldag",
     "csestili",
+    "KKruszynska",
 ]
 
 
