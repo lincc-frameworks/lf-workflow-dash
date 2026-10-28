@@ -5,8 +5,8 @@ import requests
 from lf_workflow_dash.string_helpers import (
     coerce_copier_version,
     get_conclusion_time,
-    read_copier_version,
     now_time_formatted,
+    read_copier_version,
 )
 
 
@@ -91,7 +91,10 @@ def update_copier_version(project_data, token, copier_semver):
     if token == "TEST":
         copier_version = "v1.2.2"
     else:  # pragma: no cover
-        request_url = f"https://raw.githubusercontent.com/{project_data.owner}/{project_data.repo}/main/.copier-answers.yml"
+        request_url = (
+            f"https://raw.githubusercontent.com/{project_data.owner}/{project_data.repo}"
+            "/main/.copier-answers.yml"
+        )
 
         headers = {"Authorization": f"Bearer {token}"}
         response = requests.request("GET", request_url, headers=headers, timeout=15)
