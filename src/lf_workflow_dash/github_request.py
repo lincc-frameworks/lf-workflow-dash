@@ -2,7 +2,12 @@ from urllib.parse import urlencode
 
 import requests
 
-from lf_workflow_dash.string_helpers import coerce_copier_version, get_conclusion_time, read_copier_version
+from lf_workflow_dash.string_helpers import (
+    coerce_copier_version,
+    get_conclusion_time,
+    read_copier_version,
+    now_time_formatted,
+)
 
 
 def update_workflow_status(workflow_elem, token):  # pragma: no cover
@@ -16,6 +21,10 @@ def update_workflow_status(workflow_elem, token):  # pragma: no cover
         return
 
     print("  ", workflow_elem.workflow_name)
+    if token == "TEST":
+        workflow_elem.set_status("success", now_time_formatted(), False)
+        return
+
     # Make request
     request_url = (
         f"https://api.github.com/repos/{workflow_elem.owner}/{workflow_elem.repo}"
@@ -72,27 +81,31 @@ def update_workflow_status(workflow_elem, token):  # pragma: no cover
     workflow_elem.set_status(conclusion, conclusion_time, is_stale)
 
 
-def update_copier_version(project_data, token, copier_semver):  # pragma: no cover
+def update_copier_version(project_data, token, copier_semver):
     """Find the copier version from the repo's `.copier_answers.yml` file.
 
     Args:
         project_data (ProjectData): container for the project's data
         token (str): auth token for hitting the github API
     """
-    request_url = (
-        f"https://raw.githubusercontent.com/{project_data.owner}/{project_data.repo}/main/.copier-answers.yml"
-    )
+    if token == "TEST":
+        copier_version = "v1.2.2"
+    else:  # pragma: no cover
+        request_url = f"https://raw.githubusercontent.com/{project_data.owner}/{project_data.repo}/main/.copier-answers.yml"
 
-    headers = {"Authorization": f"Bearer {token}"}
-    response = requests.request("GET", request_url, headers=headers, timeout=15)
+        headers = {"Authorization": f"Bearer {token}"}
+        response = requests.request("GET", request_url, headers=headers, timeout=15)
+        copier_version = read_copier_version(response.content)
 
-    project_data.set_copier_version(
-        coerce_copier_version(read_copier_version(response.content)), copier_semver
-    )
+    project_data.set_copier_version(coerce_copier_version(copier_version), copier_semver)
 
 
 def get_copier_version(context, token):  # pragma: no cover
     """Get the current version of the copier template for projects."""
+
+    if token == "TEST":
+        context["copier_semver"] = coerce_copier_version("v1.2.3")
+        return
 
     request_url = f"https://api.github.com/repos/{context['copier_project']}/releases/latest"
     headers = {"Authorization": f"Bearer {token}"}

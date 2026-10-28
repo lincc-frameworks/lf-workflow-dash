@@ -2,8 +2,7 @@ import os
 
 import pytest
 
-from lf_workflow_dash.data_types import read_yaml_file
-from lf_workflow_dash.update_dashboard import update_html
+from lf_workflow_dash.update_dashboard import do_the_work
 
 
 @pytest.mark.parametrize(
@@ -17,5 +16,4 @@ from lf_workflow_dash.update_dashboard import update_html
 )
 def test_do_the_work(datafile, outfile, tmp_path):
     output_path = os.path.join(tmp_path, outfile)
-    context = read_yaml_file(datafile)
-    update_html(output_path, context)
+    do_the_work("TEST", datafile, output_path)
