@@ -74,6 +74,8 @@ Keep reading to learn about modifying an existing dashboard, or how to build you
 
    You can generate a personal access token following these [GitHub token generation steps](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens).
 
+   If you're only interested in HTML rendering, and don't care about making real requests to github, you can pass the exact string `TEST` as the `PERSONAL_ACCESS_TOKEN`. This will bypass requests, pretending everything is a success.
+
    Feel free to replace `tracked_workflows.yaml` with whatever input yaml you'd like; likewise, replace `index.html` with your desired output path.
 
 5. **Page Title, Favicon, and Footer**

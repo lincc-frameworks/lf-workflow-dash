@@ -6,32 +6,26 @@ repos:
     owner: astronomy-commons
     smoke-test: smoke-test.yml
     benchmarks: asv-nightly.yml
-    live-build: testing-and-coverage.yml
 
   - repo: hats-cloudtests
     owner: astronomy-commons
     smoke-test: smoke-test.yml
     benchmarks: asv-nightly.yml
-    live-build: testing-and-coverage.yml
     other_workflows:
       - connectivity-test.yml
 
   - repo: hats-import
     owner: astronomy-commons
     smoke-test: smoke-test.yml
-    live-build: testing-and-coverage.yml
 
-  - repo: hats-tap
+  - repo: hats-query
     owner: astronomy-commons
     smoke-test: smoke-test.yml
-    benchmarks: asv-nightly.yml
-    live-build: testing-and-coverage.yml
 
   - repo: lsdb
     owner: astronomy-commons
     smoke-test: smoke-test.yml
     benchmarks: asv-nightly.yml
-    live-build: testing-and-coverage.yml
 
   - repo: lsdb-benchmarking
     owner: lincc-frameworks
@@ -40,25 +34,18 @@ repos:
   - repo: lsdb-crossmatch
     owner: astronomy-commons
     smoke-test: smoke-test.yml
-    live-build: testing-and-coverage.yml
 
   - repo: lsdb-rubin
     owner: astronomy-commons
     smoke-test: smoke-test.yml
-    live-build: testing-and-coverage.yml
     benchmarks: asv-nightly.yml
     other_workflows: 
       - smoke_test_conda.yml
-
-  - repo: lsdb-server
-    owner: astronomy-commons
-    live-build: build.yml
 
   - repo: nested-pandas
     owner: lincc-frameworks
     smoke-test: smoke-test.yml
     benchmarks: asv-nightly.yml
-    live-build: testing-and-coverage.yml
 
   - repo: registry.lsdb.io
     owner: astronomy-commons
