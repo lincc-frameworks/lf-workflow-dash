@@ -91,9 +91,15 @@ def get_lsdb_repos(token: str) -> List[str]:
     repos = [("astronomy-commons", repo) for repo in repos if "hats" in repo or "lsdb" in repo]
     repos.extend(
         [
-            ("lincc-frameworks", "nested-pandas"),
-            ("lincc-frameworks", "rubin-dash"),
-            ("lincc-frameworks", "lsdb-benchmarking"),
+            ("lincc-frameworks", lf_repo)
+            for lf_repo in [
+                "nested-pandas",
+                "rubin-dash",
+                "lsdb-benchmarking",
+                "alert-archive",
+                "lsdb-ml",
+                "skymap-convert",
+            ]
         ]
     )
     print(f"  Found {len(repos)} repositories.")
