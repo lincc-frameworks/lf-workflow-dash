@@ -22,6 +22,7 @@ TEAM_MEMBERS = [
     "drewoldag",
     "csestili",
     "KKruszynska",
+    "tabenmalik",
 ]
 
 
